@@ -10,10 +10,28 @@ html, body {
     margin: 0; /* Remova margens padrão */
     padding: 0; /* Remova preenchimentos padrão */
   }
+
+  .main{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 88%;
+    margin-left: 12%;
+    max-width: 100%;
+  }
+
+  .content{
+    width: 100%;
+    height: 100%;    
+      
+    background-color: rgb(245, 245, 245);
+    
+}
   
 
 
 header {
+    width: 100%;
     background-color: rgb(228, 228, 228);
     padding: 0.5% 2%;
     display: flex;
@@ -23,21 +41,20 @@ header {
 }
 
 .info-header {
-    margin-left: 14%;
-    color: rgb(20, 20, 20);
+    margin-left: 1%;
+    color: black;
     display: flex;
-    justify-content: space-between;
-    width: 10%;
+    justify-content: space-between;    
     align-items: center;
     
     
 }
 
 .info-header img{
-    width: 25%;
-    height: 100%;
+    width: 10%;    
     border-radius: 100%;    
 }
+
 
 .sidebar {       
     height: 100%;    
@@ -57,8 +74,11 @@ header {
     display: flex;    
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
     
 }
+.sidebar a:hover{opacity: 0.5;}
+
 
 .sidebar h1 {   
     padding: 5% 0% 10%;
@@ -68,10 +88,70 @@ header {
     color: white;
     align-items: center;
     overflow:hidden;
+    cursor: pointer;
+}
+
+.sidebar h1:hover{
+    opacity: 0.5;
 }
 
 #ultimo-link {
     padding-top: 50%;
     font-size: 180%;
     color: rgb(88, 207, 88);
+}
+
+
+
+.titulo-secao{
+    background-color: white;
+    padding: 0.5%;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
+.titulo-secao h2{
+    font-size: 110%;
+    color: rgb(61, 61, 61);
+}
+
+.all-box-info{
+    margin-left: 1%;
+    margin-top: 1%;
+    width: 99%;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    
+    
+    
+}
+
+.box-info-single{
+    display: flex;
+    justify-content: space-around;
+    background-color: #026773;
+    width: 20%;
+    margin: 0 10px;
+    padding: 1%;
+    border-radius: 3%;
+    color: rgb(216, 216, 216);
+    font-size: 95%;
+    flex-wrap: wrap;
+    
+    
+}
+
+.box-info-text{
+    font-size: 100%;
+}
+
+
+.box-info-single h4{
+    font-size: 70%;
+}
+
+.box-info-single p{
+    font-size: 100%;
+    
 }

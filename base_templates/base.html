@@ -11,8 +11,15 @@
 
 </head>
 <body>
-    {% include 'partials/_sidebar.html' %}   
-    {% include 'partials/_header.html' %}
-    {% block content %}{% endblock %}
+    
+    
+    {% include 'partials/_sidebar.html' %}  
+    <section class="main">        
+        {% include 'partials/_header.html' %}
+        {% block content %}{% endblock %}
+    </section> 
+        
+    
+    
 </body>
 </html>
