@@ -10,40 +10,174 @@
         </div>
         <div class="all-box-info">
             <div class="box-info-single">
-                <i class="bi bi-clipboard2" style="font-size: 270%;"></i>
+                <i class="bi bi-clipboard2"></i>
                 <div class="info-text">                
                     <h3>Agendados hoje</h3>
-                    <p>025</p>   
-                    <h4>Ver gráfico comparativo -></h4>             
+                    <p class="valor-box">025</p>   
+                    <br>
+                                 
                 </div>
+                <h4>Ver gráfico comparativo -></h4>
                 
             </div>
             <div class="box-info-single">
-                <i class="bi bi-clipboard2-check" style="font-size: 270%;"></i>
+                <i class="bi bi-clipboard2-check"></i>
                 <div class="info-text">                    
                     <h3>Atendidos hoje</h3>
-                    <p>005</p>
-                    <h4>Ver gráfico comparativo</h4>
+                    <p class="valor-box">005</p>
+                    <br>        
+                    
                 </div>
+                <h4>Ver gráfico comparativo -></h4>
                 
             </div>
             <div class="box-info-single">
-                <i class="bi bi-list-columns" style="font-size: 270%;"></i>
-                <div class="info-text">
+                <i class="bi bi-list-columns"></i>
+                <div class="info-text">                    
                     <h3>Consultas/Mês</h3>
-                    <p>151</p>
-                    <h4>Ver gráfico comparativo</h4>
+                    <p class="valor-box">151</p>
+                    <br>                                          
                 </div>
+                <h4>Ver gráfico comparativo -></h4> 
+                
+                
             </div>
             <div class="box-info-single">
-                <i class="bi bi-currency-dollar" style="font-size: 270%;"></i>
+                <i class="bi bi-currency-dollar"></i>
                 <div class="info-text">
                     <h3>Receita/Mês</h3>
-                    <p>R$21.250</p>
-                    <h4>Ver gráfico comparativo</h4>
+                    <p class="valor-receita-mes">10.250</p>
+                    <br>                    
                 </div>
-            </div>
-        </div>
+                <h4>Ver gráfico comparativo -></h4>
+            </div>            
+        </div> 
+        <!-- Fim das caixas e inicio dos Pacientes -->
+        
+        <div class="table-container">
+            <table class="table-index">                       
+                <thead class="table-head">  
+                    <tr class="table-row">
+                        <th colspan="7"> <!-- colspan="7" para ocupar todas as colunas -->
+                            <h3 class="titulo-consultas">Próximas Consultas</h3>
+                        </th>
+                    </tr>                                        
+                    <tr class="table-row">                        
+                        <th>Nome do Paciente</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Procedimento</th>
+                        <th>Convênio</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="table-row">
+                        <td>Gustavo Henrique Zollner Munhoz</td>
+                        <td>05/10/2023</td>
+                        <td>08:30</td>
+                        <td>Consulta</td>
+                        <td>Particular</td>
+                        <td class="confirmado">Confirmado</td>
+                        <td><button>Iniciar Atendimento</button></td>
+
+                    </tr>
+                    
+                    <tr>
+                        <td>Guilherme Zollner</td>
+                        <td>05/10/2023</td>
+                        <td>09:00</td>
+                        <td>Retorno</td>
+                        <td>Unimed</td>
+                        <td class="pendente">Pendente</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>
+                    <tr>
+                        <td>Zelia Maria Zollner</td>
+                        <td>15/10/2023</td>
+                        <td>09:30</td>
+                        <td>Exame</td>
+                        <td>HB Saúde</td>
+                        <td class="cancelado">Cancelado</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>
+                    <tr>
+                        <td>Emanuela Zollner</td>
+                        <td>15/10/2023</td>
+                        <td>10:15</td>
+                        <td>Cirurgia</td>
+                        <td>HB Saúde</td>
+                        <td class="confirmado">Confirmado</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>
+                    <tr>
+                        <td>Odenilson Euclides da Rocha</td>
+                        <td>15/10/2023</td>
+                        <td>13:00</td>
+                        <td>Exame</td>
+                        <td>Unimed</td>
+                        <td class="pendente">Pendente</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>
+                    <tr>
+                        <td>Joaquim Silveira</td>
+                        <td>15/10/2023</td>
+                        <td>14:30</td>
+                        <td>Exame</td>
+                        <td>Particular</td>
+                        <td class="pendente">Pendente</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>
+                    <tr>
+                        <td>Marcelo Schmitz</td>
+                        <td>15/10/2023</td>
+                        <td>15:30</td>
+                        <td>Consulta</td>
+                        <td>HB Saúde</td>
+                        <td class="confirmado">Confirmado</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>   
+                    <tr>
+                        <td>Marcelo Schmitz</td>
+                        <td>15/10/2023</td>
+                        <td>15:30</td>
+                        <td>Consulta</td>
+                        <td>HB Saúde</td>
+                        <td class="confirmado">Confirmado</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>  
+                    <tr>
+                        <td>Joaquim Silveira</td>
+                        <td>15/10/2023</td>
+                        <td>14:30</td>
+                        <td>Exame</td>
+                        <td>Particular</td>
+                        <td class="pendente">Pendente</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>
+                    <tr>
+                        <td>Marcelo Schmitz</td>
+                        <td>15/10/2023</td>
+                        <td>15:30</td>
+                        <td>Consulta</td>
+                        <td>HB Saúde</td>
+                        <td class="confirmado">Confirmado</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr> 
+                    <tr>
+                        <td>Emanuela Zollner</td>
+                        <td>15/10/2023</td>
+                        <td>10:15</td>
+                        <td>Cirurgia</td>
+                        <td>HB Saúde</td>
+                        <td class="confirmado">Confirmado</td>
+                        <td><button>Iniciar Atendimento</button></td>
+                    </tr>                 
+                </tbody>
+            </table>
+        </div>       
     </div>
 
 
