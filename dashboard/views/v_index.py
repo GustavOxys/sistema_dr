@@ -1,7 +1,15 @@
 from django.shortcuts import render
+from dashboard.models import Paciente
 
 app_name = 'index'
 
 
 def index(request):
-    return render(request, 'index.html')
+
+    pacientes = Paciente.objects.all()
+
+    context = {
+        'pacientes' : pacientes,
+    }
+
+    return render(request, 'index.html', context)

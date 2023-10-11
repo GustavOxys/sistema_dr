@@ -19,6 +19,11 @@ table, th, td{
     padding: 8px;
 }
 
+.table-row td a {
+    text-decoration: none;
+}
+
+
 th, td {
     padding: 10px;
     text-align: left;
@@ -28,11 +33,7 @@ th {
     background-color: white;
 }
 
-.table-row img{
-    width: 10%;    
-    border-radius: 100%; 
-    
-}
+
 
 td button{
     background-color: blue;

@@ -71,111 +71,44 @@
                         <th>Status</th>
                         <th></th>
                     </tr>
-                </thead>
+                </thead>               
+                
+                
                 <tbody>
-                    
-                    <tr class="table-row">
-                        <td>Gustavo Henrique Zollner Munhoz</td>
-                        <td>05/10/2023</td>
-                        <td>08:30</td>
-                        <td>Consulta</td>
-                        <td>Particular</td>
-                        <td class="confirmado">Confirmado</td>
-                        <td><button>Iniciar Atendimento</button></td>
-
-                    </tr>
-                    
-                    <tr>
-                        <td>Guilherme Zollner</td>
-                        <td>05/10/2023</td>
-                        <td>09:00</td>
-                        <td>Retorno</td>
-                        <td>Unimed</td>
-                        <td class="pendente">Pendente</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>
-                    <tr>
-                        <td>Zelia Maria Zollner</td>
-                        <td>15/10/2023</td>
-                        <td>09:30</td>
-                        <td>Exame</td>
-                        <td>HB Saúde</td>
-                        <td class="cancelado">Cancelado</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>
-                    <tr>
-                        <td>Emanuela Zollner</td>
-                        <td>15/10/2023</td>
-                        <td>10:15</td>
-                        <td>Cirurgia</td>
-                        <td>HB Saúde</td>
-                        <td class="confirmado">Confirmado</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>
-                    <tr>
-                        <td>Odenilson Euclides da Rocha</td>
-                        <td>15/10/2023</td>
-                        <td>13:00</td>
-                        <td>Exame</td>
-                        <td>Unimed</td>
-                        <td class="pendente">Pendente</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>
-                    <tr>
-                        <td>Joaquim Silveira</td>
-                        <td>15/10/2023</td>
-                        <td>14:30</td>
-                        <td>Exame</td>
-                        <td>Particular</td>
-                        <td class="pendente">Pendente</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>
-                    <tr>
-                        <td>Marcelo Schmitz</td>
-                        <td>15/10/2023</td>
-                        <td>15:30</td>
-                        <td>Consulta</td>
-                        <td>HB Saúde</td>
-                        <td class="confirmado">Confirmado</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>   
-                    <tr>
-                        <td>Marcelo Schmitz</td>
-                        <td>15/10/2023</td>
-                        <td>15:30</td>
-                        <td>Consulta</td>
-                        <td>HB Saúde</td>
-                        <td class="confirmado">Confirmado</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>  
-                    <tr>
-                        <td>Joaquim Silveira</td>
-                        <td>15/10/2023</td>
-                        <td>14:30</td>
-                        <td>Exame</td>
-                        <td>Particular</td>
-                        <td class="pendente">Pendente</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>
-                    <tr>
-                        <td>Marcelo Schmitz</td>
-                        <td>15/10/2023</td>
-                        <td>15:30</td>
-                        <td>Consulta</td>
-                        <td>HB Saúde</td>
-                        <td class="confirmado">Confirmado</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr> 
-                    <tr>
-                        <td>Emanuela Zollner</td>
-                        <td>15/10/2023</td>
-                        <td>10:15</td>
-                        <td>Cirurgia</td>
-                        <td>HB Saúde</td>
-                        <td class="confirmado">Confirmado</td>
-                        <td><button>Iniciar Atendimento</button></td>
-                    </tr>                 
-                </tbody>
+                    {% for paciente in pacientes %}           
+                        <tr class="table-row">                        
+                            <td>
+                                <a href="#">
+                                    {{ paciente.nome }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    {{ paciente.data_formatada }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    {{ paciente.hora_consulta }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    {{ paciente.procedimento }}
+                                </a>
+                            </td>   
+                            <td>
+                                <a href="#">
+                                    {{ paciente.convenio }}
+                                </a>
+                            </td>                         
+                            
+                            
+                            <td class="confirmado">Confirmado</td>
+                            <td><button>Iniciar Atendimento</button></td>
+                        </tr>
+                    {% endfor %}  
+                </tbody>                
             </table>
         </div>       
     </div>
