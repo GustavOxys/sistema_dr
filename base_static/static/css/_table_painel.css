@@ -1,0 +1,56 @@
+.table-container {
+    border-radius: 3%;
+    margin-left: 3.3%;
+    margin-right: 3.3%;
+    margin-top: 3%;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table, th, td{
+    border: 1px solid #e4e4e4;
+    border-radius: 3%;
+    padding: 8px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    
+}
+th {
+    background-color: white;
+}
+
+.table-row img{
+    width: 10%;    
+    border-radius: 100%; 
+    
+}
+
+td button{
+    background-color: blue;
+    color: white;
+}
+
+.cancelado{
+    color: white;
+    background-color: rgb(199, 0, 0);
+    
+}
+
+.confirmado{
+    color: white;
+    background-color: green;
+}
+
+.pendente{
+    color: white;
+    background-color: rgb(179, 179, 0);
+}

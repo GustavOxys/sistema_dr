@@ -16,6 +16,7 @@ media
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+sistema_medico/local_settings.py
 
 # AWS User-specific
 .idea/**/aws.xml

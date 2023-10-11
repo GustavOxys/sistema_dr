@@ -1,0 +1,5 @@
+continuar aulas do otavio e implementar novas funcionalidades (no projeto agenda ainda vai criar usuarios para os medicos, usar a query para busca dos pacientes)
+
+no YT favoritos tem dashboard com chart.js para graficos
+
+amanha deixar dinamico o painel, talvez criar os users com novos pacientes.
