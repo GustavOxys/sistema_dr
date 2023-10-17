@@ -1,0 +1,45 @@
+.sidebar {       
+    height: 100%;    
+    width: 12%;
+    position: fixed;    
+    background-color: #038C8C;  
+    background-color: #514BF2;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar a {        
+    padding: 10%;
+    text-decoration: none;
+    font-size: 85%;
+    color: white;
+    display: flex;    
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    
+}
+.sidebar a:hover{opacity: 0.5;}
+
+
+.sidebar h1 {   
+    padding: 5% 0% 10%;
+    font-size: 130%;
+    display: flex; 
+    max-width: 80%;
+    color: white;
+    align-items: center;
+    overflow:hidden;
+    cursor: pointer;
+}
+
+.sidebar h1:hover{
+    opacity: 0.5;
+}
+
+#ultimo-link {
+    padding-top: 60%;
+    font-size: 200%;
+    color: rgb(88, 207, 88);
+}

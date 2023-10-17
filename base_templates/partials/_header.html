@@ -1,10 +1,27 @@
 <header> 
+    
     <div class="info-header">            
         <i class="bi bi-justify"></i>            
     </div>
     <div class="info-header">
-        <i class="bi bi-search"></i>
-        <i class="bi bi-bell"></i>         
-        <img src="media/gu.jpg" alt="imagem-de-perfil">
+        
+        <div class="search">
+            <form
+                action="{% url 'dashboard:search' %}"
+                method="GET">
+            <div class="search-input-container">
+                <input
+                    type="search"
+                    class="search-input"
+                    placeholder="Buscar um Paciente"
+                    id="search"
+                    name="q"
+                >
+                <i class="bi bi-search search-icon"></i>
+            </div>
+            </form>
+        </div>       
+        <i class="bi bi-bell"></i>
+        <img src="media/gu.jpg" alt="img perfil">               
     </div>
  </header> 

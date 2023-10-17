@@ -7,7 +7,7 @@ from dashboard import models
 @admin.register(models.Procedimento)
 
 class PacienteAdmin(admin.ModelAdmin):
-    list_display = 'id', 'nome', 
+    list_display = 'id', 'nome',
 
 
 
