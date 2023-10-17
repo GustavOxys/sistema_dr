@@ -27,6 +27,7 @@ class Paciente(models.Model):
     hora_consulta = models.TimeField(default='09:00')
     observacao = models.TextField(blank=True)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    show = models.BooleanField(default=True)
 
     def data_formatada(self):
         return self.data_consulta.strftime('%d/%m/%y')

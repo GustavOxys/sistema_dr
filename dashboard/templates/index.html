@@ -54,6 +54,7 @@
         </div> 
         <!-- Fim das caixas e inicio dos Pacientes -->
         
+        {% if page_obj %}
         <div class="table-container">
             <table class="table-index">                       
                 <thead class="table-head">  
@@ -75,7 +76,7 @@
                 
                 
                 <tbody>
-                    {% for paciente in pacientes %}           
+                    {% for paciente in page_obj %}           
                         <tr class="table-row">                        
                             <td>
                                 <a href="#">
@@ -108,9 +109,19 @@
                             <td><button>Iniciar Atendimento</button></td>
                         </tr>
                     {% endfor %}  
-                </tbody>                
+                </tbody>  
+                            
             </table>
-        </div>       
+            {% include 'partials/_pagination.html' %}  
+        </div> 
+        {% else %}
+        <div class="titulo-secao">
+            <h2>
+                Não há próximas consultas com esses dados
+            </h2>
+        </div>
+        
+        {% endif %}      
     </div>
 
 
