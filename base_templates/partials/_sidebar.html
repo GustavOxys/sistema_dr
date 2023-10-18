@@ -1,24 +1,32 @@
+{% with current_path=request.path %}
 <div class="sidebar">
-    <h1 id="logo">M.D</h1>
+    <h1 class="logo"><a href="{% url 'dashboard:index' %}" style="margin-bottom: 10%;">M.D</a></h1>
     
-    <a href="#" style="padding-top: 20%;">
+    <a href="{% url 'dashboard:index' %}"
+        class="{% if current_path == '/' %}active{% endif %}" >
         <i class="bi bi-house-door"></i>
         Painel</a>
-    <a href="#">
+    <a href="{% url 'dashboard:agenda' %}"
+        class="{% if current_path == '/agenda/' %}active{% endif %}"> 
         <i class="bi bi-calendar2-date"></i>
         Agenda</a>
-    <a href="#">
+    <a href="{% url 'dashboard:pacientes' %}"
+        class="{% if current_path == '/pacientes/' %}active{% endif %}">
         <i class="bi bi-person"></i>
         Pacientes</a>
-    <a href="#">
+    <a href="{% url 'dashboard:prontuarios' %}"
+        class="{% if current_path == '/prontuarios/' %}active{% endif %}">
         <i class="bi bi-files"></i>
         Prontuários</a>
-    <a href="#">
+    <a href="{% url 'dashboard:relatorios' %}"
+        class="{% if current_path == '/relatorios/' %}active{% endif %}">
         <i class="bi bi-graph-up"></i>
         Relatórios</a>
-    <a href="#">
+    <a href="{% url 'dashboard:configuracoes' %}"
+        class="{% if current_path == '/configuracoes/' %}active{% endif %}">
         <i class="bi bi-gear"></i>
         Configurações</a>
 
     <a href="#" id="ultimo-link"><i class="bi bi-whatsapp"></i></a>
 </div>
+{% endwith %}

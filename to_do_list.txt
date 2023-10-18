@@ -2,10 +2,13 @@ continuar aulas do otavio e implementar novas funcionalidades (no projeto agenda
 
 no YT favoritos tem dashboard com chart.js para graficos
 
-amanha deixar dinamico o painel, talvez criar os users com novos pacientes.
-
 * resolver bug que faz com que ao digitar algo no campo de pesquisa a imagem de perfil do header desaparece (fica o texto alternativo)(aparentemente ele nao carrega parte do css do header, pq tudo fica coladinho) acho que tem algo a ver com o caminho Not Found: /search/media/gu.jpg, mas nao consertei agora pq esse é um arquivo statico que esta em media e nao uma model por exemplo que é uma imagem dinamica
 
-
-*arrumar paginacao 18/10
-*Criar CRUD 18/10
+(v)Criar painel lateral 
+(v)criar header
+(v)criar boxes painel
+(v)criar tabela painel
+(v)criar footer
+(v)Criar query de consulta no busca do header do painel
+(v)criar paginacao painel 18/10
+()Criar CRUD 18/10
