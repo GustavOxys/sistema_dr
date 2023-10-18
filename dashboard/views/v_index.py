@@ -34,9 +34,7 @@ def search(request):
     data_hora_atual = timezone.now()
 
     if search_value == '':
-        return redirect('dashboard:index')
-
-    
+        return redirect('dashboard:index')    
 
     pacientes = Paciente.objects\
         .filter(show=True)\
@@ -47,9 +45,13 @@ def search(request):
             Q(procedimento__nome__icontains=search_value)
             )\
         .order_by('data_consulta', 'hora_consulta')
+    
+    paginator = Paginator(pacientes, 7)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
     context = {
-        'pacientes' : pacientes,
+        'page_obj' : page_obj,
         'site_title' : 'Search - ',
         'search_value' : search_value,
     }

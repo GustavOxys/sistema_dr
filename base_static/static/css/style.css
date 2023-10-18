@@ -3,6 +3,7 @@
 @import '_boxes_painel.css';
 @import '_table_painel.css';
 @import '_footer.css';
+@import '_pagination.css';
 
 
 *{  
