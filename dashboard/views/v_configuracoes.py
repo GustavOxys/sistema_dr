@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
 def configuracoes(request):
-    return render(request, 'configuracoes.html')
+    return render(request, 'configuracoes/configuracoes.html')

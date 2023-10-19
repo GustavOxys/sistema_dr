@@ -11,4 +11,8 @@ no YT favoritos tem dashboard com chart.js para graficos
 (v)criar footer
 (v)Criar query de consulta no busca do header do painel
 (v)criar paginacao painel 18/10
-()Criar CRUD 18/10
+(v)criar urls para itens da navbar 18/10
+(v)criar background diferente para quando user clica em item da navbar 18/10
+(v)Começar CRUD 18/10
+()Criar novos apps 19/10
+()Criar forms create 19/10

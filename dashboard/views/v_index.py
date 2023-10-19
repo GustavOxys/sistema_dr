@@ -25,7 +25,7 @@ def index(request):
         'page_obj' : page_obj,
     }
 
-    return render(request, 'index.html', context)
+    return render(request, 'dashboard/index.html', context)
 
 
 def search(request):
