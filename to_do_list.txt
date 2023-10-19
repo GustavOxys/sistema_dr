@@ -4,6 +4,9 @@ no YT favoritos tem dashboard com chart.js para graficos
 
 * resolver bug que faz com que ao digitar algo no campo de pesquisa a imagem de perfil do header desaparece (fica o texto alternativo)(aparentemente ele nao carrega parte do css do header, pq tudo fica coladinho) acho que tem algo a ver com o caminho Not Found: /search/media/gu.jpg, mas nao consertei agora pq esse é um arquivo statico que esta em media e nao uma model por exemplo que é uma imagem dinamica
 
+
+Pelo visto usar px faz com quem algumas coisas fiquem mais responsiveis do que %
+
 (v)Criar painel lateral 
 (v)criar header
 (v)criar boxes painel
@@ -14,5 +17,4 @@ no YT favoritos tem dashboard com chart.js para graficos
 (v)criar urls para itens da navbar 18/10
 (v)criar background diferente para quando user clica em item da navbar 18/10
 (v)Começar CRUD 18/10
-()Criar novos apps 19/10
 ()Criar forms create 19/10

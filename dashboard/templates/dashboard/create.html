@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="content">
+    <div class="titulo-secao">
+        <div class="form_patient">
+            <h1>Adicionar Paciente</h1>
+            <form
+            action="{% url 'dashboard:create'%}"
+            method="post">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                {{ field }}
+                {{ field.errors }}
+                <br><br>
+                {% endfor %}
+
+                
+                
+
+                
+                <input type="submit" value="Enviar">
+            </form>
+        </div>      
+    </div>
+</div>
+{% endblock %}

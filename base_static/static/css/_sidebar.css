@@ -5,6 +5,7 @@
     background-color: #038C8C;  
     background-color: #514BF2;  
     background-color: #3575ee;  
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +27,8 @@
 .sidebar a:hover{opacity: 0.5;}
 
 .sidebar a.active{
-    background-color: #6a97eb; 
+    background-color: rgb(245, 245, 245); 
+    color: black;
     
 }
 

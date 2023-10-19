@@ -56,4 +56,4 @@ def search(request):
         'search_value' : search_value,
     }
 
-    return render(request, 'index.html', context)
+    return render(request, 'dashboard/index.html', context)
