@@ -1,12 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from dashboard.models import Paciente
 from dashboard.forms.form_patient import PatientForm
 
 def create(request):    
     if request.method == 'POST':
+        form = PatientForm(request.POST)
         context = {
-        'form' : PatientForm(request.POST)
+        'form' : form
         }
+
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard:create')
 
         return render(request, 'dashboard/create.html', context)
 
