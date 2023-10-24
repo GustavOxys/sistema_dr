@@ -1,13 +1,74 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <div class="content">
+{% block content %}    
+    {% if page_obj %}
+        <div class="table-container">
+            <table class="table-index">                       
+                <thead class="table-head">  
+                    <tr class="table-row">
+                        <th colspan="7"> <!-- colspan="7" para ocupar todas as colunas -->
+                            <h3 class="titulo-consultas">Pacientes <a href="{% url 'dashboard:create' %}"><button> Adicionar Paciente</button></a></h3>
+                        </th>
+                    </tr>                                        
+                    <tr class="table-row">                        
+                        <th>Nome</th>
+                        <th>Data da última consulta</th>                      
+                        <th>procedimento</th>                      
+                        <th>Convênio</th>
+                        <th>ID</th>
+                        <th></th>
+                    </tr>
+                </thead>               
+                
+                
+                <tbody>
+                    {% for paciente in page_obj %}           
+                        <tr class="table-row">                        
+                            <td>
+                                <a href="#">
+                                    {{ paciente.nome }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    Hora da ultima consulta static
+                                </a>
+                            </td>
+                            
+                            <td>
+                                <a href="#">
+                                    {{ paciente.procedimento }}
+                                </a>
+                            </td>   
+                            <td>
+                                <a href="#">
+                                    {{ paciente.convenio }}
+                                </a>
+                            </td>  
+                            <td>
+                                <a href="#">
+                                    {{ paciente.id}}
+                                </a>
+                            </td>                      
+                            <td>
+                                
+                                    <button><a href="#">ver cadastro</a></button>
+                                    <button><a href="#">Prontuario</a></button>
+                                
+                            </td>
+                        </tr>
+                    {% endfor %}  
+                </tbody>  
+                            
+            </table>
+            {% include 'partials/_pagination.html' %}  
+        </div> 
+        {% else %}
         <div class="titulo-secao">
             <h2>
-                Pacientes
+                Não há próximas consultas com esses dados
             </h2>
-            <a href="{% url 'dashboard:create' %}"><button> Adicionar Paciente</button></a>
-            
         </div>
-    </div>
+        
+    {% endif %}
 {% endblock %}
