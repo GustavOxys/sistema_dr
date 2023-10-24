@@ -32,7 +32,7 @@ def pacientes(request):
 def search(request):
 
     search_value = request.GET.get('q', '').strip()
-    data_hora_atual = timezone.now()
+    
 
     if search_value == '':
         return redirect('dashboard:pacientes')    

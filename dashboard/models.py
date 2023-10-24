@@ -28,6 +28,23 @@ class Paciente(models.Model):
     observacao = models.TextField(blank=True)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     show = models.BooleanField(default=True)
+    email = models.EmailField(blank=True)
+    data_nascimento = models.DateField(default='2000-01-01')
+    opcoes_sexo = [('Masculino', 'Masculino'),
+                   ('Feminino', 'Feminino')]
+    sexo_biologico = models.CharField(max_length=10, choices=opcoes_sexo, default='Masculino')
+    cpf = models.CharField(max_length=13, blank=True, default='000000000-00')
+    rg = models.CharField(max_length=15, blank=True, default='000000000000')
+    nome_mae = models.CharField(max_length=55, blank=True, default='Desconhecido')
+    cep = models.CharField(max_length=20, blank=True, default='00000-000')
+    endereco = models.CharField(max_length=20, blank=True, default='Desconhecido')
+    numero = models.CharField(max_length=20, blank=True, default='Desconhecido')    
+    bairro = models.CharField(max_length=20, blank=True, default='Desconhecido')    
+    cidade = models.CharField(max_length=20, blank=True, default='Desconhecido')
+    estado = models.CharField(max_length=20, blank=True, default='Desconhecido')
+
+
+    
 
     def data_formatada(self):
         return self.data_consulta.strftime('%d/%m/%y')

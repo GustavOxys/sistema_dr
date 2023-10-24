@@ -6,24 +6,23 @@
     <div class="titulo-secao">
         <div class="form_patient">
             <h1>Adicionar Paciente</h1>
+            <br>
             <form
-            action="{% url 'dashboard:create'%}"
-            method="post">
+                action="{% url 'dashboard:create'%}"
+                method="post" class="form-create-patient">
                 {% csrf_token %}
                 
                 {% for field in form %}
-                <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
-                {{ field }}
-                {{ field.errors }}
-                <br><br>
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
                 {% endfor %}
 
-                
-                
-
-                
                 <input type="submit" value="Enviar">
             </form>
+
         </div>      
     </div>
 </div>

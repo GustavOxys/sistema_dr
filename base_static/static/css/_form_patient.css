@@ -1,21 +1,24 @@
-.form_patient{    
+.form_patient h1, form {
+    max-width: 100%;    
     margin: 0 auto;
-    max-width: 400px;
+    
+   
+}
+
+.form-create-patient {
+    display: flex;
+    flex-wrap: wrap;  
+}
+
+.form-field {
+    flex: 1;
+    margin: 5px;
     
 }
 
-
-.form_patient h1{    
-    margin: 0 auto;
-    max-width: 400px;
-    margin-bottom: 5%;
+.form-create-patient label, .form-create-patient input {
+    flex-basis: 50%;
 }
-
-form {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
 
 label {
     display: block;
@@ -23,12 +26,11 @@ label {
     font-weight: bold;
 }
 
-
 input[type="text"],
 input[type="email"] {
-    width: 100%;
+    width: 300px;
+    max-width: 100%; /* Garante que não ultrapasse a largura da tela */
     padding: 10px;
-    
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -36,15 +38,12 @@ input[type="email"] {
 input[type="submit"] {
     background-color: #007BFF;
     color: #fff;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    opacity: 0.9;
 }
-
-
-

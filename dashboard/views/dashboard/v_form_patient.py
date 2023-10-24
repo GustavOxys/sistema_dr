@@ -13,11 +13,11 @@ def create(request):
             form.save()
             return redirect('dashboard:create')
 
-        return render(request, 'dashboard/create.html', context)
+        return render(request, 'pacientes/create.html', context)
 
     
     context = {
         'form' : PatientForm()
     }
 
-    return render(request, 'dashboard/create.html', context)
+    return render(request, 'pacientes/create.html', context)

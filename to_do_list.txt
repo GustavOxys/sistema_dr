@@ -19,3 +19,4 @@ Pelo visto usar px faz com quem algumas coisas fiquem mais responsiveis do que %
 (v)Começar CRUD 18/10
 ()Criar forms create 19/10
 ()criar validações no form de pacientes
+() diminuir tamanho do botão do form_paciente
