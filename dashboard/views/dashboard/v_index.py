@@ -25,9 +25,17 @@ def index(request):
     paginator = Paginator(pacientes, 7)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
+    
+    status_css_mapping = {
+        'Pendente': 'pendente',
+        'Cancelado': 'cancelado',
+        'Confirmado': 'confirmado',
+        # Outros mapeamentos aqui
+        }
 
     context = {
         'page_obj' : page_obj,
+        'status_css_mapping': status_css_mapping
     }
 
     return render(request, 'dashboard/index.html', context)

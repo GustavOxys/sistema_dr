@@ -80,28 +80,33 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="#">
+                                
                                     {{ paciente.data_formatada }}
-                                </a>
+                                
                             </td>
                             <td>
-                                <a href="#">
+                                
                                     {{ paciente.hora_consulta }}
-                                </a>
+                                
                             </td>
                             <td>
-                                <a href="#">
+                                
                                     {{ paciente.procedimento }}
-                                </a>
+                                
                             </td>   
                             <td>
-                                <a href="#">
+                                
                                     {{ paciente.convenio }}
-                                </a>
+                                
                             </td>                         
                             
                             
-                            <td class="confirmado">Confirmado</td>
+                            {% with css_class=status_css_mapping.paciente.status %}
+                                <td class="{{ css_class }}">
+                                    {{ paciente.status }}
+                                </td>
+                            {% endwith %}
+
                             <td>
                                 
                                     <button><a href="#">Iniciar Atendimento</a></button>
