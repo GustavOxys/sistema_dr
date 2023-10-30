@@ -47,6 +47,7 @@ class Paciente(models.Model):
     cidade = models.CharField(max_length=20, blank=True, default='Desconhecido')
     estado = models.CharField(max_length=20, blank=True, default='Desconhecido')
     status = models.CharField(max_length=20, choices=opcoes_status, default='Pendente')
+   
 
 
     
@@ -58,5 +59,31 @@ class Paciente(models.Model):
         return self.nome   
     
 
+class Atendimento(models.Model):
+    queixa_principal = models.TextField(blank=True)
+    historia_molestia_atual = models.TextField(blank=True)
+    historico_e_antecedentes = models.TextField(blank=True)
+    exame_fisico = models.TextField(blank=True)
+    altura = models.DecimalField(max_digits=5, decimal_places=2)  # Altura em metros
+    peso = models.DecimalField(max_digits=5, decimal_places=2)  # Peso em quilogramas
+    imc = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    diagnostico = models.TextField(max_length=50, blank=True)
+    condutas = models.TextField(blank=True)
+
+
+    def save(self, *args, **kwargs):
+        if self.altura > 0 and self.peso > 0:
+            # Realiza o cálculo do IMC
+            self.imc = self.peso / (self.altura * self.altura)
+        super(Atendimento, self).save(*args, **kwargs)
+
+    
+
 class Prontuario(models.Model):
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     resumo = models.TextField(blank=True)
+    atendimento = models.ForeignKey(Atendimento, on_delete=models.CASCADE, related_name="prontuarios")
+    
+
+
+
