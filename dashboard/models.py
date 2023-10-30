@@ -56,3 +56,7 @@ class Paciente(models.Model):
 
     def __str__(self):
         return self.nome   
+    
+
+class Prontuario(models.Model):
+    resumo = models.TextField(blank=True)

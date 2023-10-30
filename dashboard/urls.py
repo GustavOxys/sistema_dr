@@ -14,6 +14,7 @@ urlpatterns = [
     path('prontuarios/', views.prontuarios, name='prontuarios'),
     path('relatorios/', views.relatorios, name='relatorios'),
     path('configuracoes/', views.configuracoes, name='configuracoes'),
+    path('prontuario/', views.prontuario, name='prontuario'),
 
 
 

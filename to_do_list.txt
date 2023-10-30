@@ -17,7 +17,49 @@ Pelo visto usar px faz com quem algumas coisas fiquem mais responsiveis do que %
 (v)criar urls para itens da navbar 18/10
 (v)criar background diferente para quando user clica em item da navbar 18/10
 (v)Começar CRUD 18/10
+
+
+
+
+
+
+Geral
+
+() criar novo model para data_criacao para que use-o como chave estrangeira para poder ter mais de uma consulta por pacientes, ter data da primeira, das consultas e da ultima consulta
+
+
+
+Painel
+() arrumar classes de status da consulta onde não está aplicando as CSSs
+() arrumar search do index que faz com que as boxes sumam (provavel problema nas views)
+() Depois de criar prontuários tornar dados das boxes dinamicos
+() arrumar icone que afz com que diminua o tamanho da sidebar
+
+
+Agenda
+() criar agenda
+
+
+Pacientes
 ()Criar forms create 19/10
 ()criar validações no form de pacientes
-() diminuir tamanho do botão do form_paciente
-() arrumar classes de status da consulta onde não está aplicando as CSSs
+(v) diminuir tamanho do botão do form_paciente
+() mudar de adicionar paciente para registrar paciente, tirar também dados default da tabela
+() Criar template parecido com o de registrar paciente, porem onde é possivel ver e editar
+() Arrumar botão que envia o usuario para o prontuario do paciente
+
+
+Prontuarios
+() criar template para prontuarios (diferente de prontuario que vais er enviado para nova aba), onde vai ter o registro dos prontuarios dos pacientes, e botões para criar um novo prontuario ou para acessar prontuario de determinado paciente
+
+() criar model prontuario que vai ter novos dados como resumo, tabela de acompanhamento, atendimento, exames e procedimentos, prescrições, documentos e atestados, imagens e anexos
+
+Prontuario
+() Criar novo template para prontuario, usuario vai ser enviado para nova janela
+() ter varios models com chave estrangeira? model resumo dentro do prontuario por exemplo?
+
+
+Relatórios
+
+
+Configurações
