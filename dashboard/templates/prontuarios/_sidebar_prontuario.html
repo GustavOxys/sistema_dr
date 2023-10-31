@@ -1,6 +1,3 @@
-{% load static %}
-<!--<script src="{% static 'js/timer.js' %}"></script>-->
-
 {% with current_path=request.path %}
 <div class="sidebar_pront">
     <h1 class="logo"><a href="{% url 'dashboard:prontuario' paciente.id %}" style="margin-bottom: 10%;">Prontuário</a></h1>
@@ -9,7 +6,7 @@
         class="{% if current_path == '/' %}active{% endif %}" >
         
         <button id="startButton"><i class="bi bi-play-fill"></i>Iniciar Atendimento</button></a>
-        <a href="#" id="timer">Duração: 00:00</a>
+        <a href="#" id="timer">Duração: </a>
 
 
     <a href="{% url 'dashboard:agenda' %}"

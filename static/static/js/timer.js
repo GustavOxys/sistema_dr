@@ -1,4 +1,4 @@
-let seconds = 0;
+let seconds = 0; // Defina a variável fora da função
 
 console.log("O script está funcionando!");
 
@@ -20,6 +20,8 @@ function padZero(value) {
 
 document.addEventListener('DOMContentLoaded', function() {
     let timer;
+    
+
     document.getElementById('startButton').addEventListener('click', function() {
         if (!timer) {
             timer = setInterval(function() {
@@ -29,3 +31,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
