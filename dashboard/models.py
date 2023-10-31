@@ -25,6 +25,7 @@ class Paciente(models.Model):
                      ('Cancelado', 'Cancelado'),
                      ('Confirmado', 'Confirmado')]
     nome = models.CharField(max_length=55)
+    idade = models.CharField(max_length=2, blank=True, default=18)
     telefone = models.CharField(max_length=30)
     procedimento = models.ForeignKey(Procedimento, on_delete=models.DO_NOTHING)
     convenio = models.ForeignKey(Convenio, on_delete=models.DO_NOTHING)
