@@ -16,6 +16,7 @@ class Convenio(models.Model):
     
     def __str__(self):
         return self.nome
+    
 
 class Paciente(models.Model):
     opcoes_sexo = [('Masculino', 'Masculino'),
@@ -48,11 +49,8 @@ class Paciente(models.Model):
     cidade = models.CharField(max_length=20, blank=True, default='Desconhecido')
     estado = models.CharField(max_length=20, blank=True, default='Desconhecido')
     status = models.CharField(max_length=20, choices=opcoes_status, default='Pendente')
-   
-
 
     
-
     def data_formatada(self):
         return self.data_consulta.strftime('%d/%m/%y')
 
@@ -61,15 +59,16 @@ class Paciente(models.Model):
     
 
 class Atendimento(models.Model):
-    queixa_principal = models.TextField(blank=True)
-    historia_molestia_atual = models.TextField(blank=True)
-    historico_e_antecedentes = models.TextField(blank=True)
-    exame_fisico = models.TextField(blank=True)
+    paciente = models.ForeignKey(Paciente, on_delete=models.DO_NOTHING)
+    queixa_principal = models.TextField(max_length=20, blank=True)
+    historia_molestia_atual = models.TextField(max_length=250, blank=True)
+    historico_e_antecedentes = models.TextField(max_length=200, blank=True)
+    exame_fisico = models.TextField(max_length=250, blank=True)
     altura = models.DecimalField(max_digits=5, decimal_places=2)  # Altura em metros
     peso = models.DecimalField(max_digits=5, decimal_places=2)  # Peso em quilogramas
     imc = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     diagnostico = models.TextField(max_length=50, blank=True)
-    condutas = models.TextField(blank=True)
+    condutas = models.TextField(max_length=250, blank=True)
 
 
     def save(self, *args, **kwargs):

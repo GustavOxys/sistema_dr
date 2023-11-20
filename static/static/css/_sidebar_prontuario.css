@@ -3,9 +3,10 @@
     width: 16%;
     position: fixed;    
      
-    background-color: #514BF2;  
-    background-color: #3575ee;  
+    background-color: #514BF2;      
     background-color: #038C8C; 
+    background-color: #a7cfcf;
+    background-color: #3575ee;  
     
     display: flex;
     flex-direction: column;
@@ -59,5 +60,15 @@
 .logo{
     width: 100%;
     
+}
+
+.button-not-pressed {
+    background-color: rgb(75, 221, 7);
+    color: rgb(255, 255, 255);
+}
+
+.button-pressed {
+    background-color: rgb(228, 5, 5);
+    color: rgb(255, 255, 255)
 }
 

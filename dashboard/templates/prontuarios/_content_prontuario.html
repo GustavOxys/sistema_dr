@@ -1,19 +1,17 @@
 <div class="content">
-    <div class="titulo-secao">
-        <h2>
-            Timer
-            <button><a href="#" target=""><i class="bi bi-play-fill"></i>Iniciar Atendimento</a></button>
-            <button><a href="#" target="">Parar Timer</a></button>
-            <br>
-            {{ paciente.nome }} 
-            <br>
-            {{ paciente.idade }}
-            <br>
-            {{ paciente.convenio}}
-            <br>
-            Primeira consulta: static
-
+    <div class="titulo-secao-pront">       
             
-        </h2>
+        <h1>{{ paciente.nome }} </h1>
+        <br>
+        <h2>Idade: {{ paciente.idade }}</h2>            
+        <h2>Convênio: {{ paciente.convenio}}</h2>            
+        <h2>Primeira consulta: static</h2>  
+        
+        
+        
+    </div>
+
+    <div class="titulo-secao-avulso">
+        <h3>Últimos diagnósticos</h3>
     </div>
 </div>    
