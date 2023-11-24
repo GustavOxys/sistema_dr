@@ -17,6 +17,9 @@ urlpatterns = [
 
     # Prontuários
     path('prontuarios/', views.prontuarios, name='prontuarios'),
+
+    # Prontuário
+    
     path('prontuario/<int:paciente_id>/', views.prontuario, name='prontuario'),
     path('prontuario/atendimento/<int:paciente_id>/', views.atendimento_form, name='atendimento_form'),
 

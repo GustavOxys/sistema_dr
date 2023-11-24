@@ -1,6 +1,6 @@
 let seconds = 0;
 
-console.log("O script está funcionando!");
+console.log("O script timer está funcionando!");
 
 function updateTimer() {
     console.log("Função updateTimer foi chamada.");

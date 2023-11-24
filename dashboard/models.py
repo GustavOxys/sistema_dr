@@ -59,7 +59,7 @@ class Paciente(models.Model):
     
 
 class Atendimento(models.Model):
-    paciente = models.ForeignKey(Paciente, on_delete=models.DO_NOTHING)
+    paciente = models.ForeignKey(Paciente, on_delete=models.DO_NOTHING, default='1')
     queixa_principal = models.TextField(max_length=20, blank=True)
     historia_molestia_atual = models.TextField(max_length=250, blank=True)
     historico_e_antecedentes = models.TextField(max_length=200, blank=True)

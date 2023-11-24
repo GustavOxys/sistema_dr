@@ -1,6 +1,6 @@
 let seconds = 0;
 
-console.log("O script está funcionando!");
+console.log("O script timer está funcionando!");
 
 function updateTimer() {
     console.log("Função updateTimer foi chamada.");
@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let isPressed = false; // Adiciona uma variável para rastrear se o botão está pressionado
 
     const startButton = document.getElementById('startButton');
-    const iconElement = startButton.querySelector('i');
+    const sidebarItems = document.getElementById('sidebarItems');
+    
 
     startButton.addEventListener('click', function() {
         if (!timer) {
@@ -35,18 +36,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000); // 1000ms = 1 segundo
 
             isPressed = true;
-            startButton.classList.add('button-pressed'); // Adiciona a classe para o botão pressionado
-            iconElement.classList.remove('bi-play-fill'); // Remova a classe do ícone de reprodução
-            iconElement.classList.add('bi-stop-fill'); // Adicione a classe do ícone de pausa
+            startButton.classList.add('button-pressed'); // Adiciona classe p/ o botão Pressionado           
             startButton.textContent = 'Finalizar Atendimento'; // Altera o texto do botão
-        } else {
+
+            // Adiciona uma classe para mostrar os itens da lista quando clicado o botão
+            sidebarItems.classList.add('show-items');
+        }
+        
+
+        else {
             clearInterval(timer);
             timer = null;
             isPressed = false;
-            startButton.classList.remove('button-pressed'); // Remove a classe do botão pressionado
-            iconElement.classList.remove('bi-stop-fill');
-            iconElement.classList.add('bi-play-fill');
+            startButton.classList.remove('button-pressed'); // Remove a classe do botão Pressionado           
             startButton.textContent = 'Iniciar Atendimento'; // Restaura o texto original do botão
+
+            // remove a classe para esconder os itens da lista quando clicado
+            sidebarItems.classList.remove('show-items');
         }
     });
 });
