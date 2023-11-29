@@ -22,7 +22,9 @@ urlpatterns = [
     
     path('prontuario/<int:paciente_id>/', views.prontuario, name='prontuario'),
     path('prontuario/atendimento/<int:paciente_id>/', views.atendimento_form, name='atendimento_form'),
-
+    path('create_test', views.create_test, name='create_test'),
+    path('prontuario/atendimento/teste', views.teste, name='teste'),
+    
     # Relatórios
     path('relatorios/', views.relatorios, name='relatorios'),
 

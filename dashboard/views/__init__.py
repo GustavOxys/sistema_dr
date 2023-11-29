@@ -4,6 +4,6 @@ from .pacientes.v_pacientes import *
 from .prontuarios.v_prontuarios import *
 from .configuracoes.v_configuracoes import *
 from .relatorios.v_relatorios import *
-from .dashboard.v_form_patient import *
+from .pacientes.v_form_patient import *
 from .prontuarios.v_prontuario import *
 from .prontuarios.v_form_atendimento import *

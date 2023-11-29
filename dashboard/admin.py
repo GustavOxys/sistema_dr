@@ -17,7 +17,9 @@ class ConvenioAdmin(admin.ModelAdmin):
 @admin.register(models.Procedimento)
 class ProcedimentoAdmin(admin.ModelAdmin):
     list_display = 'id', 'nome',
-    
 
+@admin.register(models.Atendimento)
+class AtendimentoAdmin(admin.ModelAdmin):
+    list_display = 'paciente', 'altura', 'peso',
 
 

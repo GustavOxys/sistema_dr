@@ -11,17 +11,20 @@
 </head>
 <body>    
     
-    {% include 'prontuarios/_sidebar_prontuario.html' %}  
+    {% include 'partials/_sidebar_prontuario.html' %}  
     
     <section class="main-pront">
         
-        {% include 'prontuarios/_header_pront.html' %}
-        {% block content %}teste1{% endblock %} 
+        {% include 'partials/_header_pront.html' %}
+        {% block content %}{% endblock %} 
         {% include 'partials/_footer.html' %}
     </section>    
-    
-    <script src="{% static 'static/js/timer.js' %}"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script src="{% static 'static/js/ajax_atendimento.js' %}"></script>
+    <script src="{% static 'static/js/timer.js' %}"></script>
+    
 
 </body>
 </html>

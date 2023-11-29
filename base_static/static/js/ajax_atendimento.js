@@ -1,17 +1,13 @@
-console.log("O script ajax está funcionando!");
-
 $(document).ready(function() {
     $('#IDatendimento').click(function() {
+        console.log("Função ajax foi chamada.");
         $.ajax({
-            url: '{% url "dashboard:atendimento_form" %}',
-            type: 'GET',
-            success: function(data) {
-                $('#formularioAtendimento').html(data);
-            },
-            error: function() {
-                console.log('Erro ao carregar o formulário de atendimento.');
+            url: '{% url "dashboard:atendimento_form" paciente_id=paciente.id %}',
+            type: 'POST',
+            success: function(response) {
+                // Exibe o formulário de atendimento
+                $('#form-atendimento').html(response.form);
             }
         });
     });
 });
-

@@ -64,18 +64,18 @@ class Atendimento(models.Model):
     historia_molestia_atual = models.TextField(max_length=250, blank=True)
     historico_e_antecedentes = models.TextField(max_length=200, blank=True)
     exame_fisico = models.TextField(max_length=250, blank=True)
-    altura = models.DecimalField(max_digits=5, decimal_places=2)  # Altura em metros
-    peso = models.DecimalField(max_digits=5, decimal_places=2)  # Peso em quilogramas
+    altura = models.DecimalField(max_digits=5, decimal_places=2, blank=True)  # Altura em metros
+    peso = models.DecimalField(max_digits=5, decimal_places=2, blank=True)  # Peso em quilogramas
     imc = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     diagnostico = models.TextField(max_length=50, blank=True)
     condutas = models.TextField(max_length=250, blank=True)
 
 
-    def save(self, *args, **kwargs):
+    def saveimc(self, *args, **kwargs):
         if self.altura > 0 and self.peso > 0:
             # Realiza o cálculo do IMC
             self.imc = self.peso / (self.altura * self.altura)
-        super(Atendimento, self).save(*args, **kwargs)
+        super(Atendimento, self).saveimc(*args, **kwargs)
 
     
 
