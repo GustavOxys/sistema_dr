@@ -1,13 +1,22 @@
 $(document).ready(function() {
-    $('#IDatendimento').click(function() {
-        console.log("Função ajax foi chamada.");
+    $('#IDatendimento').click(function(event) {
+        event.preventDefault();  // Impede o link de executar a ação padrão (navegar para outra página)
+
+        console.log("Função Ajax foi chamada.");
+        var pacienteId = '12';
+        console.log("Paciente ID:", pacienteId);
+
+
+        // Faz a solicitação Ajax para a URL desejada
         $.ajax({
-            url: '{% url "dashboard:atendimento_form" paciente_id=paciente.id %}',
-            type: 'POST',
+            url: '/atendimento/' + pacienteId + '/',
+            type: 'GET',
+            dataType: 'html',
             success: function(response) {
-                // Exibe o formulário de atendimento
-                $('#form-atendimento').html(response.form);
+                $('#form-atendimento').replaceWith(response);
             }
         });
+        
+        console.log('depois da func ajax')
     });
 });

@@ -1,22 +1,21 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from dashboard.models import Atendimento
-from django import forms
 from dashboard.models import Paciente
 from django.http import HttpResponse
+from dashboard.forms.atendimento.form_atendimento import AtendimentoForm
 
-class AtendimentoForm(forms.ModelForm):
-    class Meta:
-        model = Atendimento
-        fields = 'queixa_principal', 'historia_molestia_atual', 'historico_e_antecedentes',\
-        'exame_fisico', 'altura', 'peso', 'imc', 'diagnostico', 'condutas',
 
 def atendimento_form(request, paciente_id):
+    print('dentro da view atendimento_form')
     paciente = Paciente.objects.get(id=paciente_id)
+    print('var paciente criada e pegou id')
+
     form = AtendimentoForm(instance=Atendimento(paciente=paciente))
-    return JsonResponse({
-        'form': form.as_p()
-    })
+    print('var form criado com instancia atendimento paciente=paciente')
+
+
+    return render(request, 'prontuarios/form_atendimento.html', {'form': form})
+
 
 def teste(request):
     return render(request, 'prontuarios/teste-form.html')
@@ -25,7 +24,7 @@ def teste(request):
 
 
 def create_test(request):
-    print('chamada func create_test')
+    
     if request.method == 'POST':
         altura = request.POST['altura']
         peso = request.POST['peso']        
@@ -37,14 +36,14 @@ def create_test(request):
             return HttpResponse('Paciente não encontrado')
 
         novo_atendimento = Atendimento(altura=altura, peso=peso, paciente=paciente)
-        print('criado var novo_atendimento')
+        
 
         try:
             novo_atendimento.full_clean()
             novo_atendimento.save()
-            print('salvo var novo_atendimento')
-            success = 'Profile created successfully for ' + altura
-            print('dps var success')
+            
+            success = 'Profile created successfully for ' + paciente.nome
+            
             return HttpResponse(success)
         except Exception as e:
             print(f'Erro ao salvar o atendimento: {e}')
