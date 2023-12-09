@@ -1,17 +1,11 @@
 <div class="sidebar_pront">
-    <h1 class="logo"><a href="{% url 'dashboard:prontuario' paciente.id %}" style="margin-bottom: 10%;">Prontuário</a></h1>
-    
-    
-    <a href="#">
+    <ul id="sidebarItems">
+        <h1 class="logo"><a href="{% url 'dashboard:prontuario' paciente.id %}" >Prontuário</a></h1>   
+            
+        <button id="startButton" class="button-not-pressed">Iniciar Atendimento</button>
+            <a href="#" id="timer">Duração:
+
         
-        <button id="startButton" class="button-not-pressed"><i class="bi-play-fill"></i>Iniciar Atendimento</button></a>
-        <a href="#" id="timer">Duração: </a>
-
-        <a href="#">Resumo</a>
-
-        <a href="#">Tabela de Acompanhamento</a> 
-
-        <ul id="sidebarItems">
 
             <a href="{% url 'dashboard:atendimento_form' paciente.id %}" id="IDatendimento">Atendimento</a>
 

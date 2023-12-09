@@ -59,7 +59,7 @@ class Paciente(models.Model):
     
 
 class Atendimento(models.Model):
-    paciente = models.ForeignKey(Paciente, on_delete=models.DO_NOTHING, default='1')
+    paciente = models.ForeignKey(Paciente, on_delete=models.DO_NOTHING)
     queixa_principal = models.TextField(max_length=20, blank=True)
     historia_molestia_atual = models.TextField(max_length=250, blank=True)
     historico_e_antecedentes = models.TextField(max_length=200, blank=True)
@@ -69,6 +69,7 @@ class Atendimento(models.Model):
     imc = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     diagnostico = models.TextField(max_length=50, blank=True)
     condutas = models.TextField(max_length=250, blank=True)
+   
 
 
     def saveimc(self, *args, **kwargs):

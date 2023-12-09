@@ -12,7 +12,6 @@ def create(request):
         if form.is_valid():
             form.save()
             return redirect('dashboard:create')
-
         return render(request, 'pacientes/create.html', context)
 
     

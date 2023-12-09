@@ -1,7 +1,5 @@
 {% extends 'prontuario.html' %}
 
-<h1>teste2</h1>
-
 {% block content %}
     <div class="content">
         <div class="titulo-secao-pront">       
@@ -15,5 +13,30 @@
         <div class="titulo-secao-avulso">
             <h3>Últimos diagnósticos</h3>
         </div>
+
+        <div class="titulo-secao-pront">
+            <div class="">
+                <h1>Atendimento</h1>
+                <br>
+                <form
+                    action="{% url 'dashboard:prontuario' paciente.id %}"
+                    method="post" class="">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                    <div class="form-field">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
+                    {% endfor %}
+                    <input type="submit" value="Enviar">
+                </form>
+                
+    
+            </div>      
+        </div>
+
+
     </div>
 {% endblock %}
