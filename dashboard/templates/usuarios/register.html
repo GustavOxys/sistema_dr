@@ -4,11 +4,11 @@
 <div class="content">
     <div class="titulo-secao">
         <div class="form_patient">
-            <h1>Registrar Paciente</h1>
+            <h1>Registrar Usuario</h1>
             <br>
             <form
-                action="{% url 'dashboard:create'%}"
-                method="post" class="form-create-patient">
+                action="{{ form_action }}"
+                method="post">
                 {% csrf_token %}
                 
                 {% for field in form %}
@@ -17,12 +17,7 @@
                     {{ field }}
                     {{ field.errors }}
                 </div>
-
                 {% endfor %}
-                {% for error in form.email.errors %}
-                    <p class="error">{{ error }}</p>
-                {% endfor %}
-
                 <input type="submit" value="Enviar">
             </form>
         </div>
