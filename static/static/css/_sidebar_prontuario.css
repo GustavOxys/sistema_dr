@@ -3,80 +3,81 @@
     width: 16%;
     position: fixed;
     background-color: #3575ee;  /* Escolha a cor desejada */
+    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-
-.sidebar_pront a {
+    
+  }
+  
+.visible-items {
     padding: 10%;
-    width: 100%;
-    text-decoration: none;
-    font-size: 85%;
-    color: white;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.sidebar_pront ul {
     width: 100%;
     text-decoration: none;
     font-size: 100%;
     color: white;
+    
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
     cursor: pointer;
-
-    /* Adiciona uma regra para esconder a lista por padrão */
+    list-style: none;
+    align-items: flex-start;
+  }
+  
+.hidden-items {
+    width: 100%;
+    text-decoration: none;
+    font-size: 100%;
+    color: white;
+    align-items: flex-start;
+    flex-direction: column;
+    cursor: pointer;   
+    list-style: none;
     display: none;
-}
+    
+  }
 
 .sidebar_pront ul.show-items {
-    /* Adiciona uma regra para mostrar a lista quando a classe show-items é aplicada */
+    /* Adiciona uma regra para mostrar a lista quando a classe show-items é aplicada */ 
     display: flex;
-}
+  }
 
-.sidebar_pront a:hover {
+.sidebar_pront li:hover {
     opacity: 0.5;
-}
-
-.sidebar_pront a.active {
-    background-color: rgb(245, 245, 245);
+  }
+  
+.sidebar_pront li.active {
+    background-color: rgb(255, 255, 255);
     color: black;
-}
+  }
 
-.sidebar_pront h1 {
+.sidebar_pront.visible-items.logo-prontuario {
+    width: 250%;
+    font-size: 200%;
+  
+  }
+
+  .button-not-pressed {
+    background-color: rgb(75, 221, 7);
+    
+    color: rgb(255, 255, 255);
+  }
+  
+  .button-pressed {
+    background-color: rgb(228, 5, 5);
+    color: rgb(255, 255, 255);
+  } 
+ /* 
+  .sidebar_pront ul {
     margin-top: 2%;
     font-size: 180%;
     display: flex;
     max-width: 100%;
     color: white;
     align-items: center;
-}
+  }
 
-.sidebar_pront h1:hover {
-    opacity: 0.5;
-}
+  
+  
 
-#ultimo-link {
-    padding-top: 60%;
-    font-size: 200%;
-    color: rgb(88, 207, 88);
-}
-
-.logo {
-    width: 100%;
-}
-
-.button-not-pressed {
-    background-color: rgb(75, 221, 7);
-    color: rgb(255, 255, 255);
-}
-
-.button-pressed {
-    background-color: rgb(228, 5, 5);
-    color: rgb(255, 255, 255);
-}
+  

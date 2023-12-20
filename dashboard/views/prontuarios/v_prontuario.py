@@ -6,9 +6,12 @@ def prontuario(request, paciente_id):
     print('dentro da view prontuario')
     paciente = get_object_or_404(Paciente, pk=paciente_id)
     print('depois de capturar o paciente')
+    print(request.method)
 
     if request.method == 'POST':
         print('depois do if method = post')
+        print(request.method)
+
 
         form = AtendimentoForm(paciente_id, request.POST)
 

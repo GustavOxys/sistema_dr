@@ -4,6 +4,8 @@ from . import views
 app_name = 'dashboard'
 
 urlpatterns = [
+
+    path('teste', views.teste, name='teste'),
     # Users
     path('user/create/', views.register_user, name='register_user'),
 
@@ -12,8 +14,9 @@ urlpatterns = [
     path('search/', views.search, name='search'),
 
     # Patient/CRUD
+    path('pacientes/', views.pacientes, name='pacientes'),      
     path('patient/create/', views.create, name='create'),
-    path('pacientes/', views.pacientes, name='pacientes'),
+    
 
     # Agenda
     path('agenda/', views.agenda, name='agenda'),
@@ -26,8 +29,7 @@ urlpatterns = [
     path('prontuario/<int:paciente_id>/', views.prontuario, name='prontuario'),
     path('atendimento/<int:paciente_id>/', views.atendimento_form, name='atendimento_form'),
 
-    path('create_test', views.create_test, name='create_test'),
-    path('prontuario/atendimento/teste', views.teste, name='teste'),
+    
     
     # Relatórios
     path('relatorios/', views.relatorios, name='relatorios'),

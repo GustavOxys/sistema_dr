@@ -17,19 +17,36 @@
         <div class="titulo-secao-pront">
             <div class="">
                 <h1>Atendimento</h1>
+                
                 <br>
                 <form
                     action="{% url 'dashboard:prontuario' paciente.id %}"
-                    method="post" class="">
+                    method="POST">
                     {% csrf_token %}
                     
+                    
+                    {% if form.non_field_errors %}                        
+                        {{ form.non_field_errors}}                                               
+                    {% endif %}                   
+                      
                     {% for field in form %}
+                    
                     <div class="form-field">
                         <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
                         {{ field }}
                         {{ field.errors }}
+
+                        
+                        {% if field.help_text %}
+                            <p class="help-text"> {{ field.help_text }} </p>
+                        {% endif %}
+                            
+                        
                     </div>
                     {% endfor %}
+
+                        
+
                     <input type="submit" value="Enviar">
                 </form>
                 

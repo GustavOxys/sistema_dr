@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from dashboard.models import Paciente
-from dashboard.forms.form_patient import PatientForm
+from dashboard.forms.pacientes.form_patient import PatientForm
 
 def create(request):    
     if request.method == 'POST':
