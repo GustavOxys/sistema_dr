@@ -29,57 +29,41 @@ class AtendimentoForm(forms.ModelForm):
         model = Atendimento
         fields = 'queixa_principal', 'historia_molestia_atual', 'historico_e_antecedentes', \
                  'exame_fisico', 'altura', 'peso', 'diagnostico', 'condutas'
-        '''widgets = {
-            'queixa_principal' : forms.TextInput(attrs={'maxlength': 20}),
-            'altura' : forms.TextInput(attrs={
-                'maxlength': 4,
-                'placeholder' : 'Ex: 1.70'
-                })
-
-        }'''
-
+       
     def __init__(self, paciente_id, *args, **kwargs):
         super(AtendimentoForm, self).__init__(*args, **kwargs)
         self.paciente_id = paciente_id
 
-    def clean(self):
-        cleaned_data = self.cleaned_data
-        self.add_error(
-            None,
-            ValidationError(
-                'Ocorreu algum erro no Formulário, verifique os campos novamente',
-                code='invalid'
-            )
-        )
 
     def clean_queixa_principal(self):
         queixa_principal = self.cleaned_data.get('queixa_principal')
-        if queixa_principal is None:
-            self.add_error(
-                'queixa_principal',
-                ValidationError(
-                    'Esse campo é obrigatório',
-                    code='campo_obrigatorio'                
-                )
-            )
 
+        if queixa_principal:
+            if not any(char.isalpha() for char in queixa_principal):
+                raise ValidationError('Este campo deve conter pelo menos uma letra.', code='letra_obrigatoria')
 
-    def clean_altura(self):
+        return queixa_principal
+
+    def clean(self):        
+        queixa_principal = self.cleaned_data.get('queixa_principal')
         altura = self.cleaned_data.get('altura')
-        if altura is None:
-            self.add_error(
-                'altura',
-                ValidationError(
-                    'A altura é um campo obrigatório.',
-                    code='campo_obrigatorio'
-                )
-            )
-
-    def clean_peso(self):
         peso = self.cleaned_data.get('peso')
+        
+
+        if queixa_principal is None:
+            self.add_error('queixa_principal', ValidationError('Esse campo é obrigatório',code='campo_obrigatorio'))
+
+        if altura is None:
+            self.add_error('altura', ValidationError('A altura é um campo obrigatório.',code='campo_obrigatorio'))
+
         if peso is None:
             self.add_error('peso', ValidationError('O peso é um campo Obrigatório', code='campo_obrigatorio'))
 
+        if any(self.errors):
+            self.add_error(None, ValidationError('Ocorreu algum erro no formulário, verifique os campos novamente', code='invalid'))
+
+
+    
 
     
 
