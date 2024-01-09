@@ -1,17 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from dashboard.forms.usuarios.form_user import RegisterForm
 from django.core.exceptions import ValidationError
+from django.contrib import messages
 
-def register_user(request):    
+
+def register_user(request): 
+    
+     
     if request.method == 'POST':        
         form = RegisterForm(request.POST)
         if form.is_valid():            
             form.save()
-            success_message = 'Usuário registrado com sucesso!'
-            return render(request, 'usuarios/register.html', {'form': form, 'success_message': success_message})
+            messages.success(request, 'Usuário registrado com sucesso!')  
+            return redirect('dashboard:index')          
+        
         else:
-            error_message = 'Ocorreu algum erro ao enviar o formulário'
-            return render(request, 'usuarios/register.html', {'form': form, 'error_message': error_message})
+            messages.error(request, 'Ocorreu algum erro ao enviar o formulário')  
+            return render(request, 'usuarios/register.html', {'form': form}) 
+        
+        
+
 
     form = RegisterForm()
     context = {

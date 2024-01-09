@@ -3,21 +3,12 @@
 {% block content %}
     <div class="content">   
         <div class="titulo-secao-pront">
-            <div class="">
-                
+            <div class=""> 
+
+                                
                 <h1>Registro</h1>                
                 <br>
-                {% if error_message %}
-                <div class="alert-danger">
-                  {{ error_message }}
-                </div>
-                {% endif %}
-
-                {% if success_message %}
-                <div class="alert-success">
-                    {{ success_message }}
-                </div>
-                {% endif %}
+                {% include 'partials/_messages.html' %}
 
                 <br>
                 <form
