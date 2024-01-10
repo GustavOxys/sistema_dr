@@ -1,0 +1,27 @@
+{% extends 'prontuario.html' %}
+
+{% block content %}
+    <div class="content">   
+        <div class="titulo-secao-pront">
+            <div class=""> 
+
+                                
+                <h1>Login</h1>                
+                <br>
+                
+                {% if user.is_authenticated %}
+                    <p>
+                        Você fez login como {{ user.username }}
+                        Clique <a href="{% url 'dashboard:logout' %}"> Aqui</a> para sair
+                    </p>
+                {% else %}
+                    {% include 'partials/_user_form.html' %}  
+                {% endif %}
+                    
+                {% include 'partials/_messages.html' %}
+                <br>
+                 
+            </div>      
+        </div>
+    </div>
+{% endblock %}

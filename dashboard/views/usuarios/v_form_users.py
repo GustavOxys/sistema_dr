@@ -12,7 +12,7 @@ def register_user(request):
         if form.is_valid():            
             form.save()
             messages.success(request, 'Usuário registrado com sucesso!')  
-            return redirect('dashboard:index')          
+            return redirect('dashboard:login')          
         
         else:
             messages.error(request, 'Ocorreu algum erro ao enviar o formulário')  

@@ -9,40 +9,8 @@
                 <h1>Registro</h1>                
                 <br>
                 {% include 'partials/_messages.html' %}
-
                 <br>
-                <form
-                    action="{% url 'dashboard:register_user' %}"
-                    method="POST">
-                    {% csrf_token %}
-                    
-                    
-                    {% if form.non_field_errors %}                        
-                        {{ form.non_field_errors}}                                               
-                    {% endif %}                   
-                      
-                    {% for field in form %}                    
-                    <div>
-                        <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
-                        {{ field }}
-                        
-                        {% if field.errors %}
-                            <ul class="error-list">
-                                {% for error in field.errors %}
-                                    <li class="field-error">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-
-                        {% if field.help_text %}
-                            <p class="help-text">{{ field.help_text }}</p>
-                        {% endif %}                        
-                    </div>
-                    {% endfor %}
-             
-
-                    <input type="submit" value="Enviar">
-                </form>   
+                {% include 'partials/_user_form.html' %}   
             </div>      
         </div>
     </div>
