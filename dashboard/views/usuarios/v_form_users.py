@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from dashboard.forms.usuarios.form_user import RegisterForm
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='dashboard:login')
+
+
 def register_user(request): 
     
      
