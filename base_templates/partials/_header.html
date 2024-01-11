@@ -7,10 +7,7 @@
         <a href="#"><i class="bi bi-justify"></i>  </a>            
                   
     </div>
-    <div class="info-header">
-        
-
-        
+    <div class="info-header">       
         <div class="search">
             <form
                 action="{% url 'dashboard:search' %}"
@@ -27,11 +24,13 @@
                 <i class="bi bi-search search-icon"></i>
             </div>
             </form>
-        </div>  
+        
+        </div> 
+        <a href="{% url 'dashboard:register_user'%}">Registrar</a> 
         <a href="#"><i class="bi bi-bell"></i>
         </a>     
         
-        <img src="media/user.jpg" alt="Imagem de Perfil">
+        <img src="media/user.jpg" alt="Imagem ">
                
     </div>
  </header> 

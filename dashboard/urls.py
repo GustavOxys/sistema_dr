@@ -10,6 +10,7 @@ urlpatterns = [
     path('user/create/', views.register_user, name='register_user'),
     path('user/login/', views.login_user, name='login'),
     path('user/logout/', views.logout_user, name='logout'),
+    path('user/update/', views.user_update, name='user_update'),
     
 
     # Dashboard
