@@ -27,7 +27,19 @@
         
         </div> 
         
-        <a href="{% url 'dashboard:logout'%}">Encerrar sessão</a> 
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard:logout'%}">Encerrar sessão</a> 
+
+        {% else %}
+
+            <a href="{% url 'dashboard:register_user'%}">Registrar</a> 
+
+        {% endif %}
+            
+        
+
+
         <a href="#"><i class="bi bi-bell"></i>
         </a>     
         
