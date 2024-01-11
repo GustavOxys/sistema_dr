@@ -1,17 +1,39 @@
-{% extends 'prontuario.html' %}
+{% load static %}
 
-{% block content %}
-    <div class="content">   
-        <div class="titulo-secao-pront">
-            <div class=""> 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Médico Digital</title>
+    <link rel="stylesheet" href="{% static 'static/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
 
-                                
-                <h1>Registro</h1>                
-                <br>
-                {% include 'partials/_messages.html' %}
-                <br>
-                {% include 'partials/_user_form.html' %}   
-            </div>      
-        </div>
-    </div>
-{% endblock %}
+</head>
+<body>    
+    
+    
+    <section class="main">        
+        
+           
+            <div class="titulo-secao-pront">
+                <div class="">  
+                    <br>                                  
+                    <h1>Registro</h1>                
+                    <br>
+                    {% include 'partials/_messages.html' %}
+                    <br>
+                    {% include 'partials/_user_form.html' %}   
+
+                    <p>Já tem uma conta? Faça login <a href="{% url 'dashboard:login' %}">aqui</a>.</p>
+                </div>      
+            </div>
+            
+        {% include 'partials/_footer.html' %}
+    </section>    
+    
+    
+</body>
+</html>
+
+

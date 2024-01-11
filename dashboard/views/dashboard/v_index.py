@@ -4,6 +4,8 @@ from dashboard.models import Paciente
 from django.utils import timezone
 from datetime import timedelta
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+
 
 #o Q é uma função para poder utilizar o '|' que faz a função de 'or' e não 'and' na consulta sql
 
@@ -40,7 +42,7 @@ def index(request):
 
     return render(request, 'dashboard/index.html', context)
 
-
+@login_required(login_url='dashboard:login')
 def search(request):
 
     search_value = request.GET.get('q', '').strip()

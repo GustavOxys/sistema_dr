@@ -16,6 +16,7 @@
                     </p>
                 {% else %}
                     {% include 'partials/_user_form.html' %}  
+                    <p>Ainda não é cadastrado? Cadastre-se <a href="{% url 'dashboard:register_user' %}">aqui</a></p>
                 {% endif %}
                     
                 {% include 'partials/_messages.html' %}

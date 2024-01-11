@@ -4,10 +4,13 @@ from dashboard.models import Paciente
 from django.utils import timezone
 from datetime import timedelta
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+
+
 
 #o Q é uma função para poder utilizar o '|' que faz a função de 'or' e não 'and' na consulta sql
 
-
+@login_required(login_url='dashboard:login')
 def pacientes(request):
     data_hora_atual =  timezone.now() - timedelta(hours=3)
     print("Hora atual:", timezone.now())
@@ -28,7 +31,7 @@ def pacientes(request):
 
     return render(request, 'pacientes/pacientes.html', context)
 
-
+@login_required(login_url='dashboard:login')
 def search(request):
 
     search_value = request.GET.get('q', '').strip()

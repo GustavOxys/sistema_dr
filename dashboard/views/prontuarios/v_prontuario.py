@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, get_object_or_404, render
 from dashboard.models import Paciente
 from dashboard.forms.atendimento.form_atendimento import AtendimentoForm
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='dashboard:login')
 def prontuario(request, paciente_id):   
     paciente = get_object_or_404(Paciente, pk=paciente_id)
   
