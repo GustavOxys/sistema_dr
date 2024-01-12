@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}    
+    <h3><a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a></h3>
     {% if page_obj %}
         <div class="table-container">
             <table class="table-index">                       
@@ -27,7 +28,7 @@
                     {% for paciente in page_obj %}           
                         <tr class="table-row">                        
                             <td>
-                                <a href="#">
+                                <a href="{% url 'dashboard:read_patient' paciente.id %}">
                                     {{ paciente.nome }}
                                 </a>
                             </td>
@@ -54,7 +55,7 @@
                             </td>                      
                             <td>
                                 
-                                    <button><a href="#">ver cadastro</a></button>
+                                    <button><a href="{% url 'dashboard:read_patient' paciente.id %}">ver cadastro</a></button>
                                     <button><a href="#">Prontuario</a></button>
                                 
                             </td>

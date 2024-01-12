@@ -13,7 +13,9 @@ def create(request):
         }
 
         if form.is_valid():
-            form.save()
+            patient = form.save(commit=False)
+            patient.owner = request.user
+            patient.save()
             return redirect('dashboard:create')
         return render(request, 'pacientes/create.html', context)
 

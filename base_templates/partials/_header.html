@@ -7,6 +7,9 @@
         <a href="#"><i class="bi bi-justify"></i>  </a>            
                   
     </div>
+    <div class="info-header">  
+    <h2> Bem vindo {{ user.username }}!</h2>
+    </div>
     <div class="info-header">       
         <div class="search">
             <form
@@ -32,6 +35,7 @@
             <a href="{% url 'dashboard:logout'%}">Encerrar sessão</a> 
 
         {% else %}
+            <a href="{% url 'dashboard:login'%}">Entrar</a> 
 
             <a href="{% url 'dashboard:register_user'%}">Registrar</a> 
 

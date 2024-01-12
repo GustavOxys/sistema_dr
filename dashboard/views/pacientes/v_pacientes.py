@@ -13,12 +13,8 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='dashboard:login')
 def pacientes(request):
     data_hora_atual =  timezone.now() - timedelta(hours=3)
-    print("Hora atual:", timezone.now())
-    print("data_hora_atual:", data_hora_atual)
 
-
-    pacientes = Paciente.objects\
-        .filter(show=True).order_by('data_consulta', 'hora_consulta')
+    pacientes = Paciente.objects.filter(owner=request.user, show=True).order_by('data_consulta', 'hora_consulta')
         
     
     paginator = Paginator(pacientes, 10)

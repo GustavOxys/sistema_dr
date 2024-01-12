@@ -19,7 +19,7 @@ def index(request):
 
 
     pacientes = Paciente.objects\
-        .filter(show=True)\
+        .filter(owner=request.user, show=True)\
         .filter(Q(data_consulta__gt=data_hora_atual) | (Q(data_consulta=data_hora_atual, hora_consulta__gte=data_hora_atual)))\
         .order_by('data_consulta', 'hora_consulta')
         
