@@ -8,29 +8,10 @@ import sys
 import time
 
 
-
-@login_required(login_url='dashboard:login')
-def log(message):
-    # Obtém o tempo atual em milissegundos
-    current_time = int(time.time() * 1000)
-
-    # Adiciona o tempo à mensagem
-    message_with_time = f"{current_time}: {message}"
-
-    # Imprime a mensagem
-    print(message_with_time)
-
-
 @login_required(login_url='dashboard:login')
 def atendimento_form(request, paciente_id):    
-    log("LOG dentro da view atendimento_form")   
-
-    paciente = Paciente.objects.get(id=paciente_id)    
-    log('LOG variavl "paciente" criada e pegou id')
-
-    form = AtendimentoForm(instance=Atendimento(paciente=paciente))    
-    log('LOG variavl "form" criado com instancia atendimento paciente=paciente')
-
+    paciente = Paciente.objects.get(id=paciente_id)      
+    form = AtendimentoForm(instance=Atendimento(paciente=paciente))  
 
     return render(request, 'prontuarios/form_atendimento.html', {'form': form})
 

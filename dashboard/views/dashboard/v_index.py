@@ -2,9 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from dashboard.models import Paciente
 from django.utils import timezone
-from datetime import timedelta
+from datetime import timedelta, datetime
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from dashboard.models import Atendimento
 
 
 #o Q é uma função para poder utilizar o '|' que faz a função de 'or' e não 'and' na consulta sql
@@ -13,10 +14,18 @@ app_name = 'index'
 
 
 def index(request):
+    atendimentos = Atendimento.objects.all()
     data_hora_atual =  timezone.now() - timedelta(hours=3)
-    print("Hora atual:", timezone.now())
-    print("data_hora_atual:", data_hora_atual)
+    hoje = datetime.now()
 
+    atendimentos_do_dia = Atendimento.objects.filter(
+        data_atendimento__year=hoje.year,
+        data_atendimento__month=hoje.month,
+        data_atendimento__day=hoje.day
+    )
+
+    total_diario = atendimentos_do_dia.count()
+    
 
     pacientes = Paciente.objects\
         .filter(owner=request.user, show=True)\
@@ -37,7 +46,8 @@ def index(request):
 
     context = {
         'page_obj' : page_obj,
-        'status_css_mapping': status_css_mapping
+        'status_css_mapping': status_css_mapping,
+        'total_diario' : total_diario,
     }
 
     return render(request, 'dashboard/index.html', context)

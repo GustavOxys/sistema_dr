@@ -69,6 +69,25 @@ class Atendimento(models.Model):
     imc = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     diagnostico = models.TextField(max_length=50, blank=True)
     condutas = models.TextField(max_length=250, blank=True)
+    total_diario = models.IntegerField(default=0)
+    total_mensal = models.IntegerField(default=0)
+    total_anual = models.IntegerField(default=0)
+    data_atendimento = models.DateTimeField(default=timezone.now())
+
+
+    def adicionar_atendimento(self):
+        hoje = timezone.now()        
+        
+        if self.data_atendimento.date() == hoje.date():
+            self.total_diario += 1
+        else:            
+            self.total_diario = 1
+            self.total_mensal += 1 if self.data_atendimento.month != hoje.month else 0
+            self.total_anual += 1 if self.data_atendimento.year != hoje.year else 0
+
+        self.save()
+
+
    
 
 
