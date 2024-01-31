@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from dashboard.models import Paciente
+from dashboard.models import Paciente, Agendamento
 from django.utils import timezone
 from datetime import timedelta
 from django.core.paginator import Paginator
@@ -13,8 +13,8 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='dashboard:login')
 def pacientes(request):
     data_hora_atual =  timezone.now() - timedelta(hours=3)
-
-    pacientes = Paciente.objects.filter(owner=request.user, show=True).order_by('data_consulta', 'hora_consulta')
+    user = request.user
+    pacientes = Paciente.objects.filter(owner=user).order_by('-id')
         
     
     paginator = Paginator(pacientes, 10)
@@ -23,6 +23,7 @@ def pacientes(request):
 
     context = {
         'page_obj' : page_obj,
+        'pacientes': pacientes,
     }
 
     return render(request, 'pacientes/pacientes.html', context)
@@ -54,6 +55,7 @@ def search(request):
         'page_obj' : page_obj,
         'site_title' : 'Search - ',
         'search_value' : search_value,
+        'agendamentos': agendamentos,
     }
 
     return render(request, 'pacientes/pacientes.html', context)

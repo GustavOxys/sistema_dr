@@ -4,14 +4,13 @@
 <div class="content">
     <div class="titulo-secao">
         <div class="form_patient">
-            <h1>Registrar Paciente</h1>
+            <h1>Agendar Paciente</h1>
             <br>
             <form
-                action="{% url 'dashboard:create'%}"
+                action="{% url 'dashboard:agendar' %}"
                 method="post" class="form-create-patient">
                 {% csrf_token %}
                 
-                {% include 'partials/_messages.html' %}
                 {% for field in form %}
                 <div class="form-field">
                     <label for="{{ field.id_for_label }}">{{ field.label }}:</label>

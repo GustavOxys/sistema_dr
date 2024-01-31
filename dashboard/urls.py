@@ -8,7 +8,7 @@ urlpatterns = [
     path('teste', views.teste, name='teste'),
     # Users
     path('user/create/', views.register_user, name='register_user'),
-    path('user/login/', views.login_user, name='login'),
+    path('login/', views.login_user, name='login'),
     path('user/logout/', views.logout_user, name='logout'),
     path('user/update/', views.user_update, name='user_update'),
     
@@ -22,12 +22,11 @@ urlpatterns = [
 
     # Paciente/CRUD    
     path('patient/create/', views.create, name='create'),
-    path('patient/<int:paciente_id>/', views.read_patient, name='read_patient'),
-
-    
+    path('patient/<int:paciente_id>/', views.read_patient, name='read_patient'),    
 
     # Agenda
     path('agenda/', views.agenda, name='agenda'),
+    path('agendar/', views.agendar, name='agendar'), 
 
     # Prontuários
     path('prontuarios/', views.prontuarios, name='prontuarios'),

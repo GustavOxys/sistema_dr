@@ -35,7 +35,7 @@
                 <i class="bi bi-list-columns"></i>
                 <div class="info-text">                    
                     <h3>Consultas/Mês</h3>
-                    <p class="valor-box">151</p>
+                    <p class="valor-box">{{ total_mensal }}</p>
                     <br>                                          
                 </div>
                 <h4>Ver gráfico comparativo -></h4> 
@@ -80,7 +80,7 @@
                         <tr class="table-row">                        
                             <td>
                                 <a href="#">
-                                    {{ paciente.nome }}
+                                    {{ paciente.paciente.nome }}
                                 </a>
                             </td>
                             <td>

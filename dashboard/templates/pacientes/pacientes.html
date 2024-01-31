@@ -10,7 +10,7 @@
                         <th colspan="7"> <!-- colspan="7" para ocupar todas as colunas -->
                             <h3 class="titulo-consultas">Pacientes <a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a></h3>
                             
-                            <a href="#"><button> Agendar Paciente</button></a>
+                            <a href="{% url 'dashboard:agendar' %}"><button> Agendar Paciente</button></a>
                         </th>
                     </tr>                                        
                     <tr class="table-row">                        
@@ -69,7 +69,7 @@
         {% else %}
         <div class="titulo-secao">
             <h2>
-                Não há próximas consultas com esses dados
+                Nenhum paciente registrado.
             </h2>
         </div>
         
