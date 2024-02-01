@@ -41,18 +41,11 @@ def index(request):
     
     paginator = Paginator(agendamentos, 7)
     page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
+    page_obj = paginator.get_page(page_number)   
     
-    status_css_mapping = {
-        'Pendente': 'pendente',
-        'Cancelado': 'cancelado',
-        'Confirmado': 'confirmado',
-        # Outros mapeamentos aqui
-        }
 
     context = {
-        'page_obj' : page_obj,
-        'status_css_mapping': status_css_mapping,
+        'page_obj' : page_obj,        
         'total_diario' : total_diario,
         'total_mensal': total_mensal,
         'agendamentos': agendamentos,

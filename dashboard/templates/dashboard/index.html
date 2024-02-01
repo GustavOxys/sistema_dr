@@ -65,6 +65,7 @@
                     </tr>                                        
                     <tr class="table-row">                        
                         <th>Nome do Paciente</th>
+                        <th>ID</th>
                         <th>Data</th>
                         <th>Hora</th>
                         <th>Procedimento</th>
@@ -76,44 +77,45 @@
                 
                 
                 <tbody>
-                    {% for paciente in page_obj %}           
+                    {% for agendamento in page_obj %}           
                         <tr class="table-row">                        
                             <td>
                                 <a href="#">
-                                    {{ paciente.paciente.nome }}
+                                    {{ agendamento.paciente.nome }}
+                                </a>
+                            </td>
+
+                            <td>
+                                <a href="#">
+                                    {{ agendamento.paciente.id }}
                                 </a>
                             </td>
                             <td>
                                 
-                                    {{ paciente.data_formatada }}
+                                    {{ agendamento.data_formatada }}
                                 
                             </td>
                             <td>
                                 
-                                    {{ paciente.hora_consulta }}
+                                    {{ agendamento.hora_consulta }}
                                 
                             </td>
                             <td>
                                 
-                                    {{ paciente.procedimento }}
+                                    {{ agendamento.procedimento }}
                                 
                             </td>   
                             <td>
                                 
-                                    {{ paciente.convenio }}
+                                    {{ agendamento.convenio }}
                                 
                             </td>                         
                             
                             
-                            {% with css_class=status_css_mapping.paciente.status %}
-                                <td class="{{ css_class }}">
-                                    {{ paciente.status }}
-                                </td>
-                            {% endwith %}
-
+                           
                             <td>
                                 
-                                    <button><a href="{% url 'dashboard:prontuario' paciente.id %}" target="_blank">Iniciar Atendimento</a></button>
+                                    <button><a href="{% url 'dashboard:prontuario' agendamento.paciente.id %}" target="_blank">Iniciar Atendimento</a></button>
                                 
                             </td>
                         </tr>

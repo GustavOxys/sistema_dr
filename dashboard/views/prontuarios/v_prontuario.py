@@ -6,6 +6,7 @@ from datetime import datetime
 
 @login_required(login_url='dashboard:login')
 def prontuario(request, paciente_id):
+    print(paciente_id)
     paciente = get_object_or_404(Paciente, pk=paciente_id)
 
     
