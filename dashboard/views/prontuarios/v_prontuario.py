@@ -6,21 +6,27 @@ from datetime import datetime
 
 @login_required(login_url='dashboard:login')
 def prontuario(request, paciente_id):
-    print(paciente_id)
+    print(' dentro da func pront', paciente_id)
     paciente = get_object_or_404(Paciente, pk=paciente_id)
+    print(request.method)
 
     
     if request.method == 'POST':
+        print('se o metodo é post')
         form = AtendimentoForm(paciente_id, request.POST)
+        print('se o metodo é post dps do form')
+
 
         if form.is_valid():
+            print('se o form é valido')
             atendimento = form.save(commit=False)
             atendimento.paciente = paciente
-            atendimento.save()
-            atendimento.adicionar_atendimento()
+            print('dentro do form is valid, antes do save ', atendimento.total_diario)
+            atendimento.save()  
+            print('dentro do form is valid, ', atendimento.total_diario)          
             return redirect('dashboard:prontuario', paciente_id=paciente_id)
     else:
-        form = AtendimentoForm(paciente_id)
+        form = AtendimentoForm(paciente_id=paciente_id)
 
     context = {
         'form': form,

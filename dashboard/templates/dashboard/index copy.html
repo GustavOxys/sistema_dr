@@ -21,33 +21,27 @@
                 </div>
                 <h4>Ver gráfico comparativo -></h4>                
             </div>
-            
-            
-                <div class="box-info-single">
-                    <i class="bi bi-clipboard2-check"></i>
-                    <div class="info-text">                    
-                        <h3>Atendidos hoje</h3>
-                        <p class="valor-box">{{ total_diario }}</p>
-                        <br>                    
-                    </div>
-                    <h4>Ver gráfico comparativo -></h4>                
+            <div class="box-info-single">
+                <i class="bi bi-clipboard2-check"></i>
+                <div class="info-text">                    
+                    <h3>Atendidos hoje</h3>
+                    <p class="valor-box"> {{ total_diario }}</p>
+                    <br>                    
                 </div>
-
-
-                <div class="box-info-single">
-                    <i class="bi bi-list-columns"></i>
-                    <div class="info-text">                    
-                        <h3>Consultas/Mês</h3>
-                        <p class="valor-box">{{  total_mensal }}</p>
-                        <br>                                          
-                    </div>
-                    <h4>Ver gráfico comparativo -></h4>                
-                </div>  
-            
+                <h4>Ver gráfico comparativo -></h4>
                 
-            
-
-
+            </div>
+            <div class="box-info-single">
+                <i class="bi bi-list-columns"></i>
+                <div class="info-text">                    
+                    <h3>Consultas/Mês</h3>
+                    <p class="valor-box">{{ total_mensal }}</p>
+                    <br>                                          
+                </div>
+                <h4>Ver gráfico comparativo -></h4> 
+                
+                
+            </div>
             <div class="box-info-single">
                 <i class="bi bi-currency-dollar"></i>
                 <div class="info-text">
@@ -121,11 +115,7 @@
                            
                             <td>
                                 
-                                <form method="post" action="{% url 'dashboard:prontuario' agendamento.paciente.id %}">
-                                    {% csrf_token %}
-                                    <button type="submit">Iniciar Atendimento</button>
-                                </form>
-                                
+                                    <button><a href="{% url 'dashboard:prontuario' agendamento.paciente.id %}" target="_blank">Iniciar Atendimento</a></button>
                                 
                             </td>
                         </tr>

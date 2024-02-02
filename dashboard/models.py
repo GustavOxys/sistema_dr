@@ -81,17 +81,26 @@ class Atendimento(models.Model):
     data_atendimento = models.DateTimeField(default=timezone.now())
 
 
-    def adicionar_atendimento(self):
-        hoje = timezone.now()        
-        
+    def save(self, *args, **kwargs):
+        print('dentro do metodo save')
+        hoje = timezone.now()
+
         if self.data_atendimento.date() == hoje.date():
             self.total_diario += 1
-        else:            
+        else:
             self.total_diario = 1
-            self.total_mensal += 1 if self.data_atendimento.month != hoje.month else 0
-            self.total_anual += 1 if self.data_atendimento.year != hoje.year else 0
 
-        self.save()   
+        if self.data_atendimento.month == hoje.month:
+            self.total_mensal += 1
+        else:
+            self.total_mensal = 1
+
+        if self.data_atendimento.year == hoje.year:
+            self.total_anual += 1
+        else:
+            self.total_anual = 1
+
+        super().save(*args, **kwargs)   
 
 
     def saveimc(self, *args, **kwargs):
