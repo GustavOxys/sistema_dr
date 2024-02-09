@@ -21,10 +21,10 @@ def prontuario(request, paciente_id):
             print('se o form é valido')
             atendimento = form.save(commit=False)
             atendimento.paciente = paciente
-            print('dentro do form is valid, antes do save ', atendimento.total_diario)
+            print('dentro do form is valid, antes do save, total diario:', atendimento.total_diario, 'total mensal', atendimento.total_mensal)
             atendimento.save()  
-            print('dentro do form is valid, ', atendimento.total_diario)          
-            return redirect('dashboard:prontuario', paciente_id=paciente_id)
+            print('dentro do form is valid, ', atendimento.total_diario, atendimento.total_mensal)          
+            return redirect('dashboard:index')
     else:
         form = AtendimentoForm(paciente_id=paciente_id)
 

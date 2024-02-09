@@ -5,18 +5,35 @@ from datetime import timedelta, datetime
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from dashboard.models import Agendamento, Paciente, Procedimento, Convenio, Atendimento
+from django.contrib.auth.signals import user_logged_in
+from django.dispatch import receiver
 
-#o Q é uma função para poder utilizar o '|' que faz a função de 'or' e não 'and' na consulta sql
+#o Q é uma função para poder utilizar o '|' que faz a função de 'or' e não 'and' na consulta SQL
 app_name = 'index'
 
+
+
+
+@login_required(login_url='dashboard:login')
 def index(request):    
+    print('dentro de index')
     data_hora_atual =  timezone.now() - timedelta(hours=3)
-    atendimentos = Atendimento.objects.filter(paciente__owner=request.user)    
+    data_atual = timezone.now().date()
+    print('data atual:', data_atual)
+    atendimentos = Atendimento.objects.filter(
+        paciente__owner=request.user)
+    atendimentos_diarios = Atendimento.objects.filter(
+        paciente__owner=request.user, 
+        data_atendimento=data_atual)   
+    for atendimento in atendimentos_diarios:
+        print(atendimento.data_atendimento) 
+    total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos) 
     
-    total_diario = sum(atendimento.total_diario for atendimento in atendimentos)
-    total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos)
+    total_diario = sum(atendimento.total_diario for atendimento in atendimentos_diarios) 
+    print('dentro de index, total mensal:', total_mensal) 
+    print('dentro de index, total diario:', total_diario) 
 
-
+        
     # Realiza consulta SQL e filtra apenas agendamentos do próprio usuário, que seja maior que a data e hora atual e ordena por data e hora do agendamento
     agendamentos = Agendamento.objects\
         .filter(paciente__owner=request.user, paciente__show=True)\
@@ -33,7 +50,7 @@ def index(request):
         'page_obj' : page_obj,        
         'agendamentos': agendamentos, 
         'atendimentos' : atendimentos,  
-        'total_diario': total_diario,
+        'total_diario' : total_diario,
         'total_mensal': total_mensal,
            
     }

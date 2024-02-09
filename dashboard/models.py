@@ -53,10 +53,6 @@ class Paciente(models.Model):
     def idade(self):
         hoje = date.today()
         return hoje.year - self.data_nascimento.year - ((hoje.month, hoje.day) < (self.data_nascimento.month, self.data_nascimento.day))
-
-    
-    
-
     
 
     def save(self, *args, **kwargs):
@@ -78,27 +74,34 @@ class Atendimento(models.Model):
     total_diario = models.IntegerField(default=0)
     total_mensal = models.IntegerField(default=0)
     total_anual = models.IntegerField(default=0)
-    data_atendimento = models.DateTimeField(default=timezone.now())
+    data_atendimento = models.DateTimeField(default=timezone.now().date())
 
 
     def save(self, *args, **kwargs):
         print('dentro do metodo save')
-        hoje = timezone.now()
-
-        if self.data_atendimento.date() == hoje.date():
+        hoje = timezone.now()        
+        print(hoje)
+        if self.data_atendimento == hoje.date():
             self.total_diario += 1
+            print('total diario', self.total_diario)
         else:
-            self.total_diario = 1
+            self.self.total_diario = 1
+            print('total diario else', self.total_diario)
 
         if self.data_atendimento.month == hoje.month:
             self.total_mensal += 1
+            print('total mensal', self.total_mensal)
         else:
-            self.total_mensal = 1
+            self.self.total_mensal = 1
+            print('total mensal else', self.total_mensal)
 
         if self.data_atendimento.year == hoje.year:
             self.total_anual += 1
+            print('total anual', self.total_anual)
         else:
-            self.total_anual = 1
+            self.self.total_anual = 1
+            print('total anual else', self.total_anual)
+
 
         super().save(*args, **kwargs)   
 
