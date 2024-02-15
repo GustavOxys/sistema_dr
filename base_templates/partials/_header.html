@@ -11,24 +11,7 @@
     <h2> Bem vindo {{ user.username }}!</h2>
     </div>
     <div class="info-header">       
-        <div class="search">
-            <form
-                action="{% url 'dashboard:search' %}"
-                method="GET">
-            <div class="search-input-container">
-                <input
-                    type="search"
-                    class="search-input"
-                    placeholder="Buscar um Paciente"
-                    id="search"
-                    name="q"
-                    value=" {{ search_value }}"
-                >
-                <i class="bi bi-search search-icon"></i>
-            </div>
-            </form>
         
-        </div> 
         
         
         {% if user.is_authenticated %}
@@ -47,7 +30,7 @@
         <a href="#"><i class="bi bi-bell"></i>
         </a>     
         
-        <img src="media/user.jpg" alt="Imagem ">
+        <img src="{% static 'media/user.jpg' %}" alt="Imagem ">
                
     </div>
  </header> 

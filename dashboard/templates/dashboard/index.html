@@ -9,14 +9,36 @@
         <div class="titulo-secao">
             <h2>
                 Painel Inicial
+
+                <div class="search">
+                    <form
+                        action="{% url 'dashboard:search' %}"
+                        method="GET">
+                    <div class="search-input-container">
+                        <input
+                            type="search"
+                            class="search-input"
+                            placeholder="Buscar um Agendamento"
+                            id="search"
+                            name="query_index"
+                            value=" {{ search_value }}"
+                            
+                        >
+                        <i class="bi bi-search search-icon"></i>
+                        
+                    </div>
+                    </form>
+                
+                </div> 
             </h2>
+            
         </div>
         <div class="all-box-info">
             <div class="box-info-single">
                 <i class="bi bi-clipboard2"></i>
                 <div class="info-text">                
                     <h3>Agendados hoje</h3>
-                    <p class="valor-box">0</p>   
+                    <p class="valor-box">{{ agendamento_diario }}</p>   
                     <br>                                 
                 </div>
                 <h4>Ver gráfico comparativo -></h4>                
@@ -115,7 +137,11 @@
                                 
                                     {{ agendamento.convenio }}
                                 
-                            </td>                         
+                            </td>      
+                            
+                            <td>
+                                {{ agendamento.status }}
+                            </td>
                             
                             
                            

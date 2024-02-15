@@ -74,7 +74,7 @@ class Atendimento(models.Model):
     total_diario = models.IntegerField(default=0)
     total_mensal = models.IntegerField(default=0)
     total_anual = models.IntegerField(default=0)
-    data_atendimento = models.DateTimeField(default=timezone.now().date())
+    data_atendimento = models.DateTimeField(default=timezone.localdate())
 
 
     def save(self, *args, **kwargs):
@@ -101,8 +101,6 @@ class Atendimento(models.Model):
         else:
             self.self.total_anual = 1
             print('total anual else', self.total_anual)
-
-
         super().save(*args, **kwargs)   
 
 
@@ -131,6 +129,36 @@ class Agendamento(models.Model):
                      ('Cancelado', 'Cancelado'),
                      ('Confirmado', 'Confirmado')]
     status = models.CharField(max_length=20, choices=opcoes_status, default='Pendente')
+    total_diario = models.IntegerField(default=0)
+    total_mensal = models.IntegerField(default=0)
+    total_anual = models.IntegerField(default=0)
+    data_agendamento = models.DateTimeField(default=timezone.localdate())
+
+    def save(self, *args, **kwargs):
+        print('dentro do metodo save agendamento')
+        hoje = timezone.now()        
+        print(hoje)
+        if self.data_agendamento == hoje.date():
+            self.total_diario += 1
+            print('total diario', self.total_diario)
+        else:
+            self.self.total_diario = 1
+            print('total diario else', self.total_diario)
+
+        if self.data_agendamento.month == hoje.month:
+            self.total_mensal += 1
+            print('total mensal', self.total_mensal)
+        else:
+            self.self.total_mensal = 1
+            print('total mensal else', self.total_mensal)
+
+        if self.data_agendamento.year == hoje.year:
+            self.total_anual += 1
+            print('total anual', self.total_anual)
+        else:
+            self.self.total_anual = 1
+            print('total anual else', self.total_anual)
+        super().save(*args, **kwargs) 
 
 
     def data_formatada(self):

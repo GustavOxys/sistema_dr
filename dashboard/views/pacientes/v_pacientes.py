@@ -28,7 +28,7 @@ def pacientes(request):
 
     return render(request, 'pacientes/pacientes.html', context)
 
-@login_required(login_url='dashboard:login')
+'''@login_required(login_url='dashboard:login')
 def search(request):
 
     search_value = request.GET.get('q', '').strip()
@@ -58,4 +58,4 @@ def search(request):
         'agendamentos': agendamentos,
     }
 
-    return render(request, 'pacientes/pacientes.html', context)
+    return render(request, 'pacientes/pacientes.html', context)'''

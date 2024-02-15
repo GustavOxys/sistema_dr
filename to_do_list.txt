@@ -25,26 +25,28 @@ Pelo visto usar px faz com quem algumas coisas fiquem mais responsiveis do que %
 
 Geral
 
-() criar novo model para data_criacao para que use-o como chave estrangeira para poder ter mais de uma consulta por pacientes, ter data da primeira, das consultas e da ultima consulta
+(v) criar novo model para data_criacao para que use-o como chave estrangeira para poder ter mais de uma consulta por pacientes, ter data da primeira, das consultas e da ultima consulta
 
 
 
 Painel
+() resolver bug da query
 () arrumar classes de status da consulta onde não está aplicando as CSSs
 () arrumar search do index que faz com que as boxes sumam (provavel problema nas views)
-() Depois de criar prontuários tornar dados das boxes dinamicos
-() arrumar icone que afz com que diminua o tamanho da sidebar
+(v) Depois de criar prontuários tornar dados das boxes dinamicos
+() arrumar icone que afz com que diminua o tamanho da header
 
 
 Agenda
+() Lógica para agenda, usuário não poder agendar pacientes em mesmo horarios ou h/ parecidos ( intervalo escolhido dinamicamente ou staticamente?)
 () criar agenda
 
 
 Pacientes
-()Criar forms create 19/10
+(v)Criar forms create 19/10
 ()criar validações no form de pacientes
 (v) diminuir tamanho do botão do form_paciente
-() mudar de adicionar paciente para registrar paciente, tirar também dados default da tabela
+(v) mudar de adicionar paciente para registrar paciente, tirar também dados default da tabela
 () Criar template parecido com o de registrar paciente, porem onde é possivel ver e editar
 () Arrumar botão que envia o usuario para o prontuario do paciente
 
