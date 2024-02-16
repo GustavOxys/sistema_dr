@@ -17,12 +17,12 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('search/', views.search, name='search'),
 
-    # Pacientes
+    
+    # Pacientes/CRUD    
     path('pacientes/', views.pacientes, name='pacientes'),
-
-    # Paciente/CRUD    
     path('patient/create/', views.create, name='create'),
     path('patient/<int:paciente_id>/', views.read_patient, name='read_patient'),    
+    path('patient/<int:paciente_id>/update/', views.update_patient, name='update_patient'),    
 
     # Agenda
     path('agenda/', views.agenda, name='agenda'),

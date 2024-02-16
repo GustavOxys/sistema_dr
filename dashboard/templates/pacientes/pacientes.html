@@ -1,25 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}    
-    <h3><a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a></h3>
+    
     {% if page_obj %}
         <div class="table-container">
             <table class="table-index">                       
                 <thead class="table-head">  
                     <tr class="table-row">
                         <th colspan="7"> <!-- colspan="7" para ocupar todas as colunas -->
-                            <h3 class="titulo-consultas">Pacientes <a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a></h3>
+                            <h3 class="titulo-consultas">Pacientes </h3>
+                            <br>
+                            <a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a>
                             
-                            <a href="{% url 'dashboard:agendar' %}"><button> Agendar Paciente</button></a>
+                            <a href="{% url 'dashboard:agendar' %}"><button> Agendar um Paciente</button></a>
                         </th>
                     </tr>                                        
                     <tr class="table-row">                        
                         <th>Nome</th>
-                        <th>Data da última consulta</th>                      
-                        <th>procedimento</th>                      
-                        <th>Convênio</th>
                         <th>ID</th>
-                        <th></th>
+                        <th>Telefone</th>
+                        <th>Última consulta</th>                       
+                        
+                        
                     </tr>
                 </thead>               
                 
@@ -32,32 +34,21 @@
                                     {{ paciente.nome }}
                                 </a>
                             </td>
-                            <td>
-                                <a href="#">
-                                    Hora da ultima consulta static
-                                </a>
-                            </td>
-                            
-                            <td>
-                                <a href="#">
-                                    {{ paciente.procedimento }}
-                                </a>
-                            </td>   
-                            <td>
-                                <a href="#">
-                                    {{ paciente.convenio }}
-                                </a>
-                            </td>  
+
                             <td>
                                 <a href="#">
                                     {{ paciente.id }}
                                 </a>
-                            </td>                      
-                            <td>
-                                
-                                    <button><a href="{% url 'dashboard:read_patient' paciente.id %}">ver cadastro</a></button>
-                                    <button><a href="#">Prontuario</a></button>
-                                
+                            </td> 
+
+                            <td>{{ paciente.telefone}}</td>
+
+                            <td>consulta statica</td>                     
+                             
+                                                 
+                            <td>                                
+                                <button><a href="#">Agendar</a></button>
+                                <button><a href="#">Prontuario</a></button>
                             </td>
                         </tr>
                     {% endfor %}  

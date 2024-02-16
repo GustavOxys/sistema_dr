@@ -36,7 +36,7 @@ def index(request):
         .order_by('data_consulta', 'hora_consulta')    
         
     # Lógica da paginação usando Paginator
-    paginator = Paginator(agendamentos, 7)
+    paginator = Paginator(agendamentos, 6)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)   
     
@@ -50,13 +50,13 @@ def index(request):
         'agendamento_diario' : agendamento_diario,           
     }
     return render(request, 'dashboard/index.html', context)
-    
+
 
 
 @login_required(login_url='dashboard:login')
 def search(request):
 
-    search_value = request.GET.get('query_index', '').strip()
+    search_value = request.GET.get('q_index', '').strip()
     data_hora_atual =  timezone.now() - timedelta(hours=3) 
     data_atual = timezone.localdate()
 
@@ -82,9 +82,10 @@ def search(request):
             Q(convenio__nome__icontains=search_value)|             
             Q(procedimento__nome__icontains=search_value)
             )\
+        .filter(paciente__owner=request.user)\
         .order_by('data_consulta', 'hora_consulta')
     
-    paginator = Paginator(agendamentos, 7)
+    paginator = Paginator(agendamentos, 6)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 

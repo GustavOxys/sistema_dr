@@ -7,7 +7,7 @@
             <h1>Registrar Paciente</h1>
             <br>
             <form
-                action="{% url 'dashboard:create' %}"
+                action="{{ form_action }}"
                 method="POST" class="form-create-patient">
                 {% csrf_token %}
                 
