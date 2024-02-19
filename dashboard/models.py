@@ -23,10 +23,9 @@ class Convenio(models.Model):
     
 
 class Paciente(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     opcoes_sexo = [('Masculino', 'Masculino'),
-                   ('Feminino', 'Feminino')]
-    
+                   ('Feminino', 'Feminino')]   
     
     nome = models.CharField(max_length=55)
     idade = models.CharField(max_length=2, blank=True, default=18)
@@ -59,9 +58,26 @@ class Paciente(models.Model):
         self.clean()  # Chama a função de validação antes de salvar
         super().save(*args, **kwargs)
     
+class Agendamento(models.Model):
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    data_consulta = models.DateField(default='0000-00-00')
+    hora_consulta = models.TimeField(default='09:00')
+    procedimento = models.ForeignKey(Procedimento, on_delete=models.DO_NOTHING)
+    convenio = models.ForeignKey(Convenio, on_delete=models.DO_NOTHING)
+    opcoes_status = [('Pendente', 'Pendente'),
+                     ('Cancelado', 'Cancelado'),
+                     ('Confirmado', 'Confirmado')]
+    status = models.CharField(max_length=20, choices=opcoes_status, default='Pendente')
+    total_diario = models.IntegerField(default=0)
+    total_mensal = models.IntegerField(default=0)
+    total_anual = models.IntegerField(default=0)
+    data_agendamento = models.DateTimeField(default=timezone.localdate())
+
 
 class Atendimento(models.Model):
-    paciente = models.ForeignKey(Paciente, on_delete=models.DO_NOTHING)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)  
+    agendamento = models.ForeignKey(Agendamento, on_delete=models.DO_NOTHING, blank=True, null=True)  
+    atendido = models.BooleanField(default=False)
     queixa_principal = models.TextField(max_length=20, blank=True)
     historia_molestia_atual = models.TextField(max_length=250, blank=True)
     historico_e_antecedentes = models.TextField(max_length=200, blank=True)
@@ -119,20 +135,7 @@ class Prontuario(models.Model):
 
 
 
-class Agendamento(models.Model):
-    paciente = models.ForeignKey(Paciente, on_delete=models.DO_NOTHING)
-    data_consulta = models.DateField(default='0000-00-00')
-    hora_consulta = models.TimeField(default='09:00')
-    procedimento = models.ForeignKey(Procedimento, on_delete=models.DO_NOTHING)
-    convenio = models.ForeignKey(Convenio, on_delete=models.DO_NOTHING)
-    opcoes_status = [('Pendente', 'Pendente'),
-                     ('Cancelado', 'Cancelado'),
-                     ('Confirmado', 'Confirmado')]
-    status = models.CharField(max_length=20, choices=opcoes_status, default='Pendente')
-    total_diario = models.IntegerField(default=0)
-    total_mensal = models.IntegerField(default=0)
-    total_anual = models.IntegerField(default=0)
-    data_agendamento = models.DateTimeField(default=timezone.localdate())
+
 
     def save(self, *args, **kwargs):
         print('dentro do metodo save agendamento')

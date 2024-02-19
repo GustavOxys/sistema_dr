@@ -11,8 +11,14 @@
         <h2>Convênio: {{ paciente.convenio}}</h2>            
         <h2>Primeira consulta: static</h2>  
 
-        <a href="{% url 'dashboard:update_patient' paciente.id %}">Editar</a>
-        <a href="#">Deletar</a>
+        <button><a href="{% url 'dashboard:update_patient' paciente.id %}">Editar</a></button>
+
+        
+        <form action="{% url 'dashboard:delete_patient' paciente.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Deletar</button>
+        </form>
+        
     </div>
 </div>
 {% endblock %}

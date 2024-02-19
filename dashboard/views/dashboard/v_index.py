@@ -15,14 +15,18 @@ app_name = 'index'
 @login_required(login_url='dashboard:login')
 def index(request):    
 
+    print('oi')
+
     data_hora_atual =  timezone.now() - timedelta(hours=3)    
     data_atual = timezone.localdate()    
 
     atendimentos = Atendimento.objects.filter(
         paciente__owner=request.user)
+
     atendimentos_diarios = Atendimento.objects.filter(
         paciente__owner=request.user, 
-        data_atendimento=data_atual)    
+        data_atendimento=data_atual)  
+
     total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos)    
     total_diario = sum(atendimento.total_diario for atendimento in atendimentos_diarios)       
     
@@ -34,6 +38,7 @@ def index(request):
         .filter(paciente__owner=request.user, paciente__show=True)\
         .filter(Q(data_consulta__gt=data_hora_atual) | (Q(data_consulta=data_hora_atual, hora_consulta__gte=data_hora_atual)))\
         .order_by('data_consulta', 'hora_consulta')    
+        
         
     # Lógica da paginação usando Paginator
     paginator = Paginator(agendamentos, 6)

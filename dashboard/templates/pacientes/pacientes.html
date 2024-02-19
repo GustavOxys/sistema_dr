@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}    
+<div class="titulo-secao-pront">
+    <a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a>
+    <a href="{% url 'dashboard:agendar' %}"><button> Agendar um Paciente</button></a>
+</div>
     
     {% if page_obj %}
         <div class="table-container">
@@ -9,10 +13,6 @@
                     <tr class="table-row">
                         <th colspan="7"> <!-- colspan="7" para ocupar todas as colunas -->
                             <h3 class="titulo-consultas">Pacientes </h3>
-                            <br>
-                            <a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a>
-                            
-                            <a href="{% url 'dashboard:agendar' %}"><button> Agendar um Paciente</button></a>
                         </th>
                     </tr>                                        
                     <tr class="table-row">                        
@@ -66,3 +66,4 @@
         
     {% endif %}
 {% endblock %}
+                                                       

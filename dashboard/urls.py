@@ -23,6 +23,7 @@ urlpatterns = [
     path('patient/create/', views.create, name='create'),
     path('patient/<int:paciente_id>/', views.read_patient, name='read_patient'),    
     path('patient/<int:paciente_id>/update/', views.update_patient, name='update_patient'),    
+    path('patient/<int:paciente_id>/delete/', views.delete_patient, name='delete_patient'),    
 
     # Agenda
     path('agenda/', views.agenda, name='agenda'),

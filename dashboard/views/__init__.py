@@ -15,3 +15,4 @@ from .usuarios.v_update_user import *
 from .pacientes.v_read_patient import *
 from .agenda.v_form_agendamento import *
 from .pacientes.v_update_patient import *
+from .pacientes.v_delete_patient import *
