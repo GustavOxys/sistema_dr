@@ -13,15 +13,14 @@ app_name = 'index'
 
 
 @login_required(login_url='dashboard:login')
-def index(request):    
-
-    print('oi')
+def index(request):      
 
     data_hora_atual =  timezone.now() - timedelta(hours=3)    
     data_atual = timezone.localdate()    
 
     atendimentos = Atendimento.objects.filter(
         paciente__owner=request.user)
+    
 
     atendimentos_diarios = Atendimento.objects.filter(
         paciente__owner=request.user, 
@@ -30,8 +29,9 @@ def index(request):
     total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos)    
     total_diario = sum(atendimento.total_diario for atendimento in atendimentos_diarios)       
     
-    agendamentos_diarios = Agendamento.objects.filter(paciente__owner=request.user, data_agendamento=data_atual)    
+    agendamentos_diarios = Agendamento.objects.filter(paciente__owner=request.user, data_agendamento=data_atual)     
     agendamento_diario = sum(agendamento.total_diario for agendamento in agendamentos_diarios)
+    
 
     # Realiza consulta SQL e filtra apenas agendamentos do próprio usuário, que seja maior que a data e hora atual e ordena por data e hora do agendamento
     agendamentos = Agendamento.objects\

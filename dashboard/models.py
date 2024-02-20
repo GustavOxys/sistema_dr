@@ -60,6 +60,7 @@ class Paciente(models.Model):
     
 class Agendamento(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    
     data_consulta = models.DateField(default='0000-00-00')
     hora_consulta = models.TimeField(default='09:00')
     procedimento = models.ForeignKey(Procedimento, on_delete=models.DO_NOTHING)
@@ -73,10 +74,41 @@ class Agendamento(models.Model):
     total_anual = models.IntegerField(default=0)
     data_agendamento = models.DateTimeField(default=timezone.localdate())
 
+    def save(self, *args, **kwargs):
+        print('dentro do metodo save agendamento')
+        hoje = timezone.now()        
+        print(hoje)
+        if self.data_agendamento == hoje.date():
+            self.total_diario += 1
+            print('total diario', self.total_diario)
+        else:
+            self.self.total_diario = 1
+            print('total diario else', self.total_diario)
+
+        if self.data_agendamento.month == hoje.month:
+            self.total_mensal += 1
+            print('total mensal', self.total_mensal)
+        else:
+            self.self.total_mensal = 1
+            print('total mensal else', self.total_mensal)
+
+        if self.data_agendamento.year == hoje.year:
+            self.total_anual += 1
+            print('total anual', self.total_anual)
+        else:
+            self.self.total_anual = 1
+            print('total anual else', self.total_anual)
+        super().save(*args, **kwargs) 
+
+
+    def data_formatada(self):
+        return self.data_consulta.strftime('%d/%m/%y')
+
+
 
 class Atendimento(models.Model):
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)  
-    agendamento = models.ForeignKey(Agendamento, on_delete=models.DO_NOTHING, blank=True, null=True)  
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)     
+    agendamento = models.ForeignKey(Agendamento, on_delete=models.CASCADE, null=True, blank=True)  
     atendido = models.BooleanField(default=False)
     queixa_principal = models.TextField(max_length=20, blank=True)
     historia_molestia_atual = models.TextField(max_length=250, blank=True)
@@ -137,36 +169,7 @@ class Prontuario(models.Model):
 
 
 
-    def save(self, *args, **kwargs):
-        print('dentro do metodo save agendamento')
-        hoje = timezone.now()        
-        print(hoje)
-        if self.data_agendamento == hoje.date():
-            self.total_diario += 1
-            print('total diario', self.total_diario)
-        else:
-            self.self.total_diario = 1
-            print('total diario else', self.total_diario)
-
-        if self.data_agendamento.month == hoje.month:
-            self.total_mensal += 1
-            print('total mensal', self.total_mensal)
-        else:
-            self.self.total_mensal = 1
-            print('total mensal else', self.total_mensal)
-
-        if self.data_agendamento.year == hoje.year:
-            self.total_anual += 1
-            print('total anual', self.total_anual)
-        else:
-            self.self.total_anual = 1
-            print('total anual else', self.total_anual)
-        super().save(*args, **kwargs) 
-
-
-    def data_formatada(self):
-        return self.data_consulta.strftime('%d/%m/%y')
-
+    
     
 
 

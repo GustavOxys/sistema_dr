@@ -20,6 +20,6 @@ class ProcedimentoAdmin(admin.ModelAdmin):
 
 @admin.register(models.Atendimento)
 class AtendimentoAdmin(admin.ModelAdmin):
-    list_display = 'paciente', 'altura', 'peso',
+    list_display = 'id', 'paciente', 'altura', 'peso',
 
 
