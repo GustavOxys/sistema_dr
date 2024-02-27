@@ -5,7 +5,7 @@ from .prontuarios.v_prontuarios import *
 from .configuracoes.v_configuracoes import *
 from .relatorios.v_relatorios import *
 from .pacientes.v_form_patient import *
-from .prontuarios.v_prontuario import *
+from .prontuarios.v_atendimento import *
 from .prontuarios.v_form_atendimento import *
 from .usuarios.v_form_users import *
 from .teste import *

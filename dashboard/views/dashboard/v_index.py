@@ -37,7 +37,8 @@ def index(request):
     agendamentos = Agendamento.objects\
         .filter(paciente__owner=request.user, paciente__show=True)\
         .filter(Q(data_consulta__gt=data_hora_atual) | (Q(data_consulta=data_hora_atual, hora_consulta__gte=data_hora_atual)))\
-        .order_by('data_consulta', 'hora_consulta')    
+        .filter(atendido=False)\
+        .order_by('data_consulta', 'hora_consulta')
         
         
     # Lógica da paginação usando Paginator

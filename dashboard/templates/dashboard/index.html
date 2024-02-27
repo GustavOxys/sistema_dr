@@ -99,55 +99,60 @@
                         <th>Procedimento</th>
                         <th>Convênio</th>
                         <th>Status</th>
+                        <th>ID Ag</th>
                         <th></th>
                     </tr>
                 </thead>               
                 
                 
                 <tbody>
-                    {% for agendamento in page_obj %}           
+                    {% for ag in page_obj %}           
                         <tr class="table-row">                        
                             <td>
                                 <a href="#">
-                                    {{ agendamento.paciente.nome }}
+                                    {{ ag.paciente.nome }}
                                 </a>
                             </td>
 
                             <td>
                                 <a href="#">
-                                    {{ agendamento.paciente.id }}
+                                    {{ ag.paciente.id }}
                                 </a>
                             </td>
                             <td>
                                 
-                                    {{ agendamento.data_formatada }}
+                                    {{ ag.data_formatada }}
                                 
                             </td>
                             <td>
                                 
-                                    {{ agendamento.hora_consulta }}
+                                    {{ ag.hora_consulta }}
                                 
                             </td>
                             <td>
                                 
-                                    {{ agendamento.procedimento }}
+                                    {{ ag.procedimento }}
                                 
                             </td>   
                             <td>
                                 
-                                    {{ agendamento.convenio }}
+                                    {{ ag.convenio }}
                                 
                             </td>      
                             
                             <td>
-                                {{ agendamento.status }}
+                                {{ ag.status }}
+                            </td>
+
+                            <td>
+                                {{ ag.id }}
                             </td>
                             
                             
                            
                             <td>
                                 
-                                <form method="post" action="{% url 'dashboard:prontuario' agendamento.paciente.id %}">
+                                <form method="post" action="{% url 'dashboard:atendimento' ag.id %}">
                                     {% csrf_token %}
                                     <button type="submit">Iniciar Atendimento</button>
                                 </form>

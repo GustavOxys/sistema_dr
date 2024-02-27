@@ -45,19 +45,13 @@ class AtendimentoForm(forms.ModelForm):
         return queixa_principal
 
     def clean(self):        
-        queixa_principal = self.cleaned_data.get('queixa_principal')
-        altura = self.cleaned_data.get('altura')
-        peso = self.cleaned_data.get('peso')
+        queixa_principal = self.cleaned_data.get('queixa_principal')      
         
 
         if queixa_principal is None:
             self.add_error('queixa_principal', ValidationError('Esse campo é obrigatório',code='campo_obrigatorio'))
 
-        if altura is None:
-            self.add_error('altura', ValidationError('A altura é um campo obrigatório.',code='campo_obrigatorio'))
-
-        if peso is None:
-            self.add_error('peso', ValidationError('O peso é um campo Obrigatório', code='campo_obrigatorio'))
+        
 
         if any(self.errors):
             self.add_error(None, ValidationError('Ocorreu algum erro no formulário, verifique os campos novamente', code='invalid'))

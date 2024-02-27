@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from datetime import date
 import re
 from django.core.exceptions import ValidationError
+from datetime import timedelta
 
 
 
@@ -60,7 +61,7 @@ class Paciente(models.Model):
     
 class Agendamento(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    
+    atendido = models.BooleanField(default=False)
     data_consulta = models.DateField(default='0000-00-00')
     hora_consulta = models.TimeField(default='09:00')
     procedimento = models.ForeignKey(Procedimento, on_delete=models.DO_NOTHING)
@@ -73,6 +74,7 @@ class Agendamento(models.Model):
     total_mensal = models.IntegerField(default=0)
     total_anual = models.IntegerField(default=0)
     data_agendamento = models.DateTimeField(default=timezone.localdate())
+    data_hora_agendamento = models.DateTimeField(default=timezone.now() - timedelta(hours=3) )
 
     def save(self, *args, **kwargs):
         print('dentro do metodo save agendamento')
@@ -82,7 +84,7 @@ class Agendamento(models.Model):
             self.total_diario += 1
             print('total diario', self.total_diario)
         else:
-            self.self.total_diario = 1
+            self.total_diario = 1
             print('total diario else', self.total_diario)
 
         if self.data_agendamento.month == hoje.month:
@@ -114,16 +116,16 @@ class Atendimento(models.Model):
     historia_molestia_atual = models.TextField(max_length=250, blank=True)
     historico_e_antecedentes = models.TextField(max_length=200, blank=True)
     exame_fisico = models.TextField(max_length=250, blank=True)
-    altura = models.DecimalField(max_digits=5, decimal_places=2, blank=True)  # Altura em metros
-    peso = models.DecimalField(max_digits=5, decimal_places=2, blank=True)  # Peso em quilogramas
+    altura = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)# Altura em metros
+    peso = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)# Peso em quilogramas
     imc = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     diagnostico = models.TextField(max_length=50, blank=True)
     condutas = models.TextField(max_length=250, blank=True)
     total_diario = models.IntegerField(default=0)
     total_mensal = models.IntegerField(default=0)
     total_anual = models.IntegerField(default=0)
-    data_atendimento = models.DateTimeField(default=timezone.localdate())
-
+    data_atendimento = models.DateTimeField(default=timezone.localdate()   )
+    data_hora_atendimento = models.DateTimeField(default=timezone.now() - timedelta(hours=3) )
 
     def save(self, *args, **kwargs):
         print('dentro do metodo save')
@@ -133,7 +135,7 @@ class Atendimento(models.Model):
             self.total_diario += 1
             print('total diario', self.total_diario)
         else:
-            self.self.total_diario = 1
+            self.total_diario = 1
             print('total diario else', self.total_diario)
 
         if self.data_atendimento.month == hoje.month:
@@ -164,6 +166,11 @@ class Prontuario(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     resumo = models.TextField(blank=True)
     atendimento = models.ForeignKey(Atendimento, on_delete=models.CASCADE, related_name="prontuarios")
+
+
+
+
+
 
 
 

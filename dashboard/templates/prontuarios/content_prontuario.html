@@ -20,7 +20,7 @@
                 
                 <br>
                 <form
-                    action="{% url 'dashboard:prontuario' paciente.id %}"
+                    action="{% url 'dashboard:atendimento' agendamento.id %}"
                     method="POST">
                     {% csrf_token %}
                     
