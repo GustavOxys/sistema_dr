@@ -78,6 +78,7 @@ def search(request):
     agendamento_diario = sum(agendamento.total_diario for agendamento in agendamentos_diarios)
 
     if search_value == '':
+        print('dentro de search value')
         return redirect('dashboard:index')    
 
     agendamentos = Agendamento.objects\

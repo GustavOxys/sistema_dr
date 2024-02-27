@@ -28,23 +28,24 @@ def pacientes(request):
 
     return render(request, 'pacientes/pacientes.html', context)
 
-'''@login_required(login_url='dashboard:login')
-def search(request):
+@login_required(login_url='dashboard:login')
+def search_patient(request):
 
-    search_value = request.GET.get('q', '').strip()
+    search_value_patient = request.GET.get('q_patient', '').strip()
     
 
-    if search_value == '':
+    if search_value_patient == '':
+        print('dentro de search value patient')
         return redirect('dashboard:pacientes')    
 
     pacientes = Paciente.objects\
         .filter(show=True)\
-            .filter(
-            Q(nome__icontains=search_value)|
-            Q(convenio__nome__icontains=search_value)|             
-            Q(procedimento__nome__icontains=search_value)|
-            Q(id__icontains=search_value)
-            )\
+        .filter(owner=request.user)\
+        .filter(
+        Q(telefone__icontains=search_value_patient)|
+        Q(nome__icontains=search_value_patient)|            
+        Q(id__icontains=search_value_patient)
+        )\
         .order_by('id')
     
     paginator = Paginator(pacientes, 12)
@@ -54,8 +55,9 @@ def search(request):
     context = {
         'page_obj' : page_obj,
         'site_title' : 'Search - ',
-        'search_value' : search_value,
-        'agendamentos': agendamentos,
+        'search_value_patient' : search_value_patient
+        ,
+        'pacientes': pacientes,
     }
 
-    return render(request, 'pacientes/pacientes.html', context)'''
+    return render(request, 'pacientes/pacientes.html', context)
