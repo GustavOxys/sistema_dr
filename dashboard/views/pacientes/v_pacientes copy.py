@@ -24,7 +24,18 @@ def pacientes(request):
         .filter(paciente=OuterRef('pk'))\
         .values('paciente')\
         .annotate(ultimo_atendimento=Max('data_hora_atendimento'))\
-        .values('ultimo_atendimento').distinct() 
+        .values('ultimo_atendimento').distinct()
+    consulta_auxiliar = Paciente.objects.annotate(
+    ultimos_atendimentos=Subquery(
+        Atendimento.objects
+        .filter(paciente=OuterRef('pk'))
+        .values('paciente')
+        .annotate(ultimo_atendimento=Max('data_hora_atendimento'))
+        .values('ultimo_atendimento').distinct()
+    )
+    )
+    for paciente in consulta_auxiliar:
+        print(paciente.ultimos_atendimentos)
     
     
 
@@ -33,11 +44,18 @@ def pacientes(request):
     
 
     pacientes_sem_atendimentos = pacientes_com_atendimentos\
-        .filter(ultimo_atendimento__isnull=True)   
+        .filter(ultimo_atendimento__isnull=True)
    
 
     pacientes_com_atendimentos = list(pacientes_com_atendimentos\
-        .values('id', 'nome', 'telefone', 'ultimo_atendimento'))     
+        .values('id', 'nome', 'telefone', 'ultimo_atendimento'))
+    
+    
+
+    pacientes_com_atendimentos.extend(list(pacientes_sem_atendimentos.values('id', 'nome', 'telefone', 'ultimo_atendimento')))
+
+    
+    
     
     
     paginator = Paginator(pacientes_com_atendimentos, 10)

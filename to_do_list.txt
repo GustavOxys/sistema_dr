@@ -30,9 +30,9 @@ Geral
 
 
 Painel
-() resolver bug da query
+(v) resolver bug da query
 () arrumar classes de status da consulta onde não está aplicando as CSSs
-() arrumar search do index que faz com que as boxes sumam (provavel problema nas views)
+(v) arrumar search do index que faz com que as boxes sumam (provavel problema nas views)
 (v) Depois de criar prontuários tornar dados das boxes dinamicos
 () arrumar icone que afz com que diminua o tamanho da header
 

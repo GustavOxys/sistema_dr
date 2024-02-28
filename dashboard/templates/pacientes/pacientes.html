@@ -34,7 +34,7 @@
             <table class="table-index">                       
                 <thead class="table-head">  
                     <tr class="table-row">
-                        <th colspan="7"> <!-- colspan="7" para ocupar todas as colunas -->
+                        <th colspan="7"> 
                             <h3 class="titulo-consultas">Pacientes </h3>
                         </th>
                     </tr>                                        
@@ -50,23 +50,23 @@
                 
                 
                 <tbody>
-                    {% for paciente in page_obj %}           
+                    {% for p in page_obj %}           
                         <tr class="table-row">                        
                             <td>
-                                <a href="{% url 'dashboard:read_patient' paciente.id %}">
-                                    {{ paciente.nome }}
+                                <a href="{% url 'dashboard:read_patient' p.id %}">
+                                    {{ p.nome }}
                                 </a>
                             </td>
 
                             <td>
                                 <a href="#">
-                                    {{ paciente.id }}
+                                    {{ p.id }}
                                 </a>
                             </td> 
 
-                            <td>{{ paciente.telefone}}</td>
+                            <td>{{ p.telefone}}</td>
 
-                            <td>consulta statica</td>                     
+                            <td> {{ p.ultimo_atendimento }}</td>                     
                              
                                                  
                             <td>                                
