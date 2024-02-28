@@ -67,10 +67,28 @@ def search_patient(request):
         Q(id__icontains=search_value)
         )\
         .order_by('id')
+
+    ultimos_atendimentos = Atendimento.objects\
+        .filter(paciente=OuterRef('pk'))\
+        .values('paciente')\
+        .annotate(ultimo_atendimento=Max('data_hora_atendimento'))\
+        .values('ultimo_atendimento').distinct()    
     
-    paginator = Paginator(pacientes, 12)
+
+    pacientes_com_atendimentos = pacientes\
+        .annotate(ultimo_atendimento=Subquery(ultimos_atendimentos))      
+   
+
+    pacientes_com_atendimentos = list(pacientes_com_atendimentos\
+        .values('id', 'nome', 'telefone', 'ultimo_atendimento'))    
+    
+    paginator = Paginator(pacientes_com_atendimentos, 12)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
+
+    for paciente_info in page_obj.object_list:
+        if paciente_info['ultimo_atendimento'] is None:
+            paciente_info['ultimo_atendimento'] = "Sem atendimentos"
 
     context = {
         'page_obj' : page_obj,
