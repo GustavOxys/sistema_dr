@@ -24,16 +24,11 @@ def pacientes(request):
         .filter(paciente=OuterRef('pk'))\
         .values('paciente')\
         .annotate(ultimo_atendimento=Max('data_hora_atendimento'))\
-        .values('ultimo_atendimento').distinct() 
-    
+        .values('ultimo_atendimento').distinct()    
     
 
     pacientes_com_atendimentos = pacientes\
-        .annotate(ultimo_atendimento=Subquery(ultimos_atendimentos))
-    
-
-    pacientes_sem_atendimentos = pacientes_com_atendimentos\
-        .filter(ultimo_atendimento__isnull=True)   
+        .annotate(ultimo_atendimento=Subquery(ultimos_atendimentos))      
    
 
     pacientes_com_atendimentos = list(pacientes_com_atendimentos\
