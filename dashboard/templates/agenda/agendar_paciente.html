@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content">
+    <div class="titulo-secao">
+        <div class="form_patient">
+            <h1>Agendar Paciente</h1>
+            <br>
+            <form
+                action="{% url 'dashboard:agendar_paciente' paciente.id %}"
+                method="post" class="form-create-patient">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
