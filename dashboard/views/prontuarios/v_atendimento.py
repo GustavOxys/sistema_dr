@@ -6,24 +6,18 @@ from datetime import datetime
 
 @login_required(login_url='dashboard:login')
 def atendimento(request, agendamento_id):
-    agendamento = get_object_or_404(Agendamento, pk=agendamento_id)
-    print('paciente id', agendamento.paciente.id)
+    agendamento = get_object_or_404(Agendamento, pk=agendamento_id)    
     
-    if request.method == 'POST':
-        print('Se o metodo é post')
+    if request.method == 'POST':        
         form = AtendimentoForm(agendamento_id, request.POST)
         
         if form.is_valid():
-            atendimento = form.save(commit=False)
-            print('agendamento id', agendamento_id)
-            atendimento.paciente = agendamento.paciente
-            print('paciente id', atendimento.paciente.id)
-            print('agendamento atendido:', agendamento.id , agendamento.atendido)
-            agendamento.atendido = True  
-            print('agendamento atendido:', agendamento.id , agendamento.atendido)           
+            atendimento = form.save(commit=False)            
+            atendimento.paciente = agendamento.paciente            
+            agendamento.atendido = True                      
             atendimento.save()
             agendamento.save()
-            print('agendamento atendido:', agendamento.id , agendamento.atendido)   
+             
             return redirect('dashboard:index')
     else:
         form = AtendimentoForm(agendamento_id=agendamento_id)

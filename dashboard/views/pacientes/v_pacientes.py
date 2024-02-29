@@ -8,9 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Max, OuterRef, Subquery
 
 
-
-#o Q é uma função para poder utilizar o '|' que faz a função de 'or' e não 'and' na consulta sql
-
 @login_required(login_url='dashboard:login')
 def pacientes(request):    
     data_hora_atual =  timezone.now() - timedelta(hours=3)

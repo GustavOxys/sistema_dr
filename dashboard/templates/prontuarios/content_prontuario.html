@@ -3,11 +3,12 @@
 {% block content %}
     <div class="content">
         <div class="titulo-secao-pront">       
-            <h1>{{ paciente.nome }} </h1>
+            <h1>{{ agendamento.paciente.nome }} </h1>
             <br>
-            <h2>Idade: {{ paciente.idade }}</h2>            
-            <h2>Convênio: {{ paciente.convenio}}</h2>            
-            <h2>Primeira consulta: static</h2>  
+            <h2>Idade: {{ agendamento.paciente.idade }}</h2>            
+            <h2>Convênio: {{ agendamento.convenio}}</h2>            
+            <h2>Procedimento: {{ agendamento.procedimento}}</h2>            
+             
         </div>
 
         <div class="titulo-secao-avulso">

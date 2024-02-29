@@ -30,6 +30,7 @@ urlpatterns = [
     # Agenda
     path('agenda/', views.agenda, name='agenda'),
     path('agendar/', views.agendar, name='agendar'), 
+    
 
     # Prontuários
     path('prontuarios/', views.prontuarios, name='prontuarios'),
