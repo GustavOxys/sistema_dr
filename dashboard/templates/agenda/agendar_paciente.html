@@ -4,13 +4,26 @@
 <div class="content">
     <div class="titulo-secao">
         <div class="form_patient">
-            <h1>Agendar Paciente</h1>
+            <h1>Agendar Paciente </h1>
+            <br>
+            <h2>{{ paciente.nome }}</h2>
             <br>
             <form
                 action="{% url 'dashboard:agendar_paciente' paciente.id %}"
                 method="post" class="form-create-patient">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+
+                {% endfor %}
+                {% for error in form.email.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+
 
                 <input type="submit" value="Enviar">
             </form>
