@@ -16,7 +16,9 @@ app_name = 'index'
 def index(request):      
 
     data_hora_atual =  timezone.now() - timedelta(hours=3)    
-    data_atual = timezone.localdate()    
+    data_atual = timezone.localdate() 
+    mes_atual = timezone.localdate().month
+      
 
     atendimentos = Atendimento.objects.filter(
         paciente__owner=request.user)
@@ -24,9 +26,14 @@ def index(request):
 
     atendimentos_diarios = Atendimento.objects.filter(
         paciente__owner=request.user, 
-        data_atendimento=data_atual)  
+        data_atendimento=data_atual)
 
-    total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos)    
+    atendimentos_mensais = Atendimento.objects.filter(
+        paciente__owner=request.user,
+        data_atendimento__month=mes_atual
+    ) 
+
+    total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos_mensais)    
     total_diario = sum(atendimento.total_diario for atendimento in atendimentos_diarios)       
     
     agendamentos_diarios = Agendamento.objects.filter(paciente__owner=request.user, data_agendamento=data_atual)     

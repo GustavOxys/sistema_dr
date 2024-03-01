@@ -44,7 +44,7 @@ def agendar_paciente(request, paciente_id):
             agendamento.paciente = paciente  # Atribua o paciente ao agendamento            
             agendamento.save()
             
-            return redirect('dashboard:agenda')
+            return redirect('dashboard:index')
         else:
             return HttpResponse("Esta é uma resposta HTTP!")
     else:

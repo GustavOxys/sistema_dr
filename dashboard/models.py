@@ -124,7 +124,7 @@ class Atendimento(models.Model):
     total_diario = models.IntegerField(default=0)
     total_mensal = models.IntegerField(default=0)
     total_anual = models.IntegerField(default=0)
-    data_atendimento = models.DateTimeField(default=timezone.localdate()   )
+    data_atendimento = models.DateField(default=timezone.localdate)
     data_hora_atendimento = models.DateTimeField(default=timezone.now() - timedelta(hours=3) )
 
     def save(self, *args, **kwargs):
@@ -142,14 +142,14 @@ class Atendimento(models.Model):
             self.total_mensal += 1
             print('total mensal', self.total_mensal)
         else:
-            self.self.total_mensal = 1
+            self.total_mensal = 1
             print('total mensal else', self.total_mensal)
 
         if self.data_atendimento.year == hoje.year:
             self.total_anual += 1
             print('total anual', self.total_anual)
         else:
-            self.self.total_anual = 1
+            self.total_anual = 1
             print('total anual else', self.total_anual)
         super().save(*args, **kwargs)   
 

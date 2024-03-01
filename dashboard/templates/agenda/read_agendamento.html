@@ -4,8 +4,10 @@
 {% block content %}
 <div class="content">
     <div class="titulo-secao-pront">  
-        {% include 'partials/_messages.html' %}     
-        <h1>{{ agendamento.paciente.nome }} </h1>
+        {% include 'partials/_messages.html' %} 
+        <h1>AGENDAMENTO</h1>    
+        <br>
+        <h2> Paciente: {{ agendamento.paciente.nome }} </h1>
         <br>
         <h2> ID: {{ agendamento.paciente.id }}</h2>
         <br>
@@ -18,11 +20,11 @@
         <h2> ID Agendamento: {{ agendamento.id }}</h2>
         <br>
 
-        <button><a href="{% url 'dashboard:update_agendamento' agendamento.id %}">Editar</a></button>
+        <button><a href="{% url 'dashboard:update_agendamento' agendamento.id %}">Editar Agendamento</a></button>
                 
         <form action="{% url 'dashboard:delete_agendamento' agendamento.id %}" method="POST">
             {% csrf_token %}
-            <button type="submit">Deletar</button>
+            <button type="submit">Deletar Agendamento</button>
         </form>
         
     </div>

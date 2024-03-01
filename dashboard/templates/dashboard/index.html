@@ -109,13 +109,13 @@
                     {% for ag in page_obj %}           
                         <tr class="table-row">                        
                             <td>
-                                <a href="#">
+                                <a href="{% url 'dashboard:read_patient' ag.paciente.id %}">
                                     {{ ag.paciente.nome }}
                                 </a>
                             </td>
 
                             <td>
-                                <a href="#">
+                                <a href="{% url 'dashboard:read_patient' ag.paciente.id %}">
                                     {{ ag.paciente.id }}
                                 </a>
                             </td>
