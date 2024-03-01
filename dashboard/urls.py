@@ -17,6 +17,12 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('search/', views.search, name='search'),
 
+    # Agenda/CRUD    
+    path('agendar/', views.agendar, name='agendar'), 
+    path('agendar/<int:paciente_id>/', views.agendar_paciente, name='agendar_paciente'), 
+    path('agendamento/<int:agendamento_id>/', views.read_agendamento, name='read_agendamento'), 
+    path('agendamento/<int:agendamento_id>/update/',views.update_agendamento, name='update_agendamento'), 
+    path('agendamento/<int:agendamento_id>/delete/',views.delete_agendamento, name='delete_agendamento'), 
     
     # Pacientes/CRUD    
     path('pacientes/', views.pacientes, name='pacientes'),
@@ -25,13 +31,6 @@ urlpatterns = [
     path('patient/<int:paciente_id>/update/', views.update_patient, name='update_patient'),    
     path('patient/<int:paciente_id>/delete/', views.delete_patient, name='delete_patient'), 
     path('search_patient/', views.search_patient, name='search_patient'),
-
-
-    # Agenda
-    path('agenda/', views.agenda, name='agenda'),
-    path('agendar/', views.agendar, name='agendar'), 
-    path('agendar/<int:paciente_id>/', views.agendar_paciente, name='agendar_paciente'), 
-    
 
     # Prontuários
     path('prontuarios/', views.prontuarios, name='prontuarios'),

@@ -12,6 +12,7 @@ def update_patient(request, paciente_id):
     form_action = reverse('dashboard:update_patient', args=(paciente_id,))
 
     if request.method == 'POST':
+        print('metodo é post patient')
         form = PatientForm(request.POST, instance=patient)
         context = {
             'form' : form,
@@ -27,7 +28,7 @@ def update_patient(request, paciente_id):
         else:
             messages.error(request, 'Ocorreu algum erro ao salvar o formulário')  
             return render(request, 'pacientes/create.html', context) 
-            
+    print('passou direto pelo if post patient')        
     context = {
         'form' : PatientForm(instance=patient),
         'form_action' :form_action

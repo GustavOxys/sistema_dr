@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="content">
+    <div class="titulo-secao-pront">  
+        {% include 'partials/_messages.html' %}     
+        <h1>{{ agendamento.paciente.nome }} </h1>
+        <br>
+        <h2> ID: {{ agendamento.paciente.id }}</h2>
+        <br>
+        <h2> Data: {{ agendamento.data_consulta }}</h2>  
+        <br>
+        <h2> Hora: {{ agendamento.hora_consulta }}</h2>
+        <br>
+        <h2> Procedimento: {{ agendamento.procedimento }}</h2>
+        <br>   
+        <h2> ID Agendamento: {{ agendamento.id }}</h2>
+        <br>
+
+        <button><a href="{% url 'dashboard:update_agendamento' agendamento.id %}">Editar</a></button>
+                
+        <form action="{% url 'dashboard:delete_agendamento' agendamento.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Deletar</button>
+        </form>
+        
+    </div>
+</div>
+{% endblock %}
+    

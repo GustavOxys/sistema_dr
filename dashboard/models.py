@@ -91,14 +91,14 @@ class Agendamento(models.Model):
             self.total_mensal += 1
             print('total mensal', self.total_mensal)
         else:
-            self.self.total_mensal = 1
+            self.total_mensal = 1
             print('total mensal else', self.total_mensal)
 
         if self.data_agendamento.year == hoje.year:
             self.total_anual += 1
             print('total anual', self.total_anual)
         else:
-            self.self.total_anual = 1
+            self.total_anual = 1
             print('total anual else', self.total_anual)
         super().save(*args, **kwargs) 
 

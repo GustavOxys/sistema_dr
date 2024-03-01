@@ -6,10 +6,7 @@
         class="{% if current_path == '/' %}active{% endif %}" >
         <i class="bi bi-house-door"></i>
         Painel</a>
-    <a href="{% url 'dashboard:agenda' %}"
-        class="{% if current_path == '/agenda/' %}active{% endif %}"> 
-        <i class="bi bi-calendar2-date"></i>
-        Agenda</a>
+    
     <a href="{% url 'dashboard:pacientes' %}"
         class="{% if current_path == '/pacientes/' %}active{% endif %}">
         <i class="bi bi-person"></i>

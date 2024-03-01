@@ -1,5 +1,4 @@
 from .dashboard.v_index import *
-from .agenda.v_agenda import *
 from .pacientes.v_pacientes import *
 from .prontuarios.v_prontuarios import *
 from .configuracoes.v_configuracoes import *
@@ -16,3 +15,6 @@ from .pacientes.v_read_patient import *
 from .agenda.v_form_agendamento import *
 from .pacientes.v_update_patient import *
 from .pacientes.v_delete_patient import *
+from .agenda.v_read_agendamento import *
+from .agenda.v_update_agendamento import *
+from .agenda.v_delete_agendamento import *

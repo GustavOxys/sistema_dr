@@ -7,7 +7,7 @@
             <h1>Agendar Paciente</h1>
             <br>
             <form
-                action="{% url 'dashboard:agendar' %}"
+                action="{{ form_action }}"
                 method="post" class="form-create-patient">
                 {% csrf_token %}
                 
