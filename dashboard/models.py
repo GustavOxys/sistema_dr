@@ -118,7 +118,7 @@ class Atendimento(models.Model):
     exame_fisico = models.TextField(max_length=250, blank=True)
     altura = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)# Altura em metros
     peso = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)# Peso em quilogramas
-    imc = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    imc = models.FloatField(null=True, blank=True)
     diagnostico = models.TextField(max_length=50, blank=True)
     condutas = models.TextField(max_length=250, blank=True)
     total_diario = models.IntegerField(default=0)
@@ -151,14 +151,19 @@ class Atendimento(models.Model):
         else:
             self.total_anual = 1
             print('total anual else', self.total_anual)
+        
+        if self.altura > 0 and self.peso > 0:
+            print('dentro de if IMC')
+            # Realiza o cálculo do IMC
+            self.imc = self.peso / (self.altura * self.altura)
+            print(self.imc)
+        
+
+
         super().save(*args, **kwargs)   
 
 
-    def saveimc(self, *args, **kwargs):
-        if self.altura > 0 and self.peso > 0:
-            # Realiza o cálculo do IMC
-            self.imc = self.peso / (self.altura * self.altura)
-        super(Atendimento, self).saveimc(*args, **kwargs)
+    
 
     
 
