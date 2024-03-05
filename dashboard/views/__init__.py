@@ -1,20 +1,40 @@
-from .dashboard.v_index import *
-from .pacientes.v_pacientes import *
-from .prontuarios.v_prontuarios import *
-from .configuracoes.v_configuracoes import *
-from .relatorios.v_relatorios import *
-from .pacientes.v_form_patient import *
-from .prontuarios.v_atendimento import *
-from .prontuarios.v_form_atendimento import *
+# User
 from .usuarios.v_form_users import *
-from .teste import *
 from .usuarios.v_login_user import *
 from .usuarios.v_logout_user import *
 from .usuarios.v_update_user import *
-from .pacientes.v_read_patient import *
-from .agenda.v_form_agendamento import *
-from .pacientes.v_update_patient import *
-from .pacientes.v_delete_patient import *
+
+# Index
+from .dashboard.v_index import *
+
+# Agenda
 from .agenda.v_read_agendamento import *
 from .agenda.v_update_agendamento import *
 from .agenda.v_delete_agendamento import *
+from .agenda.v_form_agendamento import *
+
+# Pacientes
+from .pacientes.v_pacientes import *
+from .pacientes.v_form_patient import *
+from .pacientes.v_update_patient import *
+from .pacientes.v_delete_patient import *
+from .pacientes.v_read_patient import *
+
+# Prontuarios
+from .prontuarios.v_prontuarios import *
+from .prontuarios.v_atendimento import *
+from .prontuarios.v_form_atendimento import *
+from .prontuarios.v_prontuarios_especificos import *
+
+# Relatórios
+from .relatorios.v_relatorios import *
+
+# Configurações
+from .configuracoes.v_configuracoes import *
+
+
+from .teste import *
+
+
+
+

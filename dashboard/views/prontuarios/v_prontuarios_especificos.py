@@ -1,18 +1,20 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from dashboard.models import Atendimento, Agendamento
+from dashboard.models import Atendimento
 from django.core.paginator import Paginator
 
 
 @login_required(login_url='dashboard:login')
-def prontuarios(request):
+def prontuarios_especificos(request, paciente_id):
     user = request.user
 
-    prontuarios = Atendimento.objects.filter(paciente__owner=user).order_by('-data_hora_atendimento')
-    agendamentos = Agendamento.objects.filter(paciente__owner=user)
+    prontuarios = Atendimento.objects\
+        .filter(paciente__owner=user)\
+        .filter(paciente__id=paciente_id)\
+        .order_by('-data_hora_atendimento')
 
     for p in prontuarios:
-        print('prontuario:', p.paciente.nome, p.agendamento)
+        nome = p.paciente.nome      
 
     paginator = Paginator(prontuarios, 12)
     page_number = request.GET.get("page")
@@ -21,7 +23,7 @@ def prontuarios(request):
     context = {
         'page_obj' : page_obj,
         'prontuarios' : prontuarios,
-        'agendamentos' : agendamentos,
+        'nome' : nome,        
     }
-
-    return render(request, 'prontuarios/prontuarios.html', context)
+    
+    return render(request, 'prontuarios/prontuarios_especificos.html', context)

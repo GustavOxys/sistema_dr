@@ -71,7 +71,7 @@
                                                  
                             <td>                                
                                 <button><a href="{% url 'dashboard:agendar_paciente' p.id %}">Agendar</a></button>
-                                <button><a href="#">Prontuario</a></button>
+                                <button><a href="{% url 'dashboard:prontuarios_especificos' p.id %}">Prontuario</a></button>
                             </td>
                         </tr>
                     {% endfor %}  

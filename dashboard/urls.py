@@ -34,6 +34,8 @@ urlpatterns = [
 
     # Prontuários
     path('prontuarios/', views.prontuarios, name='prontuarios'),
+    path('prontuarios/<int:paciente_id>/', views.prontuarios_especificos, name='prontuarios_especificos'),
+    
 
     # Atendimento
     

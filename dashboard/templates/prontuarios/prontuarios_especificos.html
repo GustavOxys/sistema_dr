@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}    
+{% if page_obj %}
+    <div class="table-container">
+        <table class="table-index">                       
+            <thead class="table-head">  
+                <tr class="table-row">                        
+                    <th colspan="7"> 
+                        <h3 class="titulo-consultas">Prontuários - {{nome}} </h3>
+                    </th>               
+                </tr>                                        
+                <tr class="table-row">                      
+                    <th>ID</th> 
+                    <th>Atendimentos</th>
+                    <th>Queixa Principal</th>
+                    <th>Procedimento</th>                       
+                    <th>Convênio</th>                   
+                    <th></th>                       
+                </tr>
+            </thead>               
+            <tbody>
+                {% for p in page_obj %}           
+                    <tr class="table-row">        
+                        <td> {{p.id}} </td> 
+                        <td>{{ p.data_hora_atendimento }}</td>                            
+                        <td>{{ p.queixa_principal }}</td>
+                        <td>{{ p.agendamento.procedimento.nome }} </td>                            
+                        <td> {{p.agendamento.convenio}} </td>
+                        <td>                                
+                            <button><a href="{% url 'dashboard:prontuarios_especificos' p.paciente.id %}">Prontuario</a></button>
+                        </td>                                
+                    </tr>                        
+                {% endfor %}  
+            </tbody>  
+        </table>
+        {% include 'partials/_pagination.html' %}  
+    </div> 
+    {% else %}
+    <div class="titulo-secao">
+        <h2>
+            Nenhum Prontuário registrado.
+        </h2>
+    </div>        
+{% endif %}
+{% endblock %}
+                                                       
+                            
+                        
+                                              
+                        
+                        
+                
+                
+                            
+                                
+                            
