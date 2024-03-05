@@ -125,7 +125,7 @@ class Atendimento(models.Model):
     total_mensal = models.IntegerField(default=0)
     total_anual = models.IntegerField(default=0)
     data_atendimento = models.DateField(default=timezone.localdate)
-    data_hora_atendimento = models.DateTimeField(default=timezone.now() - timedelta(hours=3) )
+    data_hora_atendimento = models.DateTimeField(default=timezone.now())
 
     def save(self, *args, **kwargs):
         print('dentro do metodo save')

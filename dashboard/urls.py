@@ -24,7 +24,7 @@ urlpatterns = [
     path('agendamento/<int:agendamento_id>/update/',views.update_agendamento, name='update_agendamento'), 
     path('agendamento/<int:agendamento_id>/delete/',views.delete_agendamento, name='delete_agendamento'), 
     
-    # Pacientes/CRUD    
+    # Pacientes/CRUD/Search    
     path('pacientes/', views.pacientes, name='pacientes'),
     path('patient/create/', views.create, name='create'),
     path('patient/<int:paciente_id>/', views.read_patient, name='read_patient'),    
