@@ -26,11 +26,11 @@ def index(request):
 
     atendimentos_diarios = Atendimento.objects.filter(
         paciente__owner=request.user, 
-        data_atendimento=data_atual)
+        data_atendimento=data_atual,)
 
     atendimentos_mensais = Atendimento.objects.filter(
         paciente__owner=request.user,
-        data_atendimento__month=mes_atual
+        data_atendimento__month=mes_atual,
     ) 
 
     total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos_mensais)    

@@ -126,32 +126,34 @@ class Atendimento(models.Model):
     total_anual = models.IntegerField(default=0)
     data_atendimento = models.DateField(default=timezone.localdate)
     data_hora_atendimento = models.DateTimeField(default=timezone.now())
+    editado = models.BooleanField(default=False)
     
 
     def save(self, *args, **kwargs):
         print('dentro do metodo save')
         hoje = timezone.now()        
         print(hoje)
-        if self.data_atendimento == hoje.date():
-            self.total_diario += 1
-            print('total diario', self.total_diario)
-        else:
-            self.total_diario = 1
-            print('total diario else', self.total_diario)
+        if self.editado == False:
+            if self.data_atendimento == hoje.date():
+                self.total_diario += 1
+                print('total diario', self.total_diario)
+            else:
+                self.total_diario = 1
+                print('total diario else', self.total_diario)
 
-        if self.data_atendimento.month == hoje.month:
-            self.total_mensal += 1
-            print('total mensal', self.total_mensal)
-        else:
-            self.total_mensal = 1
-            print('total mensal else', self.total_mensal)
+            if self.data_atendimento.month == hoje.month:
+                self.total_mensal += 1
+                print('total mensal', self.total_mensal)
+            else:
+                self.total_mensal = 1
+                print('total mensal else', self.total_mensal)
 
-        if self.data_atendimento.year == hoje.year:
-            self.total_anual += 1
-            print('total anual', self.total_anual)
-        else:
-            self.total_anual = 1
-            print('total anual else', self.total_anual)
+            if self.data_atendimento.year == hoje.year:
+                self.total_anual += 1
+                print('total anual', self.total_anual)
+            else:
+                self.total_anual = 1
+                print('total anual else', self.total_anual)
         
        
         

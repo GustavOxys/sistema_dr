@@ -26,6 +26,7 @@ def update_prontuario(request, prontuario_id):
             print('dentro de valid')
             prontuario = form.save(commit=False)
             prontuario.agendamento.paciente.owner = user  
+            prontuario.editado = True
             prontuario.save()         
             messages.success(request, 'Prontuário editado com sucesso!')
             print('dps de msg')
