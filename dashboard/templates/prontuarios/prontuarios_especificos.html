@@ -28,7 +28,7 @@
                         <td>{{ p.agendamento.procedimento.nome }} </td>                            
                         <td> {{p.agendamento.convenio}} </td>
                         <td>                                
-                            <button><a href="{% url 'dashboard:prontuarios_especificos' p.paciente.id %}">Prontuario</a></button>
+                            <button><a href="{% url 'dashboard:read_prontuario' p.id %}">Prontuario</a></button>
                         </td>                                
                     </tr>                        
                 {% endfor %}  

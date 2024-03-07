@@ -9,11 +9,11 @@ from django.urls import reverse
 @login_required(login_url='dashboard:login')
 def update_agendamento(request, agendamento_id): 
     agendamento = get_object_or_404(Agendamento, pk=agendamento_id)
-    print(agendamento)
+    
     form_action = reverse('dashboard:update_agendamento', args=(agendamento_id,))
 
     if request.method == 'POST':
-        print('se metodo é post', agendamento)
+        
         form = AgendamentoForm(request.POST, instance=agendamento, user=request.user)
         context = {
             'form' : form,
@@ -29,7 +29,7 @@ def update_agendamento(request, agendamento_id):
         else:
             messages.error(request, 'Ocorreu algum erro ao salvar o formulário de Agendamento')  
             return render(request, 'agenda/agendar.html', context) 
-    print('passou direto pelo if post agendamento')        
+           
     context = {
         'form' : AgendamentoForm(instance=agendamento, user=request.user),
         'form_action' :form_action

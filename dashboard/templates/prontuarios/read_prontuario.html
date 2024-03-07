@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="content">
+    <div class="titulo-secao-pront">  
+        {% include 'partials/_messages.html' %}     
+        <h1>{{ prontuario.paciente.nome }} </h1>        
+        <br>
+        <h2>ID prontuário: {{prontuario.id}}</h2>
+        <h2>Idade: {{ prontuario.paciente.idade }}</h2>            
+        <h2>Convênio: {{ prontuario.agendamento.convenio}}</h2>            
+        <h2>Procedimento: {{ prontuario.agendamento.procedimento}}</h2>           
+    </div>
+    <div class="titulo-secao-pront">
+        <h2>Queixa Principal : {{prontuario.queixa_principal}}</h2>
+        <br>
+        <h2>Historia Molestia atual : {{prontuario.historia_molestia_atual}}</h2>
+        <br>
+        <h2>Histórico e antecedentes : {{prontuario.historico_e_antecedentes}}</h2>
+        <br>
+        <h2>Exame físico : {{prontuario.exame_fisico}}</h2>
+        <br>
+        <h2>Altura : {{prontuario.altura}}</h2>
+        <br>
+        <h2>Peso : {{prontuario.peso}}</h2>
+        <br>
+        <h2>IMC : {{prontuario.imc}}</h2>
+        <br>
+        <h2>Diagnóstico : {{prontuario.diagnostico}}</h2>
+        <br>
+        <h2>Condutas : {{prontuario.condutas}}</h2>
+
+        <button><a href="{% url 'dashboard:update_prontuario' prontuario.id %}">Editar</a></button>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <button type="submit">Deletar</button>
+
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+    
+               

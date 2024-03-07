@@ -126,6 +126,7 @@ class Atendimento(models.Model):
     total_anual = models.IntegerField(default=0)
     data_atendimento = models.DateField(default=timezone.localdate)
     data_hora_atendimento = models.DateTimeField(default=timezone.now())
+    
 
     def save(self, *args, **kwargs):
         print('dentro do metodo save')
@@ -152,11 +153,7 @@ class Atendimento(models.Model):
             self.total_anual = 1
             print('total anual else', self.total_anual)
         
-        if self.altura > 0 and self.peso > 0:
-            print('dentro de if IMC')
-            # Realiza o cálculo do IMC
-            self.imc = self.peso / (self.altura * self.altura)
-            print(self.imc)
+       
         
 
 

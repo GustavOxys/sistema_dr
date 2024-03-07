@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from dashboard.models import Paciente
-from dashboard.forms.pacientes.form_patient import PatientForm
 from django.contrib.auth.decorators import login_required
 
 

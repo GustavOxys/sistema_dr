@@ -21,7 +21,7 @@
                 
                 <br>
                 <form
-                    action="{% url 'dashboard:atendimento' agendamento.id %}"
+                    action="{{ form_action }}"
                     method="POST">
                     {% csrf_token %}
                     

@@ -10,8 +10,7 @@ urlpatterns = [
     path('user/create/', views.register_user, name='register_user'),
     path('login/', views.login_user, name='login'),
     path('user/logout/', views.logout_user, name='logout'),
-    path('user/update/', views.user_update, name='user_update'),
-    
+    path('user/update/', views.user_update, name='user_update'),    
 
     # Dashboard
     path('', views.index, name='index'),
@@ -32,23 +31,22 @@ urlpatterns = [
     path('patient/<int:paciente_id>/delete/', views.delete_patient, name='delete_patient'), 
     path('search_patient/', views.search_patient, name='search_patient'),
 
-    # Prontuários
+    # Prontuários/CRUD
     path('prontuarios/', views.prontuarios, name='prontuarios'),
     path('prontuarios/<int:paciente_id>/', views.prontuarios_especificos, name='prontuarios_especificos'),
-    
+    path('prontuario/<int:prontuario_id>/', views.read_prontuario, name='read_prontuario'),
+    path('prontuario/<int:prontuario_id>/update/', views.update_prontuario, name='update_prontuario'),
+    #path('prontuarios/<int:prontuario_id>/delete/', views.delete_prontuario,name='delete_prontuario'),    
 
-    # Atendimento
-    
+    # Atendimento    
     path('atendimento/<int:agendamento_id>/', views.atendimento, name='atendimento'),
-    path('atendimento/<int:paciente_id>/', views.atendimento_form, name='atendimento_form'),
-
-    
+    path('atendimento/<int:paciente_id>/', views.atendimento_form, name='atendimento_form'),    
     
     # Relatórios
     path('relatorios/', views.relatorios, name='relatorios'),
 
     # Configurações
-    path('configuracoes/', views.configuracoes, name='configuracoes'),  
+    path('configuracoes/', views.configuracoes, name='configuracoes'),
 
 
 ]
