@@ -15,7 +15,8 @@ def pacientes(request):
 
     pacientes = Paciente.objects\
         .filter(owner=user)\
-        .filter(show=True)
+        .filter(show=True)\
+        .order_by('-id')
 
     ultimos_atendimentos = Atendimento.objects\
         .filter(paciente=OuterRef('pk'))\

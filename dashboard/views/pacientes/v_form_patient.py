@@ -10,6 +10,7 @@ from django.urls import reverse
 @login_required(login_url='dashboard:login')
 def create(request): 
     form_action = reverse('dashboard:create')
+    nome_func = 'Registrar Paciente'
 
     if request.method == 'POST':
         form = PatientForm(request.POST)
@@ -30,7 +31,8 @@ def create(request):
             
     context = {
         'form' : PatientForm(),
-        'form_action' :form_action
+        'form_action' :form_action,
+        'nome_func' : nome_func
     }
 
     return render(request, 'pacientes/create.html', context)

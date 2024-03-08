@@ -50,12 +50,13 @@ class Paciente(models.Model):
     def __str__(self):
         return self.nome
 
-    def idade(self):
+    def calcular_idade(self):
         hoje = date.today()
         return hoje.year - self.data_nascimento.year - ((hoje.month, hoje.day) < (self.data_nascimento.month, self.data_nascimento.day))
     
 
     def save(self, *args, **kwargs):
+        self.idade = self.calcular_idade()
         self.clean()  # Chama a função de validação antes de salvar
         super().save(*args, **kwargs)
     

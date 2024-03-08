@@ -22,8 +22,14 @@
             <tbody>
                 {% for p in page_obj %}           
                     <tr class="table-row">        
-                        <td> {{p.id}} </td> 
-                        <td>{{ p.data_hora_atendimento }}</td>                            
+                        <td>
+                            <a href="{% url 'dashboard:read_prontuario' p.id %}">{{p.id}}</a>
+                        </td> 
+                        <td>
+                            <a href="{% url 'dashboard:read_prontuario' p.id %}">
+                                {{p.data_hora_atendimento}}</a>
+                        </td>
+
                         <td>{{ p.queixa_principal }}</td>
                         <td>{{ p.agendamento.procedimento.nome }} </td>                            
                         <td> {{p.agendamento.convenio}} </td>

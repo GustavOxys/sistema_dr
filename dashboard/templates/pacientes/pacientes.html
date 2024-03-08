@@ -59,7 +59,7 @@
                             </td>
 
                             <td>
-                                <a href="#">
+                                <a href="{% url 'dashboard:read_patient' p.id %}">
                                     {{ p.id }}
                                 </a>
                             </td> 
@@ -71,7 +71,7 @@
                                                  
                             <td>                                
                                 <button><a href="{% url 'dashboard:agendar_paciente' p.id %}">Agendar</a></button>
-                                <button><a href="{% url 'dashboard:prontuarios_especificos' p.id %}">Prontuario</a></button>
+                                <button><a href="{% url 'dashboard:prontuarios_especificos' p.id %}">Prontuarios</a></button>
                             </td>
                         </tr>
                     {% endfor %}  
