@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="content">
-        <div class="titulo-secao">
-            <h2>
-                Configurações
-            </h2>
-        </div>
-    </div>
+    <!-- editar_valores_padrao.html -->
+    <form method="POST">
+        {% csrf_token %}
+        {% for convenio in convenios %}
+            {{ convenio.nome }}: {{ form.valor_padrao }}
+            <br>
+        {% endfor %}
+        <button type="submit">Salvar</button>
+    </form>
+
 {% endblock %}

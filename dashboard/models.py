@@ -18,7 +18,11 @@ class Procedimento(models.Model):
 
 class Convenio(models.Model):
     nome = models.CharField(max_length=55)
-    
+    valor_padrao = models.DecimalField(default=50.50, max_digits=10, decimal_places=2)
+    n_reconsultas = models.CharField(max_length=10, default=3)
+    prazo_reconsultas = models.CharField(max_length=30, default=15)
+
+
     def __str__(self):
         return self.nome
     
@@ -129,6 +133,7 @@ class Atendimento(models.Model):
     data_hora_atendimento = models.DateTimeField(default=timezone.now())
     editado = models.BooleanField(default=False)
     
+    
 
     def save(self, *args, **kwargs):
         print('dentro do metodo save')
@@ -155,15 +160,8 @@ class Atendimento(models.Model):
             else:
                 self.total_anual = 1
                 print('total anual else', self.total_anual)
-        
-       
-        
 
-
-        super().save(*args, **kwargs)   
-
-
-    
+        super().save(*args, **kwargs)      
 
     
 
