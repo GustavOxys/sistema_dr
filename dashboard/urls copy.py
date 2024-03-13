@@ -50,11 +50,10 @@ urlpatterns = [
 
     # Configurações/Convênios/CRUD
 
-    path('convenios/', views.convenios, name='convenios'),
-    path('convenio/create/', views.create_convenio, name='create_convenio'),
-    path('convenio/<int:convenio_id>/', views.read_convenio, name='read_convenio'),
-    path('convenio/update/<int:convenio_id>/', views.update_convenio, name='update_convenio'),
-    path('convenio/delete/<int:convenio_id>/', views.delete_convenio, name='delete_convenio'),
+    #path('convenios/', views.convenios, name='convenios'),
+    #path('convenio/', views.convenios, name='convenios'),
+    #path('convenios/', views.convenios, name='convenios'),
+    #path('convenios/', views.convenios, name='convenios'),
 
 
 

@@ -35,6 +35,13 @@ from .relatorios.v_relatorios import *
 # Configurações
 from .configuracoes.v_configuracoes import *
 
+# Convênios
+from .convenios.v_convenios import *
+from .convenios.v_read_convenio import *
+from .convenios.v_create_convenio import *
+from .convenios.v_update_convenio import *
+from .convenios.v_delete_convenio import *
+
 
 from .teste import *
 

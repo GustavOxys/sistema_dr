@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content">
+    <div class="titulo-secao-pront">  
+        {% include 'partials/_messages.html' %} 
+        <h1>Convênio: {{ convenio.nome}}</h1>    
+        <br>
+        <h2> Valor da consulta: {{ convenio.valor_padrao }} </h2>
+        <br>
+        <h2> Número de reconsultas: {{ convenio.n_reconsultas }}</h2>
+        <br>
+        <h2> Prazo para reconsultas: {{ convenio.prazo_reconsultas }}</h2>  
+        <br>
+      
+
+        <button><a href="{% url 'dashboard:update_convenio' convenio.id %}">Editar Convênio</a></button>
+                
+        <form action="{% url 'dashboard:delete_convenio' convenio.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Deletar Convênio</button>
+        </form>
+        
+    </div>
+</div>
+{% endblock %}
+    

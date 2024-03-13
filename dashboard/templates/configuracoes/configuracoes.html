@@ -1,14 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!-- editar_valores_padrao.html -->
-    <form method="POST">
-        {% csrf_token %}
-        {% for convenio in convenios %}
-            {{ convenio.nome }}: {{ form.valor_padrao }}
-            <br>
-        {% endfor %}
-        <button type="submit">Salvar</button>
-    </form>
+    <button><a href="{% url 'dashboard:convenios' %}">Convênios</a></button>
 
 {% endblock %}

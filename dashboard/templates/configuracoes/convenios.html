@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="titulo-secao"><button><a href="{% url 'dashboard:create_convenio' %}">Novo Convênio</a></button></div>
+    
+    
+    {% if page_obj %}
+    <div class="table-container">
+        <table class="table-index">                       
+            <thead class="table-head">  
+                <tr class="table-row">
+                    <th colspan="7"> 
+                        <h3 class="titulo-consultas">Convênios </h3>
+                    </th>
+                </tr>                                        
+                <tr class="table-row"> 
+                    <th>ID</th>                       
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Limite de Reconsultas</th>                       
+                    <th>Prazo para Reconsultas</th>
+                </tr>
+            </thead>               
+                    
+                    
+            
+            
+            <tbody>
+                {% for p in page_obj %}           
+                    <tr class="table-row">   
+                        <td><a href="{% url 'dashboard:read_convenio' p.id %}">{{p.id}}</a></td>                     
+                        <td><a href="{% url 'dashboard:read_convenio' p.id %}">{{ p.nome }}</a></td>                            
+
+                        <td>{{ p.valor_padrao }}</td> 
+                            
+                        <td> {{ p.n_reconsultas }}</td>                     
+
+                        <td>{{ p.prazo_reconsultas}}</td>      
+                    </tr>
+                {% endfor %}  
+            </tbody>
+            
+            
+                        
+                        
+        </table>
+        
+        {% include 'partials/_pagination.html' %}  
+    
+    </div> 
+    {% else %}
+    <div class="titulo-secao">
+        <h2>
+            Nenhum Convênio registrado.
+        </h2>
+    </div>
+    
+    {% endif %}
+        
+{% endblock content %}
+    

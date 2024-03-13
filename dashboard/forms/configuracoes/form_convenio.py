@@ -4,4 +4,4 @@ from dashboard.models import Convenio
 class ConvenioForm(forms.ModelForm):
     class Meta:
         model = Convenio
-        fields = ['valor_padrao']
+        fields = 'nome', 'valor_padrao', 'n_reconsultas', 'prazo_reconsultas',
