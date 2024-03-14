@@ -34,10 +34,11 @@ def agendar(request, paciente_id=None):
 
 @login_required(login_url='dashboard:login')
 def agendar_paciente(request, paciente_id):
+    user = request.user
     paciente = get_object_or_404(Paciente, pk=paciente_id)  # Obtenha o paciente com o ID fornecido
 
     if request.method == 'POST':
-        form = AgendamentoFormP(paciente_id, request.POST)  # Passe os dados POST para o formulário
+        form = AgendamentoFormP(paciente_id, user, request.POST)  # Passe os dados POST para o formulário
 
         if form.is_valid():            
             agendamento = form.save(commit=False)
@@ -48,7 +49,7 @@ def agendar_paciente(request, paciente_id):
         else:
             return HttpResponse("Esta é uma resposta HTTP!")
     else:
-        form = AgendamentoFormP(paciente_id=paciente_id)  # Crie uma instância do formulário sem dados POST
+        form = AgendamentoFormP(paciente_id=paciente_id, user=user)  # Crie uma instância do formulário sem dados POST
 
     context = {
         'form': form,

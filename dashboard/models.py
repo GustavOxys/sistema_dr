@@ -17,11 +17,17 @@ class Procedimento(models.Model):
     
 
 class Convenio(models.Model):
+    shared_choices = [
+        ('Particular', 'Particular'),
+        ('Unimed', 'Unimed'),
+        ('SUS', 'SUS')
+    ]
+    shared_value = models.CharField(max_length=20, choices=shared_choices, default='Particular')    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     nome = models.CharField(max_length=55)
-    valor_padrao = models.DecimalField(default=50.50, max_digits=10, decimal_places=2)
+    valor_padrao = models.DecimalField(default=50.00, max_digits=10, decimal_places=2)
     n_reconsultas = models.CharField(max_length=10, default=3)
     prazo_reconsultas = models.CharField(max_length=30, default=15)
-
 
     def __str__(self):
         return self.nome

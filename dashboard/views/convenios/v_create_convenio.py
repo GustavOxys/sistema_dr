@@ -5,6 +5,7 @@ from django.contrib import messages
 
 @login_required(login_url='dashboard:login')
 def create_convenio(request): 
+    user = request.user
     form_action = reverse('dashboard:create_convenio')
     nome_func = 'Criar Convênio'
 
@@ -17,7 +18,7 @@ def create_convenio(request):
 
         if form.is_valid():
             convenio = form.save(commit=False)
-            convenio.owner = request.user
+            convenio.owner = user
             convenio.save()
             messages.success(request, 'Convenio criado com sucesso!')
             return redirect('dashboard:convenios')

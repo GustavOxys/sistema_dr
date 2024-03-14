@@ -11,7 +11,7 @@ class PacienteAdmin(admin.ModelAdmin):
 
 @admin.register(models.Convenio)
 class ConvenioAdmin(admin.ModelAdmin):
-    list_display = 'id', 'nome',
+    list_display = 'id', 'nome', 
 
 
 @admin.register(models.Procedimento)
