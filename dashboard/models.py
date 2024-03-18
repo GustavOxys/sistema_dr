@@ -8,7 +8,6 @@ from django.core.exceptions import ValidationError
 from datetime import timedelta
 
 
-
 class Procedimento(models.Model):
     nome = models.CharField(max_length=55)
 
@@ -75,8 +74,8 @@ class Agendamento(models.Model):
     atendido = models.BooleanField(default=False)
     data_consulta = models.DateField(default='0000-00-00')
     hora_consulta = models.TimeField(default='09:00')
-    procedimento = models.ForeignKey(Procedimento, on_delete=models.DO_NOTHING)
-    convenio = models.ForeignKey(Convenio, on_delete=models.DO_NOTHING)
+    procedimento = models.ForeignKey(Procedimento, on_delete=models.CASCADE)
+    convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE)
     opcoes_status = [('Pendente', 'Pendente'),
                      ('Cancelado', 'Cancelado'),
                      ('Confirmado', 'Confirmado')]
@@ -171,10 +170,7 @@ class Atendimento(models.Model):
 
     
 
-class Prontuario(models.Model):
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    resumo = models.TextField(blank=True)
-    atendimento = models.ForeignKey(Atendimento, on_delete=models.CASCADE, related_name="prontuarios")
+
 
 
 

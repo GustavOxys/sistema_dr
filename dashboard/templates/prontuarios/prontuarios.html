@@ -28,9 +28,16 @@
                     {% for p in page_obj %}           
                         <tr class="table-row">                        
                             <td>
-                                <a href="{% url 'dashboard:read_patient' p.agendamento.paciente.id %}">
-                                    {{ p.paciente.nome }}
-                                </a>
+                                
+                                {% if p.agendamento %}
+                                    <a href="{% url 'dashboard:read_patient' p.agendamento.paciente.id %}">
+                                        {{ p.paciente.nome }}
+                                    </a>
+                                {% else %}
+                                     Desconhecido
+                                {% endif %}
+                                
+                                    
                             </td>
 
                             <td>
