@@ -9,39 +9,30 @@ from django.urls import reverse
 @login_required(login_url='dashboard:login')
 def update_prontuario(request, prontuario_id): 
     user = request.user
-    prontuario = get_object_or_404(Atendimento, pk=prontuario_id)
-    print(prontuario)
+    prontuario = get_object_or_404(Atendimento, pk=prontuario_id)    
     form_action = reverse('dashboard:update_prontuario', args=(prontuario_id,))
-
-    if request.method == 'POST':
-        print('se metodo é post', prontuario)
+    if request.method == 'POST':        
         form = AtendimentoForm(request.POST, instance=prontuario, user=user)
-
         context = {
             'form' : form,
             'form_action': form_action
         }
-
-        if form.is_valid():
-            print('dentro de valid')
+        if form.is_valid():            
             prontuario = form.save(commit=False)
             prontuario.agendamento.paciente.owner = user  
             prontuario.editado = True
             prontuario.save()         
-            messages.success(request, 'Prontuário editado com sucesso!')
-            print('dps de msg')
+            messages.success(request, 'Prontuário editado com sucesso!')            
             return redirect('dashboard:index')
-        else:
-            print('else')
+        else:            
             messages.error(request, 'Ocorreu algum erro ao salvar o formulário de Atendimento')  
-            return render(request, 'prontuarios/prontuarios.html', context) 
-    print('passou direto pelo if post prontuario')  
-    form =  AtendimentoForm(instance=prontuario, user=user)     
+            return render(request, 'prontuarios/prontuarios.html', context)       
+    else:
+        form =  AtendimentoForm(instance=prontuario, user=user)     
     context = {
         'form' : form,
         'form_action' :form_action
     }
-
     return render(request, 'prontuarios/content_prontuario.html', context)
             
 

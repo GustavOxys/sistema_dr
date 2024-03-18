@@ -122,7 +122,7 @@ class Atendimento(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)     
     agendamento = models.ForeignKey(Agendamento, on_delete=models.CASCADE, null=True, blank=True)  
     atendido = models.BooleanField(default=False)
-    queixa_principal = models.TextField(max_length=20, blank=True)
+    queixa_principal = models.TextField(max_length=20, blank=True, null=True)
     historia_molestia_atual = models.TextField(max_length=250, blank=True)
     historico_e_antecedentes = models.TextField(max_length=200, blank=True)
     exame_fisico = models.TextField(max_length=250, blank=True)

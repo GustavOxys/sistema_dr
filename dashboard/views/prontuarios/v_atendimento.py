@@ -5,35 +5,24 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
 @login_required(login_url='dashboard:login')
-def atendimento(request, agendamento_id):
-    print('dentro de atendimento')
+def atendimento(request, agendamento_id):    
     agendamento = get_object_or_404(Agendamento, pk=agendamento_id)    
-    form_action = reverse('dashboard:atendimento', args=[agendamento_id])
-    print('dentro de atendimento 2')
+    form_action = reverse('dashboard:atendimento', args=[agendamento_id])     
     
-    if request.method == 'POST':        
-        form = AtendimentoForm( request.POST, agendamento_id, user=request.user)
-        print('dentro de atendimento 5')
+    if request.method == 'POST':               
+        form = AtendimentoForm(request.POST, agendamento_id=agendamento_id, user=request.user)        
         
-        if form.is_valid():
-            print('dentro de atendimento 6')
+        if form.is_valid():            
             atendimento = form.save(commit=False)            
             atendimento.paciente = agendamento.paciente 
             atendimento.agendamento = agendamento           
             agendamento.atendido = True                      
             atendimento.save()
-            agendamento.save()
-             
-            return redirect('dashboard:index')
-        print('dentro de atendimento 35')
-
-    print('dentro de atendimento 3')
-    
-    form = AtendimentoForm()
-    print('dentro de atendimento 4')
-
-    
-            
+            agendamento.save()                        
+            return redirect('dashboard:index')        
+    else:         
+        form = AtendimentoForm()
+                  
     context = {
         'form': form,
         'agendamento': agendamento,
