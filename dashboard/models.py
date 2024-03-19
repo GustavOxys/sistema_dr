@@ -35,8 +35,7 @@ class Convenio(models.Model):
 class Paciente(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     opcoes_sexo = [('Masculino', 'Masculino'),
-                   ('Feminino', 'Feminino')]   
-    
+                   ('Feminino', 'Feminino')]    
     nome = models.CharField(max_length=55)
     idade = models.CharField(max_length=2, blank=True, default=18)
     telefone = models.CharField(max_length=30)    
@@ -61,8 +60,7 @@ class Paciente(models.Model):
 
     def calcular_idade(self):
         hoje = date.today()
-        return hoje.year - self.data_nascimento.year - ((hoje.month, hoje.day) < (self.data_nascimento.month, self.data_nascimento.day))
-    
+        return hoje.year - self.data_nascimento.year - ((hoje.month, hoje.day) < (self.data_nascimento.month, self.data_nascimento.day))    
 
     def save(self, *args, **kwargs):
         self.idade = self.calcular_idade()
@@ -86,30 +84,24 @@ class Agendamento(models.Model):
     data_agendamento = models.DateTimeField(default=timezone.localdate())
     data_hora_agendamento = models.DateTimeField(default=timezone.now() - timedelta(hours=3) )
 
-    def save(self, *args, **kwargs):
-        print('dentro do metodo save agendamento')
-        hoje = timezone.now()        
-        print(hoje)
+    def save(self, *args, **kwargs):        
+        hoje = timezone.now()       
+        
         if self.data_agendamento == hoje.date():
-            self.total_diario += 1
-            print('total diario', self.total_diario)
+            self.total_diario += 1            
         else:
-            self.total_diario = 1
-            print('total diario else', self.total_diario)
+            self.total_diario = 1            
 
         if self.data_agendamento.month == hoje.month:
-            self.total_mensal += 1
-            print('total mensal', self.total_mensal)
+            self.total_mensal += 1            
         else:
-            self.total_mensal = 1
-            print('total mensal else', self.total_mensal)
+            self.total_mensal = 1            
 
         if self.data_agendamento.year == hoje.year:
-            self.total_anual += 1
-            print('total anual', self.total_anual)
+            self.total_anual += 1            
         else:
             self.total_anual = 1
-            print('total anual else', self.total_anual)
+            
         super().save(*args, **kwargs) 
 
 
@@ -137,35 +129,49 @@ class Atendimento(models.Model):
     data_atendimento = models.DateField(default=timezone.localdate)
     data_hora_atendimento = models.DateTimeField(default=timezone.now())
     editado = models.BooleanField(default=False)
+    valor_total_diario = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    valor_total_mensal = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    valor_total_anual = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     
     
 
-    def save(self, *args, **kwargs):
-        print('dentro do metodo save')
+    def save(self, *args, **kwargs):        
         hoje = timezone.now()        
-        print(hoje)
+        
         if self.editado == False:
-            if self.data_atendimento == hoje.date():
-                self.total_diario += 1
-                print('total diario', self.total_diario)
+            if self.data_atendimento == hoje.date:
+                self.total_diario += 1                
             else:
                 self.total_diario = 1
-                print('total diario else', self.total_diario)
+                
 
             if self.data_atendimento.month == hoje.month:
-                self.total_mensal += 1
-                print('total mensal', self.total_mensal)
+                self.total_mensal += 1                
             else:
                 self.total_mensal = 1
-                print('total mensal else', self.total_mensal)
+                
 
             if self.data_atendimento.year == hoje.year:
-                self.total_anual += 1
-                print('total anual', self.total_anual)
+                self.total_anual += 1                
             else:
                 self.total_anual = 1
-                print('total anual else', self.total_anual)
 
+        if self.agendamento.procedimento.nome == 'Consulta':
+            if self.data_atendimento == hoje.date:
+                self.valor_total_diario += self.agendamento.convenio.valor_padrao
+            else:
+                self.valor_total_diario = self.agendamento.convenio.valor_padrao
+
+            if self.data_atendimento == hoje.month:
+                self.valor_total_mensal += self.agendamento.convenio.valor_padrao
+            else:
+                self.valor_total_mensal = self.agendamento.convenio.valor_padrao
+            
+            if self.data_atendimento == hoje.year:
+                self.valor_total_anual += self.agendamento.convenio.valor_padrao
+            else:
+                self.valor_total_anual = self.agendamento.convenio.valor_padrao
+                
         super().save(*args, **kwargs)      
 
     

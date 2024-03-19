@@ -15,8 +15,8 @@ def atendimento(request, agendamento_id):
         if form.is_valid():            
             atendimento = form.save(commit=False)            
             atendimento.paciente = agendamento.paciente 
-            atendimento.agendamento = agendamento           
-            agendamento.atendido = True                      
+            atendimento.agendamento = agendamento                     
+            agendamento.atendido = True 
             atendimento.save()
             agendamento.save()                        
             return redirect('dashboard:index')        
