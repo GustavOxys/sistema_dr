@@ -2,6 +2,7 @@ from dashboard.models import Paciente
 from django import forms
 import re
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 
 
 class PatientForm(forms.ModelForm):
@@ -11,20 +12,17 @@ class PatientForm(forms.ModelForm):
             attrs={'placeholder' : 'dd/mm/aaaa'},
         ),        
     )
+
+    nome = forms.CharField(
+        max_length=100,
+        validators=[RegexValidator(r'^[a-zA-Z\s]*$', 'Por favor, insira apenas letras.')])
     
     class Meta:
         model = Paciente
         fields = 'nome', 'data_nascimento', 'sexo_biologico', 'cpf', 'rg', 'nome_mae', 'email',\
         'cep','endereco','numero', 'bairro', 'cidade', 'estado' ,'telefone',
 
-    widgets = {
-        'hora_consulta' : forms.TextInput(
-            attrs={
-                'placeholder' : '00:00'
-            }
-        )
-    }
-
+    
     def clean_cpf(self):
         cpf = self.cleaned_data.get('cpf')
         cpf = re.sub(r'\D', '', cpf)
