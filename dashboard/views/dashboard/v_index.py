@@ -68,6 +68,8 @@ def search(request):
     search_value = request.GET.get('q_index', '').strip()
     data_hora_atual =  timezone.now() - timedelta(hours=3) 
     data_atual = timezone.localdate()
+    mes_atual = timezone.localdate().month 
+    
 
     atendimentos = Atendimento.objects.filter(
         paciente__owner=request.user)
@@ -76,6 +78,12 @@ def search(request):
         paciente__owner=request.user, 
         data_atendimento=data_atual)
 
+    atendimentos_mensais = Atendimento.objects.filter(
+        paciente__owner=request.user,
+        data_atendimento__month=mes_atual,
+    )
+
+    valor_mensal = sum(valor.valor_total_mensal for valor in atendimentos_mensais)  
     total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos)    
     total_diario = sum(atendimento.total_diario for atendimento in atendimentos_diarios)       
     
@@ -88,13 +96,14 @@ def search(request):
 
     agendamentos = Agendamento.objects\
         .filter(paciente__show=True)\
-        .filter(data_consulta__gte=data_hora_atual)\
+        .filter(Q(data_consulta__gt=data_hora_atual) | (Q(data_consulta=data_hora_atual, hora_consulta__gte=data_hora_atual)))\
         .filter(
             Q(paciente__nome__icontains=search_value)|
             Q(convenio__nome__icontains=search_value)|             
             Q(procedimento__nome__icontains=search_value)
             )\
         .filter(paciente__owner=request.user)\
+        .filter(atendido=False)\
         .order_by('data_consulta', 'hora_consulta')
     
     paginator = Paginator(agendamentos, 6)
@@ -110,6 +119,7 @@ def search(request):
         'total_diario' : total_diario,
         'total_mensal': total_mensal,
         'agendamento_diario' : agendamento_diario,
+        'valor_mensal' : valor_mensal,
     }
 
     return render(request, 'dashboard/index.html', context)

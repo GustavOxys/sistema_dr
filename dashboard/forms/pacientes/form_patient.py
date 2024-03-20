@@ -12,15 +12,22 @@ class PatientForm(forms.ModelForm):
             attrs={'placeholder' : 'dd/mm/aaaa'},
         ),        
     )
-
     nome = forms.CharField(
         max_length=100,
         validators=[RegexValidator(r'^[a-zA-Z\s]*$', 'Por favor, insira apenas letras.')])
+
+    telefone = forms.CharField(
+        validators=[
+            RegexValidator(
+                regex=r'^\(\d{2}\)\d\s\d{4}-\d{4}$',
+                message='O número de telefone deve estar no formato (XX)X XXXX-XXXX',
+            ),
+        ],
+    )
     
     class Meta:
         model = Paciente
-        fields = 'nome', 'data_nascimento', 'sexo_biologico', 'cpf', 'rg', 'nome_mae', 'email',\
-        'cep','endereco','numero', 'bairro', 'cidade', 'estado' ,'telefone',
+        fields = 'nome', 'data_nascimento', 'sexo_biologico', 'cpf', 'telefone', 'rg', 'nome_mae', 'email', 'cep','endereco','numero', 'bairro', 'cidade', 'estado' ,
 
     
     def clean_cpf(self):
