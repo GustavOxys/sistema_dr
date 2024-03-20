@@ -24,6 +24,21 @@ class PatientForm(forms.ModelForm):
             ),
         ],
     )
+    from django import forms
+
+
+    cpf = forms.CharField(
+        label='CPF',
+        max_length=14,
+        validators=[
+            RegexValidator(
+                regex=r'^\d{3}\.\d{3}\.\d{3}-\d{2}$',
+                message='O CPF deve estar no formato XXX.XXX.XXX-XX',
+                code='invalid_cpf'
+            )
+        ]
+    )
+
     
     class Meta:
         model = Paciente
