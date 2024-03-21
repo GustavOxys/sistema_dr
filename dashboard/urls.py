@@ -42,9 +42,6 @@ urlpatterns = [
     path('atendimento/<int:agendamento_id>/', views.atendimento, name='atendimento'),
     path('atendimento/<int:paciente_id>/', views.atendimento_form, name='atendimento_form'),    
     
-    # Relatórios
-    path('relatorios/', views.relatorios, name='relatorios'),
-
     # Configurações
     path('configuracoes/', views.configuracoes, name='configuracoes'),
 
