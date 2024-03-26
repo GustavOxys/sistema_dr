@@ -5,14 +5,17 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.urls import reverse
+from icecream import ic
 
 
 @login_required(login_url='dashboard:login')
 def create(request): 
+    ic()
     form_action = reverse('dashboard:create')
     nome_func = 'Registrar Paciente'
 
     if request.method == 'POST':
+        ic()
         form = PatientForm(request.POST)
         context = {
             'form' : form,
@@ -20,15 +23,17 @@ def create(request):
         }
 
         if form.is_valid():
+            ic()
             patient = form.save(commit=False)
             patient.owner = request.user
             patient.save()
             messages.success(request, 'Paciente adicionado com sucesso!')
             return redirect('dashboard:pacientes')
         else:
+            ic()
             messages.error(request, 'Ocorreu algum erro ao enviar o formulário')  
             return render(request, 'pacientes/create.html', context) 
-            
+    ic()        
     context = {
         'form' : PatientForm(),
         'form_action' :form_action,

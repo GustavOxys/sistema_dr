@@ -1,125 +1,88 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db.models import Q
+from django.urls import reverse
 from django.utils import timezone
-from datetime import timedelta, datetime
+from datetime import timedelta
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from dashboard.models import Agendamento, Paciente, Procedimento, Convenio, Atendimento
-from django.contrib.auth.signals import user_logged_in
-from django.dispatch import receiver
-
-
-app_name = 'index'
-
+from dashboard.models import Agendamento, Atendimento
 
 @login_required(login_url='dashboard:login')
 def index(request):
-    data_hora_atual =  timezone.now() - timedelta(hours=3)    
-    data_atual = timezone.localdate() 
-    mes_atual = timezone.localdate().month  
-
-    atendimentos = Atendimento.objects.filter(
-        paciente__owner=request.user)    
-
-    atendimentos_diarios = Atendimento.objects.filter(
-        paciente__owner=request.user, 
-        data_atendimento=data_atual,)
-
-    atendimentos_mensais = Atendimento.objects.filter(
-        paciente__owner=request.user,
-        data_atendimento__month=mes_atual,
-    ) 
-    valor_mensal = sum(valor.valor_total_mensal for valor in atendimentos_mensais)    
-    total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos_mensais)    
-    total_diario = sum(atendimento.total_diario for atendimento in atendimentos_diarios)       
-    
-    agendamentos_diarios = Agendamento.objects.filter(paciente__owner=request.user, data_agendamento=data_atual)     
-    agendamento_diario = sum(agendamento.total_diario for agendamento in agendamentos_diarios)
-    
-
-    # Realiza consulta SQL e filtra apenas agendamentos do próprio usuário, que seja maior que a data e hora atual e ordena por data e hora do agendamento
-    agendamentos = Agendamento.objects\
-        .filter(paciente__owner=request.user, paciente__show=True)\
-        .filter(Q(data_consulta__gt=data_hora_atual) | (Q(data_consulta=data_hora_atual, hora_consulta__gte=data_hora_atual)))\
-        .filter(atendido=False)\
-        .order_by('data_consulta', 'hora_consulta')
-        
-        
-    # Lógica da paginação usando Paginator
-    paginator = Paginator(agendamentos, 6)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)    
-
-    context = {
-        'page_obj' : page_obj,        
-        'agendamentos': agendamentos, 
-        'atendimentos' : atendimentos,  
-        'total_diario' : total_diario,
-        'total_mensal': total_mensal,
-        'valor_mensal' : valor_mensal,
-        'agendamento_diario' : agendamento_diario,           
-    }
-    return render(request, 'dashboard/index.html', context)
-
-
+    return _handle_search(request, is_search=False)
 
 @login_required(login_url='dashboard:login')
 def search(request):
-    search_value = request.GET.get('q_index', '').strip()
-    data_hora_atual =  timezone.now() - timedelta(hours=3) 
+    return _handle_search(request, is_search=True)
+
+def _handle_search(request, is_search=False):
+    search_action = reverse('dashboard:search')
+    placeholder_action = 'Buscar um Agendamento'
+    id_action = 'query_index'
+    name_action = 'q_index'
+    data_hora_atual = timezone.now() - timedelta(hours=3)
     data_atual = timezone.localdate()
-    mes_atual = timezone.localdate().month 
-    
+    mes_atual = timezone.localdate().month
 
-    atendimentos = Atendimento.objects.filter(
-        paciente__owner=request.user)
+    atendimentos = Atendimento.objects.filter(paciente__owner=request.user)
+    atendimentos_diarios = atendimentos.filter(data_atendimento=data_atual)
+    atendimentos_mensais = atendimentos.filter(data_atendimento__month=mes_atual)
 
-    atendimentos_diarios = Atendimento.objects.filter(
-        paciente__owner=request.user, 
-        data_atendimento=data_atual)
+    valor_mensal = sum(valor.valor_total_mensal for valor in atendimentos_mensais)
+    total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos_mensais)
+    total_diario = sum(atendimento.total_diario for atendimento in atendimentos_diarios)
 
-    atendimentos_mensais = Atendimento.objects.filter(
-        paciente__owner=request.user,
-        data_atendimento__month=mes_atual,
-    )
-
-    valor_mensal = sum(valor.valor_total_mensal for valor in atendimentos_mensais)  
-    total_mensal = sum(atendimento.total_mensal for atendimento in atendimentos)    
-    total_diario = sum(atendimento.total_diario for atendimento in atendimentos_diarios)       
-    
     agendamentos_diarios = Agendamento.objects.filter(paciente__owner=request.user, data_agendamento=data_atual)
-
     agendamento_diario = sum(agendamento.total_diario for agendamento in agendamentos_diarios)
 
-    if search_value == '':        
-        return redirect('dashboard:index')    
+    if is_search:
+        search_value = request.GET.get('q_index', '').strip()
 
-    agendamentos = Agendamento.objects\
-        .filter(paciente__show=True)\
-        .filter(Q(data_consulta__gt=data_hora_atual) | (Q(data_consulta=data_hora_atual, hora_consulta__gte=data_hora_atual)))\
-        .filter(
-            Q(paciente__nome__icontains=search_value)|
-            Q(convenio__nome__icontains=search_value)|             
+        if not search_value:
+            return redirect('dashboard:index')
+
+        agendamentos = Agendamento.objects.filter(
+            paciente__show=True,
+            data_consulta__gt=data_hora_atual,
+            paciente__owner=request.user,
+            atendido=False
+        ).filter(
+            Q(paciente__nome__icontains=search_value) |
+            Q(convenio__nome__icontains=search_value) |
             Q(procedimento__nome__icontains=search_value)
-            )\
-        .filter(paciente__owner=request.user)\
-        .filter(atendido=False)\
-        .order_by('data_consulta', 'hora_consulta')
-    
+        ).order_by('data_consulta', 'hora_consulta')
+
+        site_title = 'Search - '
+    else:
+        agendamentos = Agendamento.objects.filter(
+            paciente__owner=request.user,
+            paciente__show=True,
+            data_consulta__gt=data_hora_atual,
+            atendido=False
+        ).order_by('data_consulta', 'hora_consulta')
+
+        site_title = ''
+
     paginator = Paginator(agendamentos, 6)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'page_obj' : page_obj,
-        'site_title' : 'Search - ',
-        'search_value' : search_value,
-        'agendamentos': agendamentos, 
-        'atendimentos' : atendimentos,  
-        'total_diario' : total_diario,
+        'page_obj': page_obj,
+        'agendamentos': agendamentos,
+        'atendimentos': atendimentos,
+        'total_diario': total_diario,
         'total_mensal': total_mensal,
-        'agendamento_diario' : agendamento_diario,
-        'valor_mensal' : valor_mensal,
+        'valor_mensal': valor_mensal,
+        'agendamento_diario': agendamento_diario,
+        'search_action': search_action,
+        'placeholder_action': placeholder_action,
+        'id_action': id_action,
+        'name_action': name_action,
+        'site_title': site_title,
     }
+
+    if is_search:
+        context['search_value'] = search_value
 
     return render(request, 'dashboard/index.html', context)

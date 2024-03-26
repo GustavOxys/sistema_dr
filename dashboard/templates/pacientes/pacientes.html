@@ -3,27 +3,7 @@
 {% block content %}  
 
 
-<div class="titulo-secao-pront">
-    <div class="search">
-        <form
-            action="{% url 'dashboard:search_patient' %}"
-            method="GET">
-        <div class="search-input-container">
-            <input
-                type="search"
-                class="search-input"
-                placeholder="Buscar um Paciente"
-                id="query_patient"
-                name="q_patient"
-                value=" {{ search_value }}"
-                
-            >
-            <i class="bi bi-search search-icon"></i>
-            
-        </div>
-        </form>
-    
-    </div> 
+<div class="titulo-secao-pront">     
     <br>
     <a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a>
     <a href="{% url 'dashboard:agendar' %}"><button> Agendar um Paciente</button></a>

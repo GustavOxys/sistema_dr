@@ -1,36 +1,46 @@
 {% load static %}
 
+<header>     
+    <div class="header-saudacao">
+        <h1> Bem Vindo {{ user.username }}!</h1> 
+    </div> 
 
-<header> 
+    <div class="search">
+        <form
+            action="{{ search_action }}"
+            method="GET">        
+            <input
+                type="search"
+                class="search-input"
+                placeholder="{{ placeholder_action }}"
+                id="{{ id_action }}"
+                name="{{ name_action }}"
+                value=" {{ search_value }}"
+                
+            >
+            <i class="bi bi-search search-icon"></i>            
+        
+        </form>
     
+    </div>
     <div class="info-header">
-        <a href="#"><i class="bi bi-justify"></i>  </a>            
-                  
-    </div>
-    <div class="info-header">  
-    <h2> Bem vindo {{ user.username }}!</h2>
-    </div>
-    <div class="info-header">       
-        
-        
+              
         
         {% if user.is_authenticated %}
             <a href="{% url 'dashboard:logout'%}">Encerrar sessão</a> 
 
         {% else %}
             <a href="{% url 'dashboard:login'%}">Entrar</a> 
-
             <a href="{% url 'dashboard:register_user'%}">Registrar</a> 
-
-        {% endif %}
-            
-        
-
-
-        <a href="#"><i class="bi bi-bell"></i>
-        </a>     
-        
-        <img src="{% static 'media/user.jpg' %}" alt="Imagem ">
-               
+        {% endif %}             
     </div>
- </header> 
+</header> 
+
+    
+    
+        
+        
+        
+               
+        
+

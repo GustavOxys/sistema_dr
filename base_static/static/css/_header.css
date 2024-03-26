@@ -3,48 +3,25 @@ header {
     background-color: rgb(228, 228, 228);
     padding: 0.5% 2%;
     display: flex;
-    justify-content: space-between;
-    
-    
+    justify-content: space-between;    
 }
 
-.info-header {
-    
+
+.info-header {    
     color: rgb(37, 37, 37);
-    display:flex;
-    justify-content: space-around;    
-    align-items: center;
-    
-    
-}
-
-.bi-justify:hover{
-    transform: scale(1);
-    transition: transform 0.3s ease;
-    transform: scale(1.1) rotate(5deg);
+    display:flex;        
+    align-items: center;        
 }
 
 
 
 
 
-.bi-bell:hover{
-    transform: scale(1);
-    transition: transform 0.3s ease;
-    transform: scale(1.1) rotate(5deg);
-}
 
-.info-header img{
-    width: 7%;    
-    border-radius: 100%; 
-       
-}
 
-.info-header img:hover{
-    transform: scale(1);
-    transition: transform 0.3s ease;
-    transform: scale(1.1) rotate(5deg);
-}
+
+
+
 
 
 
