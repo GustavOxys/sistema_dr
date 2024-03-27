@@ -1,26 +1,30 @@
 {% load static %}
 
 <header>     
-    <div class="header-saudacao">
+    <div class="info-header">
         <h1> Bem Vindo {{ user.username }}!</h1> 
     </div> 
 
-    <div class="search">
+    <div class="search-box">
         <form
             action="{{ search_action }}"
             method="GET">        
             <input
                 type="search"
-                class="search-input"
+                class="search-text"
                 placeholder="{{ placeholder_action }}"
                 id="{{ id_action }}"
                 name="{{ name_action }}"
-                value=" {{ search_value }}"
-                
+                value=" {{ search_value }}"                
             >
-            <i class="bi bi-search search-icon"></i>            
-        
         </form>
+            <a href="search-btn">
+                <img class='loupe-blue' src="{% static 'static/media/loupe-blue.svg' %}" alt="">
+                <img class='loupe-white' src="{% static 'static/media/loupe-white.svg' %}" alt="">
+            </a>
+                      
+        
+        
     
     </div>
     <div class="info-header">

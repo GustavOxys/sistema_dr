@@ -38,7 +38,7 @@ def _handle_search(request, is_search=False):
     if is_search:
         search_value = request.GET.get('q_index', '').strip()
 
-        if not search_value:
+        if search_value is None:
             return redirect('dashboard:index')
 
         agendamentos = Agendamento.objects.filter(
@@ -80,6 +80,7 @@ def _handle_search(request, is_search=False):
         'id_action': id_action,
         'name_action': name_action,
         'site_title': site_title,
+        
     }
 
     if is_search:
