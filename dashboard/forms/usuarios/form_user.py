@@ -1,39 +1,33 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 from django import forms
-from django.core.validators import RegexValidator
-
 
 class RegisterForm(UserCreationForm):
-    first_name = forms.CharField(
-        required=True,
-        min_length=3,
-        validators=[RegexValidator(r'^[a-zA-Z]*$', 'Por favor, insira apenas letras.')],
+    username = forms.CharField(
+        max_length=150,
+        error_messages={},
+        widget=forms.TextInput(attrs={'placeholder' : 'Nome de usuário'})
     )
-    last_name = forms.CharField(
-        required=True,
-        min_length=3,
-        validators=[RegexValidator(r'^[a-zA-Z]*$', 'Por favor, insira apenas letras.')],
+    email = forms.EmailField(
+        error_messages={},
+        widget=forms.EmailInput(attrs={'placeholder': 'E-mail'})
+        )
+    password1 = forms.CharField(
+        label="Senha",
+        strip=False, 
+        widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}),
+        error_messages={},
+        
     )
-    email = forms.EmailField()
+    password2 = forms.CharField(
+        label="Confirmação de Senha",
+        widget=forms.PasswordInput(attrs={'placeholder' : 'Confirme a senha'}),
+        strip=False,
+        error_messages={},
+    )
+
+    
 
     class Meta:
         model = User
-        fields = (
-            'first_name', 'last_name', 'email',
-            'username', 'password1', 'password2',
-        )
-
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-
-        if User.objects.filter(email=email).exists():
-            self.add_error(
-                'email',
-                ValidationError('Já existe este e-mail', code='invalid')
-            )
-
-        return email
-
-    
+        fields = ('username', 'email', 'password1', 'password2')

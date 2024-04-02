@@ -3,6 +3,7 @@ from .usuarios.v_form_users import *
 from .usuarios.v_login_user import *
 from .usuarios.v_logout_user import *
 from .usuarios.v_update_user import *
+from .usuarios.login_or_register import *
 
 # Index
 from .dashboard.v_index import *

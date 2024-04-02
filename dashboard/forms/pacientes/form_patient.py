@@ -10,7 +10,7 @@ class PatientForm(forms.ModelForm):
         widget=forms.DateInput(
             format='%d/%m/%Y',
             attrs={'placeholder' : 'dd/mm/aaaa'},
-        ),        
+        ),      
     )
     nome = forms.CharField(
         max_length=100,
