@@ -8,34 +8,37 @@
     <title>Login</title>
     <link rel="stylesheet" href="{% static 'static/css/_login_register.css' %}">
 
+
 </head>
 <body>
     <div class="container-login">
         <div class="content-login first-content">
-            <div class="first-column"></div>
-                <h2 class="title-login">Bem Vindo de volta!</h2>
-                <p class="description-login">Para Continuar com a gente</p>
-                <p class="description-login">Por favor conecte abaixo</p>
-                <button class="btn-login">Conectar</button>
+            <div class="first-column">
+                <h2 class="title title-primary">Bem Vindo de volta!</h2>
+                <p class="description description-primary">Para continuar logado com a gente</p>
+                <p class="description description-primary">Por favor conecte-se abaixo</p>
+                <button class="btn btn-primary">Conectar</button>
+            </div>
+
             <div class="second-column">
-                <h2 class="title-login">Criar Conta</h2>
-                <p class="description-login">Coloque seus dados abaixo!</p>
-                <form method="post">
+                <h2 class="title title-secondary">criar  conta</h2>
+                <p class="description description-secondary">Registre-se colocando seus dados abaixo!</p>
+                <form class="form" method="post">
                     {% csrf_token %}
                     {{ register_form }}
-                    <button type="submit" class="btn_register">Registrar</button>
+                    <button type="submit" class="btn btn-secondary">Registrar</button>
                 </form>
             </div><!-- Second Column -->
         </div><!-- First Content -->        
         <div class="content-login second-content">
             <div class="first-column"></div>
                 <h2 class="title-login">Olá, amigo!</h2>
-                <p class="description-login">Coloque alguns dados pessoais</p>
-                <p class="description-login">E conecte-se com a gente!</p>
-                <button class="btn-login">Registrar</button>
+                <p class="description">Coloque alguns dados pessoais</p>
+                <p class="description">E conecte-se com a gente!</p>
+                <button class="btn">Registrar</button>
             <div class="second-column">
                 <h2 class="title-login">Conectar conta</h2>
-                <p class="description-login">Coloque seus dados abaixo!</p>
+                <p class="description">Coloque seus dados abaixo!</p>
                 <form method="post">
                     {% csrf_token %}
                     {{ login_form }}

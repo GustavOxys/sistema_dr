@@ -4,24 +4,29 @@ from django import forms
 
 class RegisterForm(UserCreationForm):
     username = forms.CharField(
+        label='',        
         max_length=150,
         error_messages={},
-        widget=forms.TextInput(attrs={'placeholder' : 'Nome de usuário'})
+        widget=forms.TextInput(attrs={
+            'placeholder' : 'Nome de usuário',
+            'class' : 'form'
+            })
     )
     email = forms.EmailField(
+        label='',
         error_messages={},
-        widget=forms.EmailInput(attrs={'placeholder': 'E-mail'})
+        widget=forms.EmailInput(attrs={'placeholder': 'E-mail', 'class' : 'form'})
         )
     password1 = forms.CharField(
-        label="Senha",
+        label='',
         strip=False, 
-        widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'Senha', 'class' : 'form'}),
         error_messages={},
         
     )
     password2 = forms.CharField(
-        label="Confirmação de Senha",
-        widget=forms.PasswordInput(attrs={'placeholder' : 'Confirme a senha'}),
+        label='',
+        widget=forms.PasswordInput(attrs={'placeholder' : 'Confirme a senha', 'class' : 'form'}),
         strip=False,
         error_messages={},
     )
