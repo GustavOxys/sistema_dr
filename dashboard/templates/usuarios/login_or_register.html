@@ -6,7 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <script src="https://kit.fontawesome.com/7a03f9b2b5.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="{% static 'static/css/_login_register.css' %}">
+    
 
 
 </head>
@@ -17,7 +20,7 @@
                 <h2 class="title title-primary">Bem Vindo de volta!</h2>
                 <p class="description description-primary">Para continuar logado com a gente</p>
                 <p class="description description-primary">Por favor conecte-se abaixo</p>
-                <button class="btn btn-primary">Conectar</button>
+                <button id="login" class="btn btn-primary">Conectar</button>
             </div>
 
             <div class="second-column">
@@ -25,27 +28,55 @@
                 <p class="description description-secondary">Registre-se colocando seus dados abaixo!</p>
                 <form class="form" method="post">
                     {% csrf_token %}
-                    {{ register_form }}
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-user icon-modify" ></i>
+                        {{ register_form.username }}
+                    </label>
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-envelope icon-modify"></i>
+                        {{ register_form.email }}
+                    </label>
+                    <label class="label-input" for="">
+                        <i class="fa-solid fa-lock icon-modify"></i>
+                        {{ register_form.password1 }}
+                    </label>
+                    <label class="label-input" for="">
+                        <i class="fa-solid fa-lock icon-modify"></i>
+                        {{ register_form.password2 }}
+                    </label>                   
                     <button type="submit" class="btn btn-secondary">Registrar</button>
                 </form>
-            </div><!-- Second Column -->
-        </div><!-- First Content -->        
+            </div><!---- Second Column ---->            
+        </div><!-- First Content --> 
+        
+        
         <div class="content-login second-content">
-            <div class="first-column"></div>
-                <h2 class="title-login">Olá, amigo!</h2>
-                <p class="description">Coloque alguns dados pessoais</p>
-                <p class="description">E conecte-se com a gente!</p>
-                <button class="btn">Registrar</button>
+            <div class="first-column">
+                <h2 class="title title-primary">Olá, amigo!</h2>
+                <p class="description description-primary">Coloque alguns dados pessoais</p>
+                <p class="description description-primary">E se registre com a gente!</p>
+                <button id="register" class="btn btn-primary">Registrar</button>
+            </div>
+
             <div class="second-column">
-                <h2 class="title-login">Conectar conta</h2>
-                <p class="description">Coloque seus dados abaixo!</p>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ login_form }}
-                    <button type="submit" class="btn_login">Conectar</button>
+                <h2 class="title title-secondary">Conectar conta</h2>
+                <p class="description description-secondary">Coloque seus dados abaixo!</p>
+                <form class="form" method="post">
+                    {% csrf_token %}                   
+                    <label class="label-input" for="">
+                        <i class="fa-regular fa-user icon-modify" ></i>                        
+                        {{ login_form.username }}
+                    </label>
+                    <label class="label-input" for="">
+                        <i class="fa-solid fa-lock icon-modify"></i>
+                        {{ login_form.password }}
+                    </label>  
+                    <a href="#">Esqueceu sua senha?</a>                 
+                    <button type="submit" class="btn btn-secondary">Conectar</button>
                 </form>
             </div><!-- Second Column -->
         </div><!-- Second Content -->
     </div>
+    <script src="{% static 'static/js/app.js' %}"></script>
 </body>
 </html>
