@@ -173,28 +173,31 @@ body {
     z-index: -1;
 }
 
-
-
-.login.js .first-content .first-column,
-.login.js .first-content .second-column {
+.login-js .first-content .first-column,
+.login-js .first-content .second-column {
     z-index: -1;
 }
 
-.login.js .second-content .first-column,
-.login.js .second-content .second-column {
+.login-js .second-content .first-column,
+.login-js .second-content .second-column {
     z-index: 11;
 }
 
-.login.js .content-login::before {
+.login-js .content-login::before {
     left: 60%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    
 }
 
-.register.js .second-content .first-column,
-.register.js .second-content .second-column {
+.register-js .second-content .first-column,
+.register-js .second-content .second-column {
     z-index: -1;
 }
 
-.register.js .first-content .first-column,
-.register.js .first-content .second-column {
+.register-js .first-content .first-column,
+.register-js .first-content .second-column {
     z-index: 11;
 }
