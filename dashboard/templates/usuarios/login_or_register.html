@@ -28,6 +28,7 @@
                 <p class="description description-secondary">Registre-se colocando seus dados abaixo!</p>
                 <form class="form" method="post">
                     {% csrf_token %}
+                    <input type="hidden" name="form_type" value="register"> 
                     <label class="label-input" for="">
                         <i class="fa-regular fa-user icon-modify" ></i>
                         {{ register_form.username }}
@@ -44,7 +45,7 @@
                         <i class="fa-solid fa-lock icon-modify"></i>
                         {{ register_form.password2 }}
                     </label>                   
-                    <button type="submit" class="btn btn-secondary">Registrar</button>
+                    <button type="submit" value="register" class="btn btn-secondary">Registrar</button>
                 </form>
             </div><!---- Second Column ---->            
         </div><!-- First Content --> 
@@ -62,7 +63,8 @@
                 <h2 class="title title-secondary">Conectar conta</h2>
                 <p class="description description-secondary">Coloque seus dados abaixo!</p>
                 <form class="form" method="post">
-                    {% csrf_token %}                   
+                    {% csrf_token %}  
+                    <input type="hidden" name="form_type" value="login">                                   
                     <label class="label-input" for="">
                         <i class="fa-regular fa-user icon-modify" ></i>                        
                         {{ login_form.username }}
@@ -72,7 +74,7 @@
                         {{ login_form.password }}
                     </label>  
                     <a href="#">Esqueceu sua senha?</a>                 
-                    <button type="submit" class="btn btn-secondary">Conectar</button>
+                    <button type="submit" value="login" class="btn btn-secondary">Conectar</button>
                 </form>
             </div><!-- Second Column -->
         </div><!-- Second Content -->
