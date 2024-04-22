@@ -4,7 +4,7 @@ from dashboard.models import Atendimento, Paciente
 from django.core.paginator import Paginator
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def prontuarios_especificos(request, paciente_id):
     user = request.user
     paciente = get_object_or_404(Paciente, id=paciente_id)    

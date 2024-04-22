@@ -4,7 +4,7 @@ from dashboard.forms.atendimento.form_atendimento import AtendimentoForm
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def atendimento(request, agendamento_id):    
     agendamento = get_object_or_404(Agendamento, pk=agendamento_id)    
     form_action = reverse('dashboard:atendimento', args=[agendamento_id])     

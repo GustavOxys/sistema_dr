@@ -10,6 +10,7 @@ from datetime import timedelta
 
 class Procedimento(models.Model):
     nome = models.CharField(max_length=55)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.nome

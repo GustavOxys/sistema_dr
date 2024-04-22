@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.urls import reverse
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def update_patient(request, paciente_id): 
     patient = get_object_or_404(Paciente, pk=paciente_id, show=True)
     form_action = reverse('dashboard:update_patient', args=(paciente_id,))

@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.urls import reverse
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def update_prontuario(request, prontuario_id): 
     user = request.user
     prontuario = get_object_or_404(Atendimento, pk=prontuario_id)    

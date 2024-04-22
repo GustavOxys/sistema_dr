@@ -1,15 +1,11 @@
 {% extends 'base.html' %}
 
-{% block content %}   
-
-    <div class="content">  
-        {% include 'partials/_messages.html' %}     
-
+{% block content %}
+    <div class="content"> 
         <div class="titulo-secao">
             <h2>
                 Painel Inicial                
             </h2>
-            
         </div>
         <div class="all-box-info">
             <div class="box-info-single">
@@ -18,36 +14,24 @@
                     <h3>Agendados hoje</h3>
                     <p class="valor-box">{{ agendamento_diario }}</p>   
                     <br>                                 
-                </div>
-                <h4>Ver gráfico comparativo -></h4>                
-            </div>
-            
-            
+                </div>   
+            </div>            
                 <div class="box-info-single">
                     <i class="bi bi-clipboard2-check"></i>
                     <div class="info-text">                    
                         <h3>Atendidos hoje</h3>
                         <p class="valor-box">{{ total_diario }}</p>
                         <br>                    
-                    </div>
-                    <h4>Ver gráfico comparativo -></h4>                
+                    </div>    
                 </div>
-
-
                 <div class="box-info-single">
                     <i class="bi bi-list-columns"></i>
                     <div class="info-text">                    
                         <h3>Consultas/Mês</h3>
                         <p class="valor-box">{{  total_mensal }}</p>
                         <br>                                          
-                    </div>
-                    <h4>Ver gráfico comparativo -></h4>                
-                </div>  
-            
-                
-            
-
-
+                    </div>    
+                </div> 
             <div class="box-info-single">
                 <i class="bi bi-currency-dollar"></i>
                 <div class="info-text">
@@ -55,21 +39,20 @@
                     <p class="valor-receita-mes">{{ valor_mensal }}</p>
                     <br>                    
                 </div>
-                <h4>Ver gráfico comparativo -></h4>
             </div>            
         </div> 
         <!-- Fim das caixas e inicio dos Pacientes -->
         
         {% if page_obj %}
         <div class="table-container">
-            <table class="table-index">                       
-                <thead class="table-head">  
-                    <tr class="table-row">
-                        <th colspan="7"> <!-- colspan="7" para ocupar todas as colunas -->
-                            <h3 class="titulo-consultas">Próximas Consultas</h3>
+            <table>                       
+                <thead>  
+                    <tr>
+                        <th colspan="9"> <!-- colspan="" para ocupar todas as colunas -->
+                            <h3>Próximas Consultas</h3>
                         </th>
                     </tr>                                        
-                    <tr class="table-row">                        
+                    <tr>                        
                         <th>Nome do Paciente</th>
                         <th>ID</th>
                         <th>Data</th>
@@ -80,71 +63,55 @@
                         <th>ID Ag</th>
                         <th></th>
                     </tr>
-                </thead>               
-                
-                
+                </thead>
                 <tbody>
                     {% for ag in page_obj %}           
                         <tr class="table-row">                        
                             <td>
                                 <a href="{% url 'dashboard:read_patient' ag.paciente.id %}">
                                     {{ ag.paciente.nome }}
-                                                                    
-                                        
                                 </a>
                             </td>
-
                             <td>
                                 <a href="{% url 'dashboard:read_patient' ag.paciente.id %}">
                                     {{ ag.paciente.id }}
                                 </a>
                             </td>
                             <td>
-                                
-                                    {{ ag.data_formatada }}
-                                
+                                {{ ag.data_formatada }}
                             </td>
                             <td>
-                                
-                                    {{ ag.hora_consulta }}
-                                
+                                {{ ag.hora_consulta }}
                             </td>
                             <td>
-                                
-                                    {{ ag.procedimento }}
-                                
+                                {{ ag.procedimento }}
                             </td>   
                             <td>
-                                
-                                    {{ ag.convenio.nome }}
-                                
-                            </td>      
-                            
+                                {{ ag.convenio.nome }}
+                            </td>
                             <td>
                                 {{ ag.status }}
                             </td>
-
                             <td>
                                 <a href="{% url 'dashboard:read_agendamento' ag.id %}">{{ ag.id }}</a>
                             </td>
-                            
-                            
-                           
                             <td>
-                                
                                 <form method="post" action="{% url 'dashboard:atendimento' ag.id %}">
                                     {% csrf_token %}
                                     <button type="submit">Iniciar Atendimento</button>
                                 </form>
-                                
-                                
                             </td>
                         </tr>
                     {% endfor %}  
-                </tbody>  
-                            
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="9">
+                            {% include 'partials/_pagination.html' %} 
+                        </td>
+                    </tr>
+                </tfoot>  
             </table>
-            {% include 'partials/_pagination.html' %}  
         </div> 
         {% else %}
         <div class="titulo-secao">

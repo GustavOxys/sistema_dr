@@ -7,11 +7,11 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from dashboard.models import Agendamento, Atendimento
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def index(request):
     return _handle_search(request, is_search=False)
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def search(request):
     return _handle_search(request, is_search=True)
 

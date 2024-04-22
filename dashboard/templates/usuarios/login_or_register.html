@@ -13,10 +13,13 @@
 
 
 </head>
-<body>
+<body class="{% if success %}login-js{% endif %}">
+    
     <div class="container-login">
+        <div class="message">{% include 'partials/_messages.html' %}</div>        
         <div class="content-login first-content">
             <div class="first-column">
+                <h1 class="title title-primary">Doutor Digital</h1>
                 <h2 class="title title-primary">Bem Vindo de volta!</h2>
                 <p class="description description-primary">Para continuar logado com a gente</p>
                 <p class="description description-primary">Por favor conecte-se abaixo</p>
@@ -53,7 +56,7 @@
         
         <div class="content-login second-content">
             <div class="first-column">
-                <h2 class="title title-primary">Olá, amigo!</h2>
+                <h2 class="title title-primary">Olá, Doutor!</h2>
                 <p class="description description-primary">Coloque alguns dados pessoais</p>
                 <p class="description description-primary">E se registre com a gente!</p>
                 <button id="register" class="btn btn-primary">Registrar</button>

@@ -6,7 +6,7 @@ from django.contrib import messages
 
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def delete_agendamento(request, agendamento_id): 
     agendamento = get_object_or_404(Agendamento, pk=agendamento_id, )
     print(agendamento)

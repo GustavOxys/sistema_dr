@@ -4,7 +4,7 @@ from dashboard.models import Atendimento, Agendamento
 from django.core.paginator import Paginator
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def prontuarios(request):
     user = request.user
 

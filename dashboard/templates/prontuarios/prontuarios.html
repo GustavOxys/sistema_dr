@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
-{% block content %}      
+{% block content %}
+<div class="content">
     {% if page_obj %}
         <div class="table-container">
             <table class="table-index">                       
@@ -60,9 +61,15 @@
                         </tr>
                     {% endfor %}  
                 </tbody>  
-                            
+            <tfoot>
+                <tr>
+                    <td colspan="9">
+                        {% include 'partials/_pagination.html' %}
+                    </td>
+                </tr>
+            </tfoot>         
             </table>
-            {% include 'partials/_pagination.html' %}  
+              
         </div> 
         {% else %}
         <div class="titulo-secao">
@@ -70,7 +77,7 @@
                 Nenhum Prontuário registrado.
             </h2>
         </div>
-        
     {% endif %}
+</div>
 {% endblock %}
                                                        

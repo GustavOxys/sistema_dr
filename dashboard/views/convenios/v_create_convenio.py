@@ -3,7 +3,7 @@ from django.shortcuts import render, reverse, redirect
 from dashboard.forms.configuracoes.form_convenio import ConvenioForm
 from django.contrib import messages
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def create_convenio(request): 
     user = request.user
     form_action = reverse('dashboard:create_convenio')

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from dashboard.models import Convenio
 from dashboard.forms.configuracoes.form_convenio import ConvenioForm
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def configuracoes(request):
     convenios = Convenio.objects.all()
     if request.method == 'POST':

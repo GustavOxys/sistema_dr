@@ -6,7 +6,7 @@ from dashboard.forms.atendimento.form_atendimento import AtendimentoForm
 
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def atendimento_form(request, paciente_id):    
     paciente = Paciente.objects.get(id=paciente_id)      
     form = AtendimentoForm(instance=Atendimento(paciente=paciente))  

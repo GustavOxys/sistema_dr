@@ -1,14 +1,14 @@
 {% load static %}
 
-<header>     
-    <div class="info-header">
-        <h1> Bem Vindo {{ user.username }}!</h1> 
-    </div> 
+<header>   
+     
 
     <div class="search-box">
         <form
+            
             action="{{ search_action }}"
-            method="GET">        
+            method="GET"> 
+            <i class="fa-solid fa-magnifying-glass"></i>       
             <input
                 type="search"
                 class="search-text"
@@ -17,26 +17,22 @@
                 name="{{ name_action }}"
                 value=" {{ search_value }}"                
             >
+            
+            
         </form>
-            <a href="search-btn">
-                <img class='loupe-blue' src="{% static 'static/media/loupe-blue.svg' %}" alt="">
-                <img class='loupe-white' src="{% static 'static/media/loupe-white.svg' %}" alt="">
-            </a>
+            
                       
         
         
     
     </div>
-    <div class="info-header">
-              
+
+    
+    <div class="info-header">             
         
         {% if user.is_authenticated %}
             <a href="{% url 'dashboard:logout'%}">Encerrar sessão</a> 
-
-        {% else %}
-            <a href="{% url 'dashboard:login'%}">Entrar</a> 
-            <a href="{% url 'dashboard:register_user'%}">Registrar</a> 
-        {% endif %}             
+        {% endif %} 
     </div>
 </header> 
 

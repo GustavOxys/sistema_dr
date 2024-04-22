@@ -71,3 +71,5 @@ Configurações
 mexer em pacientes e adicionar prontuarios
 
 Arrumar no models de agendamento há variaveis iguais de data  e hora de agendamento
+
+arrumar msgs, adicionar convenio = Convenio.objects.create(owner=user, nome="Particular") no register.

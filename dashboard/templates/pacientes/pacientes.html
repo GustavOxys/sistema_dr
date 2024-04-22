@@ -2,15 +2,20 @@
 
 {% block content %}  
 
+<div class="content">
+    <div class="botoes-pacientes ">     
+        
+        <a class="botao-paciente" href="{% url 'dashboard:create' %}">
+            <i class="fa-regular fa-plus"></i>
+            Registrar novo Paciente</a>
+        <a class="botao-paciente" href="{% url 'dashboard:agendar' %}">
+            <i class="fa-regular fa-calendar"></i>
+            Agendar um Paciente</a>
+    </div>   
 
-<div class="titulo-secao-pront">     
-    <br>
-    <a href="{% url 'dashboard:create' %}"><button> Registrar novo Paciente</button></a>
-    <a href="{% url 'dashboard:agendar' %}"><button> Agendar um Paciente</button></a>
-</div>
-    
-    {% if page_obj %}
+    {% if page_obj %}        
         <div class="table-container">
+            <div class="message-center">{% include 'partials/_messages.html' %}</div>            
             <table class="table-index">                       
                 <thead class="table-head">  
                     <tr class="table-row">
@@ -23,12 +28,8 @@
                         <th>ID</th>
                         <th>Telefone</th>
                         <th>Última consulta</th>                       
-                        
-                        
                     </tr>
-                </thead>               
-                
-                
+                </thead>
                 <tbody>
                     {% for p in page_obj %}           
                         <tr class="table-row">                        
@@ -43,22 +44,24 @@
                                     {{ p.id }}
                                 </a>
                             </td> 
-
                             <td>{{ p.telefone}}</td>
-
-                            <td> {{ p.ultimo_atendimento }}</td>                     
-                             
-                                                 
+                            <td> {{ p.ultimo_atendimento }}</td>
                             <td>                                
                                 <button><a href="{% url 'dashboard:agendar_paciente' p.id %}">Agendar</a></button>
                                 <button><a href="{% url 'dashboard:prontuarios_especificos' p.id %}">Prontuarios</a></button>
                             </td>
                         </tr>
                     {% endfor %}  
-                </tbody>  
-                            
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            {% include 'partials/_pagination.html' %} 
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
-            {% include 'partials/_pagination.html' %}  
+             
         </div> 
         {% else %}
         <div class="titulo-secao">
@@ -66,7 +69,7 @@
                 Nenhum paciente registrado.
             </h2>
         </div>
-        
     {% endif %}
+</div>
 {% endblock %}
                                                        

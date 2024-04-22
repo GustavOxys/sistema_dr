@@ -6,7 +6,7 @@ from datetime import timedelta
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def pacientes(request):
     search_action = reverse('dashboard:search_patient') 
     placeholder_action = 'Buscar um Paciente' 
@@ -54,7 +54,7 @@ def pacientes(request):
 
     return render(request, 'pacientes/pacientes.html', context)
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def search_patient(request):
     user = request.user
     search_action = reverse('dashboard:search_patient') 

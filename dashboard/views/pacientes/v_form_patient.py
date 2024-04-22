@@ -8,7 +8,7 @@ from django.urls import reverse
 from icecream import ic
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def create(request): 
     ic()
     form_action = reverse('dashboard:create')

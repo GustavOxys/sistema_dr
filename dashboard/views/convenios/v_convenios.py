@@ -6,7 +6,7 @@ from dashboard.forms.configuracoes.form_convenio import ConvenioForm
 from django.contrib import messages
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def convenios(request):
     user = request.user
     convenios = Convenio.objects.filter(owner=user).order_by('id')

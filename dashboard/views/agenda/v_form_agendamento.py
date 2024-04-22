@@ -6,7 +6,7 @@ from dashboard.models import Paciente
 from django.http import HttpResponse
 
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def agendar(request, paciente_id=None):
     form_action = reverse('dashboard:agendar')
     form = AgendamentoForm(user=request.user)
@@ -32,7 +32,7 @@ def agendar(request, paciente_id=None):
 
     return render(request, 'agenda/agendar.html', context)
 
-@login_required(login_url='dashboard:login')
+@login_required(login_url='dashboard:login_or_register')
 def agendar_paciente(request, paciente_id):
     user = request.user
     paciente = get_object_or_404(Paciente, pk=paciente_id)  # Obtenha o paciente com o ID fornecido

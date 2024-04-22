@@ -1,22 +1,23 @@
 .table-container {
-    border-radius: 10px;
+    overflow: hidden;
     margin-left: 3.3%;
     margin-right: 3.3%;
-    margin-top: 1%;
-    overflow-x: auto;
-    overflow-y: auto;
-    background-color: white;
+    margin-top: 1%;    
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 12px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    border-radius: 12px;
 }
 table, th, td{
-    border: 1px solid #e4e4e4;
-    border-radius: 3%;
-    padding: 8px;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 12px;
+
+    
 }
 
 .table-row td a {
@@ -26,19 +27,13 @@ table, th, td{
 
 th, td {
     padding: 10px;
-    text-align: left;
-    
-}
-th {
-    background-color: white;
+    text-align: left;    
 }
 
 
 
-td button a{
-    background-color: blue;
-    color: white;
-}
+
+
 
 .cancelado{
     color: white;
