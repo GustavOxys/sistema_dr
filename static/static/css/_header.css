@@ -1,74 +1,71 @@
 header {
+    
     width: 100%;
     background-color: rgb(228, 228, 228);
-    padding: 0.5% 2%;
+    padding: 0.5% 3.3%;
+    display: flex;
+    justify-content: space-between;    
+}
+
+
+.info-header {    
+    color: rgb(37, 37, 37);
+    display:flex;        
+    align-items: center;        
+}
+
+.search-box {
+    background: white;
+    height: 40px;
+    padding: 15px;    
+    border-radius: 40px;
     display: flex;
     justify-content: space-between;
-    
-    
-}
-
-.info-header {
-    
-    color: rgb(37, 37, 37);
-    display:flex;
-    justify-content: space-around;    
     align-items: center;
+}
+
+.loupe-white {
+    display: none;
+
+}
+
+.loupe-blue {
+    width: 20px;
+    height: 20px; 
+    padding-top: 2px;  
     
-    
 }
 
-.bi-justify:hover{
-    transform: scale(1);
-    transition: transform 0.3s ease;
-    transform: scale(1.1) rotate(5deg);
-}
-
-
-
-
-
-.bi-bell:hover{
-    transform: scale(1);
-    transition: transform 0.3s ease;
-    transform: scale(1.1) rotate(5deg);
-}
-
-.info-header img{
-    width: 7%;    
-    border-radius: 100%; 
-       
-}
-
-.info-header img:hover{
-    transform: scale(1);
-    transition: transform 0.3s ease;
-    transform: scale(1.1) rotate(5deg);
-}
-
-
-.search-input-container {
-    position: relative;
+.search-text {
+    background: none;
+    outline: 0;
+    border: 0;
+    font-size: 16px;    
+    padding: 0;
 }
 
 
 
-.search-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px; /* Ajuste a posição do ícone conforme necessário */
-    transform: translateY(-50%);
-}
 
-.search-input {
-    padding-right: 40px; /* Espaçamento à direita para o ícone */
-    border-radius: 20px; /* Define o raio da borda para torná-lo arredondado */
-    border: 2px solid white; /* Define a cor da borda para branca e a largura para 2px */
-    border-top: none; /* Remove a borda superior */
-    width: 110%; /* Define a largura desejada */
-    font-size: 100%; /* Ajusta o tamanho da fonte conforme necessário */
-    background-color: rgb(255, 255, 255);
-    color: rgb(10, 10, 10);
-    padding: 3%;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

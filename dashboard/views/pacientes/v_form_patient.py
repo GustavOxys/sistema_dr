@@ -9,31 +9,27 @@ from icecream import ic
 
 
 @login_required(login_url='dashboard:login_or_register')
-def create(request): 
-    ic()
+def create(request):    
     form_action = reverse('dashboard:create')
     nome_func = 'Registrar Paciente'
 
-    if request.method == 'POST':
-        ic()
+    if request.method == 'POST':        
         form = PatientForm(request.POST)
         context = {
             'form' : form,
             'form_action': form_action
         }
 
-        if form.is_valid():
-            ic()
+        if form.is_valid():            
             patient = form.save(commit=False)
             patient.owner = request.user
             patient.save()
             messages.success(request, 'Paciente adicionado com sucesso!')
             return redirect('dashboard:pacientes')
         else:
-            ic()
             messages.error(request, 'Ocorreu algum erro ao enviar o formulário')  
             return render(request, 'pacientes/create.html', context) 
-    ic()        
+           
     context = {
         'form' : PatientForm(),
         'form_action' :form_action,

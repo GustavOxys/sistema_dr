@@ -1,6 +1,11 @@
 {% load static %}
 
-<header>   
+<header>
+    
+    
+    <div class="info-header">
+        <i class="fa-solid fa-bars"></i>
+    </div>
      
 
     <div class="search-box">
@@ -17,23 +22,36 @@
                 name="{{ name_action }}"
                 value=" {{ search_value }}"                
             >
-            
-            
         </form>
-            
-                      
-        
-        
+    </div>
+
+    <div>
+        <img class="user-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Male_Doctor_Flat_Icon_Vector.svg/32px-Male_Doctor_Flat_Icon_Vector.svg.png">
+    </div>
     
+
+    <div class="user-info-box">
+        <div class="item-para-cima">
+            <h1>{{ user.username }}</h1>
+        </div>
+
+        <div class="item-para-cima">
+            <img class="user-icon user-icon-bigger" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Male_Doctor_Flat_Icon_Vector.svg/64px-Male_Doctor_Flat_Icon_Vector.svg.png">
+        </div>
+
+        <div class="item-para-cima">{{ user.email }}</div>
+
+        <div class="item-para-baixo">
+            
+                <a href="{% url 'dashboard:logout'%}">Encerrar sessão</a> 
+            
+        </div>    
+         
     </div>
 
     
-    <div class="info-header">             
-        
-        {% if user.is_authenticated %}
-            <a href="{% url 'dashboard:logout'%}">Encerrar sessão</a> 
-        {% endif %} 
-    </div>
+    
+
 </header> 
 
     

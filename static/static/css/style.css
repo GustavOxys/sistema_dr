@@ -6,6 +6,8 @@
 @import '_pagination.css';
 @import '_form_patient.css';
 @import '_sidebar_prontuario.css';
+@import '_messages.css';
+
 
 
 
@@ -17,7 +19,8 @@
 }
 
 html, body {
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
     margin: 0; /* Remova margens padrão */
     padding: 0; /* Remova preenchimentos padrão */
   }
@@ -27,15 +30,17 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: rgb(245, 245, 245);;
     
   }
 
   
 
   .content{
+    flex: 1;
     width: 100%;
     height: 100%;          
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(245, 245, 245);;
     
 }
   
@@ -49,12 +54,15 @@ html, body {
   margin-bottom: 1%;
   height: 100%;
   max-height: 100%;
+  border-radius: 12px;
 }
 
 .titulo-secao h2{
   font-size: 110%;
   color: rgb(61, 61, 61);
 }
+
+
 
 /*---- CSSs do Prontuário ---- */
 
@@ -97,5 +105,53 @@ html, body {
   max-height: 100%;
 }
 
+.help-text{
+  margin: 0;
+  font-size: var(--smallest-font-size);
+  list-style: none;
+}
 
+
+
+/* -------FORMS-------*/
+
+
+
+.alert-danger{
+  color: red;
+}
+
+.error-list {
+  color: #dc3545;  /* Cor vermelha associada a erros no Bootstrap, pode ser ajustada conforme necessário */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+
+.field-error {
+  list-style-type: none;  /* Remova os marcadores da lista */
+}
+
+.alert-success {
+  color: green;
+}
+
+.botoes-pacientes {
+  background-color: rgb(245, 245, 245);    
+  display: flex; 
+  margin-left: 3%;
+  
+}
+
+.botao-paciente {
+  color: rgb(255, 255, 255);
+  background-color: rgb(53, 117, 238);
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 1%;   
+  border: none;  
+  margin: 1% 0.3% 0;
+  text-decoration: none;
+}
 

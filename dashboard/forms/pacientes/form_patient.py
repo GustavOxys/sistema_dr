@@ -3,6 +3,8 @@ from django import forms
 import re
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+from icecream import ic
+
 
 
 class PatientForm(forms.ModelForm):
@@ -24,7 +26,7 @@ class PatientForm(forms.ModelForm):
             ),
         ],
     )
-    from django import forms
+    
 
 
     cpf = forms.CharField(
@@ -46,17 +48,17 @@ class PatientForm(forms.ModelForm):
 
     
     def clean_cpf(self):
+        
         cpf = self.cleaned_data.get('cpf')
-        cpf = re.sub(r'\D', '', cpf)
+        cpf_limpo = re.sub(r'\D', '', cpf)
         
-        if not cpf.isdigit() or len(cpf) != 11:
-            self.add_error('cpf', ValidationError("CPF deve conter 11 dígitos numéricos.", code='invalid'))  
+        if not cpf_limpo.isdigit() or len(cpf_limpo) != 11:
+            self.add_error('cpf_limpo', ValidationError("CPF deve conter 11 dígitos numéricos.", code='invalid'))  
         
-        nove_digitos = cpf[:9]
+        nove_digitos = cpf_limpo[:9]
         contador_regressivo_1 = 10
         resultado_digito_1 = 0
         
-
         for digito in nove_digitos:
             resultado_digito_1 += int(digito) * contador_regressivo_1
             contador_regressivo_1 -= 1
@@ -76,10 +78,11 @@ class PatientForm(forms.ModelForm):
         digito_2 = digito_2 if digito_2 <= 9 else 0
 
         cpf_calculado = f'{nove_digitos}{digito_1}{digito_2}'        
-
+        
         # Verifica se o CPF calculado é igual ao informado
-        if cpf != cpf_calculado:
+        if cpf_limpo != cpf_calculado:
             self.add_error('cpf', ValidationError("CPF Inválido.", code='invalid'))        
         return cpf
+        
 
 

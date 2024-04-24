@@ -4,14 +4,15 @@ header {
     background-color: rgb(228, 228, 228);
     padding: 0.5% 3.3%;
     display: flex;
-    justify-content: space-between;    
+    justify-content:space-between;    
 }
 
 
 .info-header {    
     color: rgb(37, 37, 37);
     display:flex;        
-    align-items: center;        
+    align-items: center;  
+    cursor: pointer;         
 }
 
 .search-box {
@@ -20,7 +21,7 @@ header {
     padding: 15px;    
     border-radius: 40px;
     display: flex;
-    justify-content: space-between;
+    
     align-items: center;
 }
 
@@ -42,6 +43,60 @@ header {
     border: 0;
     font-size: 16px;    
     padding: 0;
+}
+
+.user-icon {
+    width: 38px;
+    background-color: rgb(53, 117, 238);
+    border-radius: 50px;
+    cursor: pointer;
+        
+  }
+
+.user-icon:hover {
+    background-color: rgb(100, 150, 270);  
+    cursor: pointer;  
+}
+
+.user-icon-bigger {
+    width: 64px;         
+}
+
+.user-item {
+    display: block;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.item-para-cima {
+    margin-bottom: 7%; /* Empurra o item para cima */
+}
+
+.item-para-baixo {
+    margin-top: auto; /* Empurra o item para baixo */
+}
+
+
+.user-info-box {
+    background: 
+    linear-gradient(to bottom, rgb(228, 228, 228) 70%, #ffffff 70%),
+    linear-gradient(to bottom, rgb(228, 228, 228) 30%, #ffffff 30%);
+    background-size: 100% 1px, 100% calc(100% - 1px); /* Divide a box em duas partes, uma com 1px de altura e outra com o restante da altura */
+    background-repeat: no-repeat;
+    display: none;
+    position: absolute;
+    top: 6.5%;
+    right: 3%;
+    width: 15%;
+    height: 40%;
+    background-color: rgb(228, 228, 228);
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    z-index: 2;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 

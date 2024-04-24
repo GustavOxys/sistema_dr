@@ -34,13 +34,13 @@ def login_or_register(request):
                 request.session['success'] = True                
                 return redirect('dashboard:login_or_register') 
             else:                
-                messages.error(request, 'Ocorreu algum erro ao enviar o formulário')                                
+                messages.error(request, 'Ocorreu algum erro ao enviar o formulário, cheque se as senhas coicidem')                                
                 return redirect('dashboard:login_or_register') 
         else:
             ic()
 
     login_form = CustomAuthenticationForm(request)
-    register_form = RegisterForm()   
+    register_form = RegisterForm(request.GET)   
     
     context = {
         'login_form' : login_form,

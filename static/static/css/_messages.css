@@ -1,0 +1,31 @@
+.message {
+    max-width: 100%;
+    text-align: center;
+}
+
+.message.success {
+    background: rgba(0, 255, 0, 0.3);
+    border: 1px solid rgba(0, 255, 0, 90%);
+    width: 100%;
+}
+
+.message-center {
+    align-items: center;
+}
+
+
+
+.message.error {
+    background: rgba(255, 0,0,0.3);
+    border: red;
+}
+
+.message.warning {
+    background: rgba(255, 255, 0, 0.3);
+    border: 1px solid rgba(255, 255, 0, 90%);
+}
+
+.message.info {
+    background: rgb(0, 0, 255, 0.3);
+    border: rgb(0, 0, 255, 0.3);
+}
