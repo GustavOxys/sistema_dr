@@ -47,14 +47,14 @@ class Paciente(models.Model):
     data_nascimento = models.DateField(null=False)    
     sexo_biologico = models.CharField(max_length=10, choices=opcoes_sexo, null=False)
     cpf = models.CharField(max_length=14, null=False)
-    rg = models.CharField(max_length=15, blank=True, default='000000000000')
-    nome_mae = models.CharField(max_length=55, blank=True, default='Desconhecido')
-    cep = models.CharField(max_length=20, blank=True, default='00000-000')
-    endereco = models.CharField(max_length=20, blank=True, default='Desconhecido')
-    numero = models.CharField(max_length=20, blank=True, default='Desconhecido')    
-    bairro = models.CharField(max_length=20, blank=True, default='Desconhecido')    
-    cidade = models.CharField(max_length=20, blank=True, default='Desconhecido')
-    estado = models.CharField(max_length=20, blank=True, default='Desconhecido')
+    rg = models.CharField(max_length=15, blank=True, default='')
+    nome_mae = models.CharField(max_length=55, blank=True, default='')
+    cep = models.CharField(max_length=20, blank=True, default='')
+    endereco = models.CharField(max_length=20, blank=True, default='')
+    numero = models.CharField(max_length=20, blank=True, default='')    
+    bairro = models.CharField(max_length=20, blank=True, default='')    
+    cidade = models.CharField(max_length=20, blank=True, default='')
+    estado = models.CharField(max_length=20, blank=True, default='')
     
     def __str__(self):
         return self.nome

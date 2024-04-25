@@ -24,7 +24,6 @@ from .pacientes.v_read_patient import *
 # Prontuarios
 from .prontuarios.v_prontuarios import *
 from .prontuarios.v_atendimento import *
-from .prontuarios.v_form_atendimento import *
 from .prontuarios.v_prontuarios_especificos import *
 from .prontuarios.v_read_prontuario import *
 from .prontuarios.v_update_prontuario import *

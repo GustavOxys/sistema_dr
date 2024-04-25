@@ -44,9 +44,9 @@ class PatientForm(forms.ModelForm):
     
     class Meta:
         model = Paciente
-        fields = 'nome', 'data_nascimento', 'sexo_biologico', 'cpf', 'telefone', 'rg', 'nome_mae', 'email', 'cep','endereco','numero', 'bairro', 'cidade', 'estado' ,
-
-    
+        fields = 'nome', 'data_nascimento',  'cpf', 'telefone', 'rg',\
+        'nome_mae', 'email', 'cep','endereco','numero', 'bairro', 'cidade', 'estado' , 'sexo_biologico',
+            
     def clean_cpf(self):
         
         cpf = self.cleaned_data.get('cpf')

@@ -1,40 +1,44 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <div class="content">
-    <div class="titulo-secao-pront">  
+    <div class="read-patient">  
         {% include 'partials/_messages.html' %}     
-        <h1>{{ paciente.nome }} </h1>        
+        <h1>{{ paciente.nome }} </h1>  
+        <br>              
         <h2>Idade: {{ paciente.idade }}</h2>
         <h2>Sexo: {{paciente.sexo_biologico}}</h2> 
-        <h2>CPF: {{paciente.cpf}}</h2> 
-        <h2>RG:{{paciente.rg}}</h2>     
-        <h2>Nome da mãe:{{paciente.nome_mae}}</h2>     
+        <h2>CPF: {{paciente.cpf}}</h2>
+        <h2>Telefone:{{paciente.telefone}}</h2> 
+        <br>   
+        <h2>RG:{{paciente.rg}}</h2>  
         <h2>Email:{{paciente.email}}</h2>  
-        <h2>CEP:{{paciente.cep}}</h2>     
+        <h2>CEP:{{paciente.cep}}</h2> 
         <h2>Endereço:{{paciente.endereco}}</h2>     
         <h2>Número:{{paciente.numero}}</h2> 
         <h2>Bairro:{{paciente.bairro}}</h2>     
         <h2>Cidade:{{paciente.cidade}}</h2>     
         <h2>Estado:{{paciente.estado}}</h2>    
-        <h2>Telefone:{{paciente.telefone}}</h2>     
-
-
-
-            
-                   
+        
          
-
-        <button><a href="{% url 'dashboard:update_patient' paciente.id %}">Editar</a></button>
-
-        
-        <form action="{% url 'dashboard:delete_patient' paciente.id %}" method="POST">
-            {% csrf_token %}
-            <button type="submit">Deletar</button>
-        </form>
-        
     </div>
+
+    <div class="btns-ud">
+        <a class="btn-edit-patient" href="{% url 'dashboard:update_patient' paciente.id %}">
+            <i class="fa-regular fa-plus"></i>
+            Editar
+        </a>    
+    
+        <form class="btn-delete-patient" action="{% url 'dashboard:delete_patient' paciente.id %}" method="POST">
+            {% csrf_token %}
+            <a class="btn-delete-patient" href="{% url 'dashboard:delete_patient' paciente.id %}">
+                <i class="fa-regular fa-plus"></i>
+                Deletar
+            </a>
+        </form>
+    </div>
+
+
 </div>
 {% endblock %}
     

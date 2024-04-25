@@ -9,32 +9,26 @@
             <h2>Convênio: {{ agendamento.convenio}}</h2>            
             <h2>Procedimento: {{ agendamento.procedimento}}</h2>           
         </div>
-
         <div class="titulo-secao-avulso">
             <h3>Últimos diagnósticos</h3>
         </div>
-
-        <div class="titulo-secao-pront">
-            <div class="">
+        <div class="titulo-secao-pront">            
                 <h1>Atendimento</h1>              
                 <form
                     action="{{ form_action }}"
                     method="POST">
-                    {% csrf_token %}                   
-                    
+                    {% csrf_token %}
                     {% if form.non_field_errors %}                        
                         <ul>
                             {% for error in form.non_field_errors  %}
                                 <li>{{ error }}</li>
                             {% endfor %} 
                         </ul>                                               
-                    {% endif %}               
-                    
+                    {% endif %} 
                     {% for field in form %}                    
                         <div>
                             <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
                             {{ field }}
-
                             {% if field.errors %}
                                 <ul>
                                     {% for error in field.errors %}
@@ -42,19 +36,10 @@
                                     {% endfor %}
                                 </ul>                        
                             {% endif %}
-                            
-                            {% if field.help_text %}
-                                <p class="help-text"> {{ field.help_text }} </p>
-                            {% endif %}
-
                         </div>
-                    {% endfor %}                       
-                            
-
+                    {% endfor %} 
                     <input type="submit" value="Enviar">
-                </form>               
-    
-            </div>      
+                </form>  
         </div>
     </div>
 {% endblock %}

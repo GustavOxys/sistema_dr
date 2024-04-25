@@ -6,14 +6,16 @@ from django.core.exceptions import ValidationError
 class AtendimentoForm(forms.ModelForm):
     altura = forms.CharField(
         widget=forms.TextInput(
-            attrs={'placeholder' : 'Ex: 1.60'},
+            attrs={'placeholder' : 'Ex: 1.60',
+            'class' : 'form-atendimento-altura',
+            'size': '10'},
         ),
         help_text='Altura em Metros',
     )
 
     queixa_principal = forms.CharField(
         widget=forms.TextInput(
-            attrs={'maxlength' : 30}
+            attrs={'maxlength' : 100}
         )
     )
 

@@ -27,14 +27,14 @@ def login_or_register(request):
         if form_type == 'register':            
             form = RegisterForm(request.POST)
             if form.is_valid():                
-                user = form.save()  
                 convenio = Convenio.objects.create(owner=user, nome="Particular")
                 procedimento = Procedimento.objects.create(owner=user, nome='Consulta')              
+                user = form.save()  
                 messages.success(request, 'Usuário registrado com sucesso!') 
                 request.session['success'] = True                
                 return redirect('dashboard:login_or_register') 
             else:                
-                messages.error(request, 'Ocorreu algum erro ao enviar o formulário, cheque se as senhas coicidem')                                
+                messages.error(request, 'Ocorreu algum erro ao enviar o formulário, Utilize uma senha forte e cheque se as senhas coicidem')                                
                 return redirect('dashboard:login_or_register') 
         else:
             ic()

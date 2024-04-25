@@ -7,37 +7,37 @@
                 Painel Inicial                
             </h2>
         </div>
-        <div class="all-box-info">
-            <div class="box-info-single">
-                <i class="bi bi-clipboard2"></i>
+        <div class="all-box">
+            <div class="box">
+                <i class="bi-clipboard2 icon-box"></i>
                 <div class="info-text">                
                     <h3>Agendados hoje</h3>
                     <p class="valor-box">{{ agendamento_diario }}</p>   
-                    <br>                                 
+                                                     
                 </div>   
             </div>            
-                <div class="box-info-single">
-                    <i class="bi bi-clipboard2-check"></i>
-                    <div class="info-text">                    
-                        <h3>Atendidos hoje</h3>
-                        <p class="valor-box">{{ total_diario }}</p>
-                        <br>                    
-                    </div>    
-                </div>
-                <div class="box-info-single">
-                    <i class="bi bi-list-columns"></i>
-                    <div class="info-text">                    
-                        <h3>Consultas/Mês</h3>
-                        <p class="valor-box">{{  total_mensal }}</p>
-                        <br>                                          
-                    </div>    
-                </div> 
-            <div class="box-info-single">
-                <i class="bi bi-currency-dollar"></i>
+            <div class="box">
+                <i class="bi-clipboard2-check icon-box"></i>
+                <div class="info-text">                    
+                    <h3>Atendidos hoje</h3>
+                    <p class="valor-box">{{ total_diario }}</p>
+                                        
+                </div>    
+            </div>
+            <div class="box">
+                <i class="bi-list-columns icon-box"></i>
+                <div class="info-text">                    
+                    <h3>Consultas/Mês</h3>
+                    <p class="valor-box">{{  total_mensal }}</p>
+                                                              
+                </div>    
+            </div> 
+            <div class="box">
+                <i class="bi-currency-dollar icon-box"></i>
                 <div class="info-text">
                     <h3>Receita/Mês</h3>
                     <p class="valor-receita-mes">{{ valor_mensal }}</p>
-                    <br>                    
+                                        
                 </div>
             </div>            
         </div> 

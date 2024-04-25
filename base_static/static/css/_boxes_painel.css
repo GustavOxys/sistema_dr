@@ -1,101 +1,63 @@
-
-
-.all-box-info{
+.all-box{
     margin-left: 3.3%;
     margin-right: 5%;
     margin-top: 1%;
-    width: 93.7%;
+    width: 93.7%;    
     display: flex;
     justify-content: space-between;
-    background-color: rgb(245, 245, 245);
-    
-    
-    
+    background-color: rgb(245, 245, 245);   
 }
 
-.box-info-single{
-
+.box{
     display: flex;
     justify-content: space-around;   
-    background-color: rgb(53, 117, 238);  
-      
-    
-
-    
-
+    background-color: rgb(53, 117, 238); 
     width: 24.5%;   
     border-radius: 20px;
     color: rgb(216, 216, 216);
     font-size: 110%;
-    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
     
     
 }
 
-.box-info-single:hover{
-    opacity: 0.9;
-    
+.box:hover{
+    opacity: 0.9;    
 }
 
-.bi-clipboard2 {
+.icon-box {
     font-size: 250%;
     background-color: rgba(255, 255, 255, 0.603);
     padding: 3%;
     margin: 9% 9% 9% 9%;
-    color: black;
+    color: black;  
 }
 
-.bi-clipboard2-check {    
-    font-size: 250%;
-    background-color: rgba(255, 255, 255, 0.603);
-    padding: 3%;
-    margin: 9% 9% 9% 9%;
-    color: black;
-}
-
-.bi-list-columns {
-    font-size: 250%;
-    background-color: rgba(255, 255, 255, 0.603);
-    padding: 3%;
-    margin: 9% 9% 9% 9%;
-    color: black;
-}
-
-.bi-currency-dollar {
-    font-size: 250%;
-    background-color: rgba(255, 255, 255, 0.603);
-    padding: 3%;
-    margin: 9% 9% 9% 9%;
+.bi-currency-dollar {    
     color: rgb(19, 95, 12);
 }
 
-
-
-.box-info-single h3{
+.box h3{
     font-size: 90%;    
     margin-top: 15%;
     
 }
 
-
-.box-info-single h4{
-    font-size: 65%;
-    margin-right: 22%;  
-    margin-top: 1%;
-    margin-bottom: 2%;  
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease; 
+.info-text {
+    align-items: center;
 }
 
-.box-info-single h4:hover{
+
+.box h4:hover{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     font-size: 70%;
 }
 
 .valor-box{
-    margin-top: 5%;
+    
     font-size: 220%;    
-    margin-left: 20%;
+    ;
     
 }
 
@@ -103,4 +65,11 @@
     margin-top: 5%;
     margin-left: 0%;
     font-size: 220%;
+}
+
+@media screen and (max-width: 1000px) {
+    .all-box{
+        display: none;
+    }
+
 }
