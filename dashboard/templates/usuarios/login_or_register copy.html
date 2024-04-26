@@ -14,13 +14,13 @@
 
 </head>
 <body class="{% if success %}login-js{% endif %}">
-    <div class="messages-user">
-        {% if messages %} 
-            {% for message in messages %}
-                <div class="message-user {{ message.tags }}">
+    <div>
+        {% if messages %}            
+            {% for message in messages  %}
+                <div class="messages-user  {{message.tags}}">
                     {{ message }}
                 </div>
-            {% endfor %}
+            {% endfor %}        
         {% endif %} 
     </div>
                

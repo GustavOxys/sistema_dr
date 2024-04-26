@@ -9,3 +9,4 @@ class CustomAuthenticationForm(AuthenticationForm):
         self.fields['password'].widget.attrs.update({
             'placeholder': 'Senha'
         })
+

@@ -20,27 +20,30 @@ def login_or_register(request):
                 login(request, user)
                 return redirect('dashboard:index')
             else:
-                messages.error(request, 'Usuário ou senha incorreto, Verifique seu usuário e senha ou crie uma conta') 
+                messages.error(request, 'Usuário ou senha incorreto, Verifique seu usuário e senha novamente ou crie uma conta') 
                 request.session['success'] = True 
                 return redirect('dashboard:login_or_register') 
 
         if form_type == 'register':            
             form = RegisterForm(request.POST)
             if form.is_valid():                
+                user = form.save()  
                 convenio = Convenio.objects.create(owner=user, nome="Particular")
-                procedimento = Procedimento.objects.create(owner=user, nome='Consulta')              
+                procedimento = Procedimento.objects.create(owner=user, nome='Consulta')  
                 user = form.save()  
                 messages.success(request, 'Usuário registrado com sucesso!') 
                 request.session['success'] = True                
                 return redirect('dashboard:login_or_register') 
-            else:                
-                messages.error(request, 'Ocorreu algum erro ao enviar o formulário, Utilize uma senha forte e cheque se as senhas coicidem')                                
-                return redirect('dashboard:login_or_register') 
+            else: 
+                for errors in form.errors.values():
+                    for error in errors:
+                        messages.error(request, error)
+                register_form = RegisterForm()  
         else:
             ic()
 
     login_form = CustomAuthenticationForm(request)
-    register_form = RegisterForm(request.GET)   
+    register_form = RegisterForm()   
     
     context = {
         'login_form' : login_form,
