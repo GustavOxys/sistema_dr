@@ -38,7 +38,7 @@ Este projeto ainda está em desenvolvimento e pode conter bugs. Sinta-se à vont
 
 3. Clone este repositório em sua máquina local:
     ```
-    git clone <URL do Repositório>
+    git clone https://github.com/GustavOxys/sistema_dr.git
     ```
 
 4. Navegue até o diretório do projeto:
