@@ -43,7 +43,7 @@ Este projeto ainda está em desenvolvimento e pode conter bugs. Sinta-se à vont
 
 4. Navegue até o diretório do projeto:
     ```
-    cd nome_do_projeto
+    cd sistema_dr
     ```
 
 5. Certifique-se de ter o Python e o Django instalados na sua venv:
@@ -59,6 +59,9 @@ Este projeto ainda está em desenvolvimento e pode conter bugs. Sinta-se à vont
 7. Execute as migrações do banco de dados:
     ```
     python manage.py migrate
+    ```
+    ```
+    python manage.py makemigrations
     ```
 
 8. Inicie o servidor de desenvolvimento:
