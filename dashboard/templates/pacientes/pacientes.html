@@ -3,12 +3,12 @@
 {% block content %}  
 
 <div class="content">
-    <div class="botoes-pacientes ">     
+    <div class="btns-main ">     
         
-        <a class="botao-paciente" href="{% url 'dashboard:create' %}">
+        <a class="btn-main" href="{% url 'dashboard:create' %}">
             <i class="fa-regular fa-plus"></i>
             Registrar novo Paciente</a>
-        <a class="botao-paciente" href="{% url 'dashboard:agendar' %}">
+        <a class="btn-main" href="{% url 'dashboard:agendar' %}">
             <i class="fa-regular fa-calendar"></i>
             Agendar um Paciente</a>
     </div>   
@@ -47,8 +47,8 @@
                             <td>{{ p.telefone}}</td>
                             <td> {{ p.ultimo_atendimento }}</td>
                             <td>                                
-                                <button><a href="{% url 'dashboard:agendar_paciente' p.id %}">Agendar</a></button>
-                                <button><a href="{% url 'dashboard:prontuarios_especificos' p.id %}">Prontuarios</a></button>
+                                <a class="btn-main" href="{% url 'dashboard:agendar_paciente' p.id %}">Agendar</a>
+                                <a class="btn-main" href="{% url 'dashboard:prontuarios_especificos' p.id %}">Prontuarios</a>
                             </td>
                         </tr>
                     {% endfor %}  

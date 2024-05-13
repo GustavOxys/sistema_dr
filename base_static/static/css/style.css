@@ -136,14 +136,14 @@ html, body {
   color: green;
 }
 
-.botoes-pacientes {
+.btns-main {
   background-color: rgb(245, 245, 245);    
   display: flex; 
   margin-left: 3%;
   
 }
 
-.botao-paciente {
+.btn-main {
   color: rgb(255, 255, 255);
   background-color: rgb(53, 117, 238);
   border-radius: 12px;

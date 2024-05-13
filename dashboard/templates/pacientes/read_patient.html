@@ -25,14 +25,12 @@
 
     <div class="btns-ud">
         <a class="btn-edit-patient" href="{% url 'dashboard:update_patient' paciente.id %}">
-            <i class="fa-regular fa-plus"></i>
             Editar
         </a>    
     
         <form class="btn-delete-patient" action="{% url 'dashboard:delete_patient' paciente.id %}" method="POST">
             {% csrf_token %}
             <a class="btn-delete-patient" href="{% url 'dashboard:delete_patient' paciente.id %}">
-                <i class="fa-regular fa-plus"></i>
                 Deletar
             </a>
         </form>
